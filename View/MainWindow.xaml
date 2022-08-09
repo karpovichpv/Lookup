@@ -1,0 +1,119 @@
+﻿<Window
+    x:Class="Lookup.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="clr-namespace:Lookup.ViewModel"
+    xmlns:ia="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:Lookup"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{Binding Version}"
+    Width="700"
+    Height="670"
+    Loaded="Window_Loaded"
+    ResizeMode="NoResize"
+    mc:Ignorable="d">
+
+    <ia:Interaction.Triggers>
+        <ia:EventTrigger EventName="Loaded">
+            <ia:InvokeCommandAction Command="{Binding GetDataCommand}" />
+        </ia:EventTrigger>
+    </ia:Interaction.Triggers>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="5,0,0,0"
+            Content="Objects" />
+        <ListView
+            Grid.Row="1"
+            Grid.Column="0"
+            MinWidth="150"
+            MinHeight="350"
+            MaxHeight="550"
+            Margin="5,0,0,0"
+            ItemsSource="{Binding Objects}"
+            SelectedItem="{Binding SelectedObject}">
+            <ia:Interaction.Triggers>
+                <ia:EventTrigger EventName="MouseDoubleClick">
+                    <ia:InvokeCommandAction Command="{Binding PushLeftObjects}" />
+                </ia:EventTrigger>
+            </ia:Interaction.Triggers>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Label Padding="2" Content="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="300" />
+            </Grid.ColumnDefinitions>
+            <Label
+                Grid.Column="0"
+                Margin="5,0,0,0"
+                Content="Label" />
+            <Label Grid.Column="1" Content="Value" />
+        </Grid>
+        <ListView
+            Grid.Row="1"
+            Grid.Column="1"
+            MinHeight="550"
+            MaxHeight="550"
+            Margin="5,0,0,0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            ItemContainerStyle="{StaticResource ListViewItemData}"
+            ItemsSource="{Binding Data}"
+            SelectedItem="{Binding SelectedData}">
+            <ia:Interaction.Triggers>
+                <ia:EventTrigger EventName="MouseDoubleClick">
+                    <ia:InvokeCommandAction Command="{Binding RunNewWindow}" />
+                </ia:EventTrigger>
+            </ia:Interaction.Triggers>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        BorderBrush="Black"
+                        BorderThickness="0"
+                        Style="{StaticResource BorderHeader}">
+                        <Grid Margin="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="300" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Border Grid.Column="0" Style="{StaticResource BorderData}">
+                                <Label Content="{Binding Label}" Style="{StaticResource LabelData}" />
+                            </Border>
+                            <Border Grid.Column="1" Style="{StaticResource BorderData}">
+                                <Label Content="{Binding Value}" Style="{StaticResource LabelData}" />
+                            </Border>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Orientation="Horizontal">
+            <Button Command="{Binding GetDataCommand}" Content="Snoop" />
+            <Button Command="{Binding GetObjectsCommand}" Content="GetSelected" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,223 @@
+﻿// This file is part of Lookup.
+// Lookup is free software: you can redistribute it and/or modify it under
+// the terms of the GNU General Public License as published by the
+// Free Software Foundation, either version 3 of the License,
+// or (at your option) any later version.
+//
+// Lookup is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty
+// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Lookup. If not, see <https://www.gnu.org/licenses/>.
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Tekla.Structures.Model;
+using Lookup.Commands;
+using Lookup.Service;
+
+namespace Lookup.ViewModel
+{
+    public class ViewModel : INotifyPropertyChanged
+    {
+        public object CurrentObject;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        #region RelayCommand
+        public RelayCommand getDataCommand;
+        public RelayCommand GetDataCommand
+        {
+            get
+            {
+                return getDataCommand ?? (getDataCommand = new RelayCommand(obj => GetData(obj), obj => CanGetData(obj)));
+            }
+        }
+
+        private RelayCommand runNewWindow;
+        public RelayCommand RunNewWindow
+        {
+            get
+            {
+                return runNewWindow ??
+                    (runNewWindow = new RelayCommand(obj => RunNewInstance(obj), obj => CanRunNewInstance(obj)));
+            }
+        }
+
+        private RelayCommand getSubObject;
+        public RelayCommand GetSubObject
+        {
+            get
+            {
+                return getSubObject ??
+                    (getSubObject = new RelayCommand(obj => GetSubTeklaObject(obj), obj => CanRunNewInstance(obj)));
+            }
+        }
+
+        private RelayCommand getObjectsCommand;
+        public RelayCommand GetObjectsCommand
+        {
+            get
+            {
+                return getObjectsCommand ??
+                    (getObjectsCommand = new RelayCommand(obj => GetObjects(obj), obj => CanGetObjects(obj)));
+            }
+        }
+
+        private RelayCommand pushLeftObjects;
+        public RelayCommand PushLeftObjects
+        {
+            get
+            {
+                return pushLeftObjects ?? (
+                    pushLeftObjects = new RelayCommand(obj => GetPushLeftObjects(obj), obj => CanGetPushLeftObjects(obj)));
+            }
+        }
+        #endregion
+
+        #region MVVM view properties
+        public string Version
+        {
+            get
+            {
+                return "Lookup v." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(4);
+            }
+        }
+
+        private Data _selectedData;
+        public Data SelectedData
+        {
+            get
+            {
+                return _selectedData;
+            }
+            set
+            {
+                _selectedData = value;
+                RaisePropertyChange("SelectedData");
+            }
+        }
+
+        private ObservableCollection<Data> _data;
+        public ObservableCollection<Data> Data
+        {
+            get
+            {
+                return _data;
+            }
+            set
+            {
+                _data = value;
+                RaisePropertyChange("Data");
+            }
+        }
+
+        private TSObject _selectedObject;
+        public TSObject SelectedObject
+        {
+            get
+            {
+                return _selectedObject;
+            }
+            set
+            {
+                _selectedObject = value;
+                RaisePropertyChange("SelectedObject");
+            }
+        }
+
+        private ObservableCollection<TSObject> _objects;
+        public ObservableCollection<TSObject> Objects
+        {
+            get
+            {
+                return _objects;
+            }
+            set
+            {
+                _objects = value;
+                RaisePropertyChange("Objects");
+            }
+        }
+        #endregion
+
+        #region RelayCommand methods
+        private void GetData(object obj)
+        {
+            if (CurrentObject == null)
+            {
+                Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
+                if (Objects.Count != 0)
+                {
+                    CurrentObject = Objects.FirstOrDefault().Object;
+                    Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
+                }
+            }
+            else if (CurrentObject != null)
+                Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
+        }
+        private bool CanGetData(object obj)
+        {
+            return new Model().GetConnectionStatus();
+        }
+
+        private void GetObjects(object obj)
+        {
+            Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
+        }
+        private bool CanGetObjects(object obj)
+        {
+            return new Model().GetConnectionStatus();
+        }
+
+        private void GetPushLeftObjects(object obj)
+        {
+            Data = Collector.Collector.CollectData(SelectedObject.Object).ToObservableCollection();
+        }
+        private bool CanGetPushLeftObjects(object obj)
+        {
+            return true;
+        }
+
+        private void RunNewInstance(object obj)
+        {
+            ViewModel subViewModel = new ViewModel();
+            List<object> objects = SelectedData.WalkDown(CurrentObject);
+            subViewModel.CurrentObject = objects.FirstOrDefault();
+            subViewModel.Objects = objects.ToTSObjects().ToObservableCollection();
+            MainWindow window = new MainWindow();
+            window.DataContext = subViewModel;
+            window.Show();
+        }
+        private bool CanRunNewInstance(object obj)
+        {
+            if (SelectedData.CanGet) return true;
+
+            return false;
+        }
+        private void GetSubTeklaObject(object obj)
+        {
+            object subObj = SelectedData.WalkDown(CurrentObject);
+        }
+        #endregion
+
+        public ViewModel()
+        {
+        }
+
+        private void RaisePropertyChange(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+}
