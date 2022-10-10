@@ -160,6 +160,7 @@ namespace Lookup.ViewModel
                 {
                     CurrentObject = Objects.FirstOrDefault().Object;
                     Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
+                    Hashtable udaValue = Service.UDAExtensions.GetAttributeList(CurrentObject);
                 }
             }
             else if (CurrentObject != null)

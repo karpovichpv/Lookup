@@ -76,6 +76,7 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Service\DataExtensions.cs" />
     <Compile Include="Service\SelectObject.cs" />
+    <Compile Include="Service\UDAExtensions.cs" />
     <Compile Include="Streams\MethodStream.cs" />
     <Compile Include="Data\Data.cs" />
     <Compile Include="Data\DataService.cs" />
