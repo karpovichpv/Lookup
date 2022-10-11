@@ -144,6 +144,13 @@ copy "$(ProjectDir)bin\Debug\Microsoft.Xaml.Behaviors.dll" "C:\TeklaStructures\2
 copy "$(ProjectDir)\Macros\Lookup.cs" "C:\TeklaStructures\2021.0\Environments\common\macros\drawings\" /Y
 copy "$(ProjectDir)\Macros\Lookup.cs" "C:\TeklaStructures\2021.0\Environments\common\macros\modeling\" /Y
 copy "$(ProjectDir)\Macros\Lookup.bmp" "C:\TeklaStructures\2021.0\Environments\common\macros\drawings\" /Y
-copy "$(ProjectDir)\Macros\Lookup.bmp" "C:\TeklaStructures\2021.0\Environments\common\macros\modeling\" /Y</PostBuildEvent>
+copy "$(ProjectDir)\Macros\Lookup.bmp" "C:\TeklaStructures\2021.0\Environments\common\macros\modeling\" /Y
+
+copy "$(ProjectDir)bin\Debug\Lookup.exe" "C:\TeklaStructures\2022.0\Environments\common\extensions\" /Y
+copy "$(ProjectDir)bin\Debug\Microsoft.Xaml.Behaviors.dll" "C:\TeklaStructures\2022.0\Environments\common\extensions\" /Y
+copy "$(ProjectDir)\Macros\Lookup.cs" "C:\TeklaStructures\2022.0\Environments\common\macros\drawings\" /Y
+copy "$(ProjectDir)\Macros\Lookup.cs" "C:\TeklaStructures\2022.0\Environments\common\macros\modeling\" /Y
+copy "$(ProjectDir)\Macros\Lookup.bmp" "C:\TeklaStructures\2022.0\Environments\common\macros\drawings\" /Y
+copy "$(ProjectDir)\Macros\Lookup.bmp" "C:\TeklaStructures\2022.0\Environments\common\macros\modeling\" /Y</PostBuildEvent>
   </PropertyGroup>
 </Project>
