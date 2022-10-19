@@ -30,10 +30,5 @@ namespace Lookup
             InitializeComponent();
             this.DataContext = ViewModel;
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            this.SizeToContent= SizeToContent.WidthAndHeight;
-        }
     }
 }

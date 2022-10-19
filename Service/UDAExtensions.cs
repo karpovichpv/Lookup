@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Tekla.Structures.Model;
 
-namespace Lookup.Service
+namespace Lookup
 {
     internal static class UDAExtensions
     {
-        public static Hashtable GetAttributeList(object tsObject)
+        public static List<UDAData> GetAttributeList(object tsObject)
         {
             try
             {
@@ -21,15 +21,30 @@ namespace Lookup.Service
                     Hashtable values = new Hashtable();
                     modelObject.GetAllUserProperties(ref values);
 
-                    return values;
+                    return values.ToUDAList();
                 }
             }
             catch
             {
-                return null;    
             }
 
             return null;
+        }
+
+        private static List<UDAData> ToUDAList(this Hashtable hashtable)
+        {
+            List<UDAData> udaList = new List<UDAData>();
+            foreach (DictionaryEntry entry in hashtable)
+            {
+                udaList.Add(new UDAData()
+                {
+                    Name = entry.Key.ToString(),
+                    Value = entry.Value.ToString(),
+                    Type = entry.Value.GetType().ToString()
+                });
+            }
+
+            return udaList;
         }
     }
 }

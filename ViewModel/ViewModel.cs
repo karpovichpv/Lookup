@@ -148,6 +148,21 @@ namespace Lookup.ViewModel
                 RaisePropertyChange("Objects");
             }
         }
+
+        private ObservableCollection<UDAData> _udaObjects;
+        public ObservableCollection<UDAData> UDAObjects
+        {
+            get
+            {
+                return _udaObjects;
+            }
+
+            set
+            {
+                _udaObjects = value;
+                RaisePropertyChange("UDAObjects");
+            }
+        }
         #endregion
 
         #region RelayCommand methods
@@ -160,11 +175,14 @@ namespace Lookup.ViewModel
                 {
                     CurrentObject = Objects.FirstOrDefault().Object;
                     Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
-                    Hashtable udaValue = Service.UDAExtensions.GetAttributeList(CurrentObject);
+                    UDAObjects = UDAExtensions.GetAttributeList(CurrentObject).ToObservableCollection();
                 }
             }
             else if (CurrentObject != null)
+            {
                 Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
+                UDAObjects = UDAExtensions.GetAttributeList(SelectedObject.Object).ToObservableCollection();
+            }
         }
         private bool CanGetData(object obj)
         {
@@ -174,6 +192,7 @@ namespace Lookup.ViewModel
         private void GetObjects(object obj)
         {
             Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
+            UDAObjects = UDAExtensions.GetAttributeList(SelectedObject.Object).ToObservableCollection();
         }
         private bool CanGetObjects(object obj)
         {
@@ -183,6 +202,7 @@ namespace Lookup.ViewModel
         private void GetPushLeftObjects(object obj)
         {
             Data = Collector.Collector.CollectData(SelectedObject.Object).ToObservableCollection();
+            UDAObjects = UDAExtensions.GetAttributeList(SelectedObject.Object).ToObservableCollection();
         }
         private bool CanGetPushLeftObjects(object obj)
         {

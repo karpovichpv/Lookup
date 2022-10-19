@@ -74,6 +74,7 @@
     </ApplicationDefinition>
     <Compile Include="Collector\Collector.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Data\UDAData.cs" />
     <Compile Include="Service\DataExtensions.cs" />
     <Compile Include="Service\SelectObject.cs" />
     <Compile Include="Service\UDAExtensions.cs" />
