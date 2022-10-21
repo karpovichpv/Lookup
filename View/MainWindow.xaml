@@ -183,8 +183,8 @@
             </TabItem>
         </TabControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Command="{Binding GetDataCommand}" Content="Snoop" />
-            <Button Command="{Binding GetObjectsCommand}" Content="GetSelected" />
+            <Button Command="{Binding SnoopSelectedObject}" Content="Snoop" />
+            <Button Width ="120" Command="{Binding GetSelectedObjectsFromModel}" Content="Get selected objects" />
         </StackPanel>
     </Grid>
 </Window>

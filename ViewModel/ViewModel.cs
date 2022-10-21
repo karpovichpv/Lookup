@@ -54,12 +54,21 @@ namespace Lookup.ViewModel
         }
 
         #region RelayCommand
-        public RelayCommand getDataCommand;
-        public RelayCommand GetDataCommand
+        public RelayCommand snoopSelectedObject;
+        public RelayCommand SnoopSelectedObject
         {
             get
             {
-                return getDataCommand ?? (getDataCommand = new RelayCommand(obj => GetData(obj), obj => CanGetData(obj)));
+                return snoopSelectedObject ?? (snoopSelectedObject = new RelayCommand(obj =>
+                {
+                    CurrentObject = Objects.FirstOrDefault().Object;
+                    Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
+                    UDAObjects = UDAExtensions.GetAttributeList(CurrentObject).ToObservableCollection();
+                },
+                obj =>
+                {
+                    return Objects != null;
+                }));
             }
         }
 
@@ -83,13 +92,20 @@ namespace Lookup.ViewModel
             }
         }
 
-        private RelayCommand getObjectsCommand;
-        public RelayCommand GetObjectsCommand
+        private RelayCommand getSelectedObjectsFromModel;
+        public RelayCommand GetSelectedObjectsFromModel
         {
             get
             {
-                return getObjectsCommand ??
-                    (getObjectsCommand = new RelayCommand(obj => GetObjects(obj), obj => CanGetObjects(obj)));
+                return getSelectedObjectsFromModel ??
+                    (getSelectedObjectsFromModel = new RelayCommand(obj =>
+                    {
+                        Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
+                        CurrentObject = Objects.FirstOrDefault().Object;
+                        Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
+                        UDAObjects = UDAExtensions.GetAttributeList(CurrentObject).ToObservableCollection();
+                    },
+                    obj => new tsm.Model().GetConnectionStatus()));
             }
         }
 
