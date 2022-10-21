@@ -21,7 +21,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Tekla.Structures.Model;
+using System.IO;
+using System.Reflection;
+using tsm = Tekla.Structures.Model;
 using Lookup.Commands;
 using Lookup.Service;
 
@@ -32,6 +34,24 @@ namespace Lookup.ViewModel
         public object CurrentObject;
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public string Version
+        {
+            get
+            {
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                string resName = "Lookup.Resources.BuildDate.txt";
+
+                string result;
+                using (Stream stream = assembly.GetManifestResourceStream(resName))
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    result = reader.ReadLine().Replace("\r\n", string.Empty);
+                }
+
+                return "Lookup v." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(4) + " (build from " + result + ")";
+            }
+        }
 
         #region RelayCommand
         public RelayCommand getDataCommand;
@@ -85,14 +105,6 @@ namespace Lookup.ViewModel
         #endregion
 
         #region MVVM view properties
-        public string Version
-        {
-            get
-            {
-                return "Lookup v." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(4);
-            }
-        }
-
         private Data _selectedData;
         public Data SelectedData
         {
@@ -181,22 +193,27 @@ namespace Lookup.ViewModel
             else if (CurrentObject != null)
             {
                 Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
-                UDAObjects = UDAExtensions.GetAttributeList(SelectedObject.Object).ToObservableCollection();
+                UDAObjects = UDAExtensions.GetAttributeList(CurrentObject).ToObservableCollection();
             }
         }
         private bool CanGetData(object obj)
         {
-            return new Model().GetConnectionStatus();
+            return new tsm.Model().GetConnectionStatus();
         }
 
         private void GetObjects(object obj)
         {
             Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
-            UDAObjects = UDAExtensions.GetAttributeList(SelectedObject.Object).ToObservableCollection();
+
+            object tsObject = SelectedObject;
+            if (SelectedObject == null)
+                tsObject = Objects.FirstOrDefault();
+
+            UDAObjects = UDAExtensions.GetAttributeList(tsObject).ToObservableCollection();
         }
         private bool CanGetObjects(object obj)
         {
-            return new Model().GetConnectionStatus();
+            return new tsm.Model().GetConnectionStatus();
         }
 
         private void GetPushLeftObjects(object obj)
