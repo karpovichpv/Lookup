@@ -69,7 +69,9 @@ namespace Lookup
 
         private bool CheckCanGet()
         {
-            if (_value != null && (_value.GetType().ToString().Contains("Tekla.Structures.") || _value.GetType()==typeof(ArrayList)))
+            if (_value != null && (_value.GetType().ToString().Contains("Tekla.Structures.")))
+                return true;
+            else if (_value.GetType() == typeof(ArrayList) && ((ArrayList)_value).Count > 0)
                 return true;
 
             return false;

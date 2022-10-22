@@ -34,14 +34,21 @@ namespace Lookup
         private static List<UDAData> ToUDAList(this Hashtable hashtable)
         {
             List<UDAData> udaList = new List<UDAData>();
-            foreach (DictionaryEntry entry in hashtable)
+            try
             {
-                udaList.Add(new UDAData()
+
+                foreach (DictionaryEntry entry in hashtable)
                 {
-                    Name = entry.Key.ToString(),
-                    Value = entry.Value.ToString(),
-                    Type = entry.Value.GetType().ToString()
-                });
+                    udaList.Add(new UDAData()
+                    {
+                        Name = entry.Key.ToString(),
+                        Value = entry.Value.ToString(),
+                        Type = entry.Value.GetType().Name
+                    });
+                }
+            }
+            catch
+            {
             }
 
             return udaList;

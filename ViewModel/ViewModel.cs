@@ -61,9 +61,9 @@ namespace Lookup.ViewModel
             {
                 return snoopSelectedObject ?? (snoopSelectedObject = new RelayCommand(obj =>
                 {
-                    CurrentObject = Objects.FirstOrDefault().Object;
-                    Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
-                    UDAObjects = UDAExtensions.GetAttributeList(CurrentObject).ToObservableCollection();
+                    //CurrentObject = SelectedObject.Object;
+                    Data = Collector.Collector.CollectData(SelectedObject.Object).ToObservableCollection();
+                    UDAObjects = UDAExtensions.GetAttributeList(SelectedObject.Object).ToObservableCollection();
                 },
                 obj =>
                 {
@@ -79,16 +79,6 @@ namespace Lookup.ViewModel
             {
                 return runNewWindow ??
                     (runNewWindow = new RelayCommand(obj => RunNewInstance(obj), obj => CanRunNewInstance(obj)));
-            }
-        }
-
-        private RelayCommand getSubObject;
-        public RelayCommand GetSubObject
-        {
-            get
-            {
-                return getSubObject ??
-                    (getSubObject = new RelayCommand(obj => GetSubTeklaObject(obj), obj => CanRunNewInstance(obj)));
             }
         }
 
@@ -109,13 +99,23 @@ namespace Lookup.ViewModel
             }
         }
 
-        private RelayCommand pushLeftObjects;
-        public RelayCommand PushLeftObjects
+        private RelayCommand windowLoad;
+        public  RelayCommand WindowLoad
         {
             get
             {
-                return pushLeftObjects ?? (
-                    pushLeftObjects = new RelayCommand(obj => GetPushLeftObjects(obj), obj => CanGetPushLeftObjects(obj)));
+                return windowLoad ??
+                    (windowLoad = new RelayCommand(obj =>
+                    {
+                        if (CurrentObject == null || Objects == null)
+                        {
+                            Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
+                            CurrentObject = Objects.FirstOrDefault().Object;
+                            Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
+                            UDAObjects = UDAExtensions.GetAttributeList(CurrentObject).ToObservableCollection();
+                        }
+                    },
+                    obj => new tsm.Model().GetConnectionStatus()));
             }
         }
         #endregion
@@ -194,60 +194,13 @@ namespace Lookup.ViewModel
         #endregion
 
         #region RelayCommand methods
-        private void GetData(object obj)
-        {
-            if (CurrentObject == null)
-            {
-                Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
-                if (Objects.Count != 0)
-                {
-                    CurrentObject = Objects.FirstOrDefault().Object;
-                    Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
-                    UDAObjects = UDAExtensions.GetAttributeList(CurrentObject).ToObservableCollection();
-                }
-            }
-            else if (CurrentObject != null)
-            {
-                Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
-                UDAObjects = UDAExtensions.GetAttributeList(CurrentObject).ToObservableCollection();
-            }
-        }
-        private bool CanGetData(object obj)
-        {
-            return new tsm.Model().GetConnectionStatus();
-        }
-
-        private void GetObjects(object obj)
-        {
-            Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
-
-            object tsObject = SelectedObject;
-            if (SelectedObject == null)
-                tsObject = Objects.FirstOrDefault();
-
-            UDAObjects = UDAExtensions.GetAttributeList(tsObject).ToObservableCollection();
-        }
-        private bool CanGetObjects(object obj)
-        {
-            return new tsm.Model().GetConnectionStatus();
-        }
-
-        private void GetPushLeftObjects(object obj)
-        {
-            Data = Collector.Collector.CollectData(SelectedObject.Object).ToObservableCollection();
-            UDAObjects = UDAExtensions.GetAttributeList(SelectedObject.Object).ToObservableCollection();
-        }
-        private bool CanGetPushLeftObjects(object obj)
-        {
-            return true;
-        }
-
         private void RunNewInstance(object obj)
         {
             ViewModel subViewModel = new ViewModel();
             List<object> objects = SelectedData.WalkDown(CurrentObject);
             subViewModel.CurrentObject = objects.FirstOrDefault();
             subViewModel.Objects = objects.ToTSObjects().ToObservableCollection();
+            subViewModel.Data = Collector.Collector.CollectData(subViewModel.Objects.FirstOrDefault().Object).ToObservableCollection();
             MainWindow window = new MainWindow();
             window.DataContext = subViewModel;
             window.Show();

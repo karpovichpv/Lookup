@@ -27,10 +27,14 @@ namespace Lookup.Service
         public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> collection)
         {
             ObservableCollection<T> c = new ObservableCollection<T>();
-            foreach(T e in collection)
+            try
             {
-                c.Add(e);
+                foreach (T e in collection)
+                {
+                    c.Add(e);
+                }
             }
+            catch { }
             return c;
         }
         public static ObservableCollection<T> AddRange<T>(this ObservableCollection<T> inputCol, ObservableCollection<T> addCol)

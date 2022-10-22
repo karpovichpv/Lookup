@@ -15,7 +15,7 @@
 
     <ia:Interaction.Triggers>
         <ia:EventTrigger EventName="Loaded">
-            <ia:InvokeCommandAction Command="{Binding GetDataCommand}" />
+            <ia:InvokeCommandAction Command="{Binding WindowLoad}" />
         </ia:EventTrigger>
     </ia:Interaction.Triggers>
 
@@ -52,7 +52,7 @@
                         SelectedItem="{Binding SelectedObject}">
                         <ia:Interaction.Triggers>
                             <ia:EventTrigger EventName="MouseDoubleClick">
-                                <ia:InvokeCommandAction Command="{Binding PushLeftObjects}" />
+                                <ia:InvokeCommandAction Command="{Binding SnoopSelectedObject}" />
                             </ia:EventTrigger>
                         </ia:Interaction.Triggers>
                         <ListView.ItemTemplate>
