@@ -36,7 +36,8 @@ namespace Lookup
 
             foreach (MethodInfo methodInfo in methods)
              {
-                if (methodInfo.DeclaringType.FullName.Contains("Tekla.Structures"))
+                if (methodInfo.DeclaringType.FullName.Contains("Tekla.Structures") && 
+                    methodInfo.Name !="Zero") // except method for points - makes points nullable
                     resultData.Add(DataExtensions.Create(methodInfo, obj));
             }
 
