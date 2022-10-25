@@ -25,8 +25,10 @@ using Lookup.Service;
 
 namespace Lookup
 {
+    // Class select objects from the model
     internal static class SelectObject
     {
+        // Method get selected objects from the model
         public static List<TSObject> GetSelectedObjects()
         {
             tsd.DrawingHandler handler = new tsd.DrawingHandler();
