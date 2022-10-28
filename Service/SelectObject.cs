@@ -22,6 +22,8 @@ using tsmui = Tekla.Structures.Model.UI;
 using tsdui = Tekla.Structures.Drawing.UI;
 using tsd = Tekla.Structures.Drawing;
 using Lookup.Service;
+using System.Net.NetworkInformation;
+using Tekla.Structures.Model;
 
 namespace Lookup
 {
@@ -43,6 +45,11 @@ namespace Lookup
 
                 if (drawingEnumerator.GetSize() > 0)
                     selectedObjects = CollectionExtensions.GetObjFromEnumerator(drawingEnumerator).ToTSObjects();
+                else
+                {
+                    TSObject drawingTSObj = new TSObject() { Name = drawing.GetType().Name, Object = drawing };
+                    selectedObjects = new List<TSObject> { drawingTSObj };
+                }
             }
             else
             {
@@ -51,6 +58,12 @@ namespace Lookup
 
                 if (modelEnumerator.GetSize() > 0)
                     selectedObjects = CollectionExtensions.GetObjFromEnumerator(modelEnumerator).ToTSObjects();
+                else
+                {
+                    Model model = new Model(); 
+                    TSObject modelTSObj = new TSObject() { Name = model.GetType().Name, Object = model };
+                    selectedObjects = new List<TSObject> { modelTSObj };
+                }
             }
 
             return selectedObjects;

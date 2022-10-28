@@ -201,6 +201,7 @@ namespace Lookup.ViewModel
             subViewModel.CurrentObject = objects.FirstOrDefault();
             subViewModel.Objects = objects.ToTSObjects().ToObservableCollection();
             subViewModel.Data = Collector.Collector.CollectData(subViewModel.Objects.FirstOrDefault().Object).ToObservableCollection();
+            subViewModel.UDAObjects = UDAExtensions.GetAttributeList(objects.FirstOrDefault()).ToObservableCollection();
             MainWindow window = new MainWindow();
             window.DataContext = subViewModel;
             window.Show();

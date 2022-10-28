@@ -40,6 +40,25 @@ namespace Lookup
 
                     return values.ToUDAList();
                 }
+                else if (tsObject is ProjectInfo)
+                {
+                    ProjectInfo projectInfo = tsObject as ProjectInfo;
+                    Hashtable userStringPropertiesHashTable = new Hashtable();
+                    projectInfo.GetStringUserProperties(ref userStringPropertiesHashTable);
+
+                    Hashtable userDoublePropertiesHashTable = new Hashtable();
+                    projectInfo.GetStringUserProperties(ref userDoublePropertiesHashTable);
+
+                    Hashtable userIntPropertiesHashTable = new Hashtable();
+                    projectInfo.GetStringUserProperties(ref userIntPropertiesHashTable);
+
+                    List<UDAData> udaDataList = new List<UDAData>();
+                    udaDataList.AddRange(userStringPropertiesHashTable.ToUDAList());
+                    udaDataList.AddRange(userDoublePropertiesHashTable.ToUDAList());
+                    udaDataList.AddRange(userIntPropertiesHashTable.ToUDAList());
+
+                    return userStringPropertiesHashTable.ToUDAList();
+                }    
             }
             catch
             {
