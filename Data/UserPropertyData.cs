@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lookup
 {
-    public class UDAData
+    public class UserPropertyData
     {
         public string Name { get; set; }
         public string Value { get; set; }

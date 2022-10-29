@@ -63,7 +63,7 @@ namespace Lookup.ViewModel
                 {
                     //CurrentObject = SelectedObject.Object;
                     Data = Collector.Collector.CollectData(SelectedObject.Object).ToObservableCollection();
-                    UDAObjects = UDAExtensions.GetAttributeList(SelectedObject.Object).ToObservableCollection();
+                    UDAObjects = UserPropertyExtensions.GetAttributeList(SelectedObject.Object).ToObservableCollection();
                 },
                 obj =>
                 {
@@ -93,7 +93,7 @@ namespace Lookup.ViewModel
                         Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
                         CurrentObject = Objects.FirstOrDefault().Object;
                         Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
-                        UDAObjects = UDAExtensions.GetAttributeList(CurrentObject).ToObservableCollection();
+                        UDAObjects = UserPropertyExtensions.GetAttributeList(CurrentObject).ToObservableCollection();
                     },
                     obj => new tsm.Model().GetConnectionStatus()));
             }
@@ -112,7 +112,7 @@ namespace Lookup.ViewModel
                             Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
                             CurrentObject = Objects.FirstOrDefault().Object;
                             Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
-                            UDAObjects = UDAExtensions.GetAttributeList(CurrentObject).ToObservableCollection();
+                            UDAObjects = UserPropertyExtensions.GetAttributeList(CurrentObject).ToObservableCollection();
                         }
                     },
                     obj => new tsm.Model().GetConnectionStatus()));
@@ -177,8 +177,8 @@ namespace Lookup.ViewModel
             }
         }
 
-        private ObservableCollection<UDAData> _udaObjects;
-        public ObservableCollection<UDAData> UDAObjects
+        private ObservableCollection<UserPropertyData> _udaObjects;
+        public ObservableCollection<UserPropertyData> UDAObjects
         {
             get
             {
@@ -201,7 +201,7 @@ namespace Lookup.ViewModel
             subViewModel.CurrentObject = objects.FirstOrDefault();
             subViewModel.Objects = objects.ToTSObjects().ToObservableCollection();
             subViewModel.Data = Collector.Collector.CollectData(subViewModel.Objects.FirstOrDefault().Object).ToObservableCollection();
-            subViewModel.UDAObjects = UDAExtensions.GetAttributeList(objects.FirstOrDefault()).ToObservableCollection();
+            subViewModel.UDAObjects = UserPropertyExtensions.GetAttributeList(objects.FirstOrDefault()).ToObservableCollection();
             MainWindow window = new MainWindow();
             window.DataContext = subViewModel;
             window.Show();
