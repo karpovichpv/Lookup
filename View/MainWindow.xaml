@@ -84,7 +84,8 @@
                         ItemContainerStyle="{StaticResource ListViewItemData}"
                         ItemsSource="{Binding Data}"
                         ScrollViewer.VerticalScrollBarVisibility="Visible"
-                        SelectedItem="{Binding SelectedData}">
+                        SelectedItem="{Binding SelectedData}"
+                        IsSynchronizedWithCurrentItem="True">
                         <ia:Interaction.Triggers>
                             <ia:EventTrigger EventName="MouseDoubleClick">
                                 <ia:InvokeCommandAction Command="{Binding RunNewWindow}" />
@@ -105,10 +106,10 @@
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
                                         <Border Grid.Column="0" Style="{StaticResource BorderData}">
-                                            <Label Content="{Binding Label}" Style="{StaticResource LabelData}" />
+                                            <TextBox Text="{Binding Label, Mode=OneWay}" Style="{StaticResource TextBoxData}"/>
                                         </Border>
                                         <Border Grid.Column="1" Style="{StaticResource BorderData}">
-                                            <Label Content="{Binding Value}" Style="{StaticResource LabelData}" />
+                                            <TextBox Text="{Binding Value, Mode=OneWay}" Style="{StaticResource TextBoxData}"/>
                                         </Border>
                                     </Grid>
                                 </Border>

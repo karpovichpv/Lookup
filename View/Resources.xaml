@@ -27,6 +27,17 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
+    <Style x:Key="TextBoxData" TargetType="TextBox">
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="IsReadOnly" Value="True" />
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding CanGet}" Value="True">
+                <Setter Property="FontWeight" Value="Bold" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
     <Style x:Key="ListViewItemData" TargetType="ListViewItem">
         <Setter Property="Padding" Value="0" />
         <Setter Property="Margin" Value="0,0,0,-3" />

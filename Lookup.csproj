@@ -77,10 +77,10 @@
     </ApplicationDefinition>
     <Compile Include="Collector\Collector.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Data\UDAData.cs" />
+    <Compile Include="Data\UserPropertyData.cs" />
     <Compile Include="Service\DataExtensions.cs" />
     <Compile Include="Service\SelectObject.cs" />
-    <Compile Include="Service\UDAExtensions.cs" />
+    <Compile Include="Service\UserPropertyExtensions.cs" />
     <Compile Include="Streams\MethodStream.cs" />
     <Compile Include="Data\Data.cs" />
     <Compile Include="Data\DataService.cs" />
@@ -152,13 +152,6 @@ copy "$(ProjectDir)\Macros\Lookup.cs" "C:\TeklaStructures\2021.0\Environments\co
 copy "$(ProjectDir)\Macros\Lookup.cs" "C:\TeklaStructures\2021.0\Environments\common\macros\modeling\" /Y
 copy "$(ProjectDir)\Macros\Lookup.bmp" "C:\TeklaStructures\2021.0\Environments\common\macros\drawings\" /Y
 copy "$(ProjectDir)\Macros\Lookup.bmp" "C:\TeklaStructures\2021.0\Environments\common\macros\modeling\" /Y
-
-copy "$(ProjectDir)bin\Debug\Lookup.exe" "C:\TeklaStructures\2022.0\Environments\common\extensions\" /Y
-copy "$(ProjectDir)bin\Debug\Microsoft.Xaml.Behaviors.dll" "C:\TeklaStructures\2022.0\Environments\common\extensions\" /Y
-copy "$(ProjectDir)\Macros\Lookup.cs" "C:\TeklaStructures\2022.0\Environments\common\macros\drawings\" /Y
-copy "$(ProjectDir)\Macros\Lookup.cs" "C:\TeklaStructures\2022.0\Environments\common\macros\modeling\" /Y
-copy "$(ProjectDir)\Macros\Lookup.bmp" "C:\TeklaStructures\2022.0\Environments\common\macros\drawings\" /Y
-copy "$(ProjectDir)\Macros\Lookup.bmp" "C:\TeklaStructures\2022.0\Environments\common\macros\modeling\" /Y
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
