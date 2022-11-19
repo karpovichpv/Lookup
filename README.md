@@ -18,7 +18,7 @@ The code of the program works through the .Net Framework System.Reflection mecha
 
 ## Installation
 
-You need to put latest tsep file in a folder **\TeklaStructures\2020.0\Extensions\To be installed\** and restart TeklaStructures. After this the application will install to a folder **\Environments\common\extensions** and you will able to use it.
+You need to put latest tsep file in a folder **\TeklaStructures\2020.0\Extensions\To be installed** and restart TeklaStructures. After this the application will install to a folder **\Environments\common\extensions** and you will able to use it.
 
 ## Usage
 
