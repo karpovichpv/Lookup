@@ -27,7 +27,7 @@ You need to put latest tsep file in a folder **\TeklaStructures\2020.0\Extension
 3. Buttons
     - button **Snoop** allows to get API information for the current selected object. The same action also possible to do with double click on the object you are intersting in.
     - button **Get selected objects** gathers information about all selected objects and it to the "Objects" list. If nothing is select information will from the current model or drawing
-  
+4. In the left list you possibly will see that some elements are in bold that means that you by double mouse click can "walk down" and watch properties for this element.
 
 ## Credits
 
