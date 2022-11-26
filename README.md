@@ -24,6 +24,8 @@ You need to put latest tsep file in a folder **\TeklaStructures\2020.0\Extension
 
 ## Usage
 
+<img src="https://github.com/karpovichpv/Lookup/blob/master/Docs/Screenshots/Lookup_GIF_usage.gif" alt="Lookup. Main window" width="700"/>
+
 1. When your Tekla Structures is running find on "Extensions and macroses" panel **Lookup** application and click twice on it
 2. If you selected some elements in a model (or drawing) information about them will appear in the Lookup tabs. Otherwise Lookup will try to get info from the current model (or drawing)
 3. Buttons
