@@ -18,11 +18,16 @@ The code of the program works through the .Net Framework System.Reflection mecha
 
 ## Installation
 
-Text about installation
+You need to put latest tsep file in a folder **\TeklaStructures\2020.0\Extensions\To be installed** and restart TeklaStructures. After this the application will install to a folder **\Environments\common\extensions** and you will able to use it.
 
 ## Usage
 
-Usage with scrinshots
+1. When your Tekla Structures is running find on "Extensions and macroses" panel **Lookup** application and click twice on it
+2. If you selected some elements in a model (or drawing) information about them will appear in the Lookup tabs. Otherwise Lookup will try to get info from the current model (or drawing)
+3. Buttons
+    - button **Snoop** allows to get API information for the current selected object. The same action also possible to do with double click on the object you are intersting in.
+    - button **Get selected objects** gathers information about all selected objects and it to the "Objects" list. If nothing is select information will from the current model or drawing
+4. In the left list you possibly will see that some elements are in bold that means that you by double mouse click can "walk down" and watch properties for this element.
 
 ## Credits
 
