@@ -26,7 +26,7 @@ You need to put latest tsep file in a folder **\TeklaStructures\2020.0\Extension
 
 <img src="https://github.com/karpovichpv/Lookup/blob/master/Docs/Screenshots/Lookup_GIF_usage.gif" alt="Lookup. Main window" width="700"/>
 
-1. When your Tekla Structures is running find on "Extensions and macroses" panel **Lookup** application and click twice on it
+1. When your Tekla Structures is running find on "Applications & components" panel **Lookup** application and click twice on it
 2. If you selected some elements in a model (or drawing) information about them will appear in the Lookup tabs. Otherwise Lookup will try to get info from the current model (or drawing)
 3. Buttons
     - button **Snoop** allows to get API information for the current selected object. The same action also possible to do with double click on the object you are intersting in.
