@@ -1,6 +1,6 @@
 # Lookup
 
-[Main window](https://github.com/karpovichpv/Lookup/blob/master/Docs/Screenshots/Lookup_for_TeklaStructures.png)
+![Main window](https://github.com/karpovichpv/Lookup/blob/master/Docs/Screenshots/Lookup_for_TeklaStructures.png)
 
 This app is a kind of analog of the [RevitLookup](https://github.com/jeremytammik/RevitLookup) but only for the TeklaStructures. 
 It's possible to do next actions with it:
