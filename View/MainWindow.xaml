@@ -81,11 +81,11 @@
                         Margin="5,0,0,0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
+                        IsSynchronizedWithCurrentItem="True"
                         ItemContainerStyle="{StaticResource ListViewItemData}"
                         ItemsSource="{Binding Data}"
                         ScrollViewer.VerticalScrollBarVisibility="Visible"
-                        SelectedItem="{Binding SelectedData}"
-                        IsSynchronizedWithCurrentItem="True">
+                        SelectedItem="{Binding SelectedData}">
                         <ia:Interaction.Triggers>
                             <ia:EventTrigger EventName="MouseDoubleClick">
                                 <ia:InvokeCommandAction Command="{Binding RunNewWindow}" />
@@ -106,10 +106,10 @@
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
                                         <Border Grid.Column="0" Style="{StaticResource BorderData}">
-                                            <TextBox Text="{Binding Label, Mode=OneWay}" Style="{StaticResource TextBoxData}"/>
+                                            <Label Content="{Binding Label, Mode=OneWay}" Style="{StaticResource LabelData}" />
                                         </Border>
                                         <Border Grid.Column="1" Style="{StaticResource BorderData}">
-                                            <TextBox Text="{Binding Value, Mode=OneWay}" Style="{StaticResource TextBoxData}"/>
+                                            <TextBox Style="{StaticResource TextBoxData}" Text="{Binding Value, Mode=OneWay}" />
                                         </Border>
                                     </Grid>
                                 </Border>
@@ -167,13 +167,13 @@
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
                                         <Border Grid.Column="0" Style="{StaticResource BorderData}">
-                                            <Label Content="{Binding Name}" Style="{StaticResource LabelData}" />
+                                            <TextBox Style="{StaticResource TextBoxData}" Text="{Binding Name}" />
                                         </Border>
                                         <Border Grid.Column="1" Style="{StaticResource BorderData}">
-                                            <Label Content="{Binding Value}" Style="{StaticResource LabelData}" />
+                                            <TextBox Style="{StaticResource TextBoxData}" Text="{Binding Value}" />
                                         </Border>
                                         <Border Grid.Column="2" Style="{StaticResource BorderData}">
-                                            <Label Content="{Binding Type}" Style="{StaticResource LabelData}" />
+                                            <TextBox Style="{StaticResource TextBoxData}" Text="{Binding Type}" />
                                         </Border>
                                     </Grid>
                                 </Border>
@@ -185,7 +185,10 @@
         </TabControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button Command="{Binding SnoopSelectedObject}" Content="Snoop" />
-            <Button Width ="120" Command="{Binding GetSelectedObjectsFromModel}" Content="Get selected objects" />
+            <Button
+                Width="120"
+                Command="{Binding GetSelectedObjectsFromModel}"
+                Content="Get selected objects" />
         </StackPanel>
     </Grid>
 </Window>
