@@ -35,7 +35,9 @@ You need to put latest tsep file in a folder **\TeklaStructures\2020.0\Extension
 
 ## Roadmap
 
-- [ ] Add reading user properties from the drawing for parts
+- [ ] Reading user properties from the drawing for parts
+- [ ] Writting user properties to the elements
+- [ ] Getting report properties for the certain parts (list of properties is getting from .lst file)
 
 
 ## Credits
