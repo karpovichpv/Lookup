@@ -93,6 +93,9 @@
     <Compile Include="Data\PropertyData.cs" />
     <Compile Include="Data\TSObject.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
+    <None Include="TSEP\buildTsep.ps1" />
+    <None Include="TSEP\macros\Lookup.cs" />
+    <None Include="TSEP\macros\Lookup.bmp" />
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -137,7 +140,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="TSEP\Lookup.png" />
+    <None Include="TSEP\Lookup.xml" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="icon.ico" />
   </ItemGroup>
@@ -152,7 +158,10 @@ copy "$(ProjectDir)\Macros\Lookup.cs" "C:\TeklaStructures\2021.0\Environments\co
 copy "$(ProjectDir)\Macros\Lookup.cs" "C:\TeklaStructures\2021.0\Environments\common\macros\modeling\" /Y
 copy "$(ProjectDir)\Macros\Lookup.bmp" "C:\TeklaStructures\2021.0\Environments\common\macros\drawings\" /Y
 copy "$(ProjectDir)\Macros\Lookup.bmp" "C:\TeklaStructures\2021.0\Environments\common\macros\modeling\" /Y
-</PostBuildEvent>
+
+
+if $(ConfigurationName) == Release echo %25date%25 %25time%25 "RELEASE" &gt; "$(ProjectDir)\Resources\BuildDate.txt"
+if $(ConfigurationName) == Release PowerShell -nologo -command "$(ProjectDir)TSEP\buildTsep.ps1"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>if $(ConfigurationName) == Release echo %25date%25 %25time%25 "RELEASE" &gt; "$(ProjectDir)\Resources\BuildDate.txt"

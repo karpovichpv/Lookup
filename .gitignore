@@ -16,6 +16,9 @@ References/
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# TSEP build result folder
+TSEP/buildResult/
+
 # Mono auto generated files
 mono_crash.*
 
