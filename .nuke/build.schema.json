@@ -72,9 +72,12 @@
           "items": {
             "type": "string",
             "enum": [
+              "BuildSolution",
               "Clean",
               "Compile",
-              "Restore"
+              "MoveDllToTsepFolder",
+              "Restore",
+              "RewriteTsepXML"
             ]
           }
         },
@@ -88,9 +91,12 @@
           "items": {
             "type": "string",
             "enum": [
+              "BuildSolution",
               "Clean",
               "Compile",
-              "Restore"
+              "MoveDllToTsepFolder",
+              "Restore",
+              "RewriteTsepXML"
             ]
           }
         },

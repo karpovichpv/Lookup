@@ -14,7 +14,7 @@ class Build : NukeBuild
     [Solution]
     private readonly Solution Solution;
 
-    public static int Main() => Execute<Build>(x => x.Compile);
+    public static int Main() => Execute<Build>(x => x.BuildSolution);
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
@@ -36,7 +36,20 @@ class Build : NukeBuild
         {
             MSBuild(s => s
             .SetTargetPath(Solution)
+            .SetConfiguration(Configuration.Release)
             .SetTargets("Rebuild"));
         });
 
+    Target MoveDllToTsepFolder => _ => _
+    .Executes(() => Service.MoveFileToTargetFolder.Move(Solution)
+    );
+
+    Target RewriteTsepXML => _ => _
+    .Executes(() => Service.TsepXmlWriter.Write(Solution)
+    );
+
+    Target BuildSolution => _ => _
+    .DependsOn(MoveDllToTsepFolder)
+    .DependsOn(RewriteTsepXML)
+    .DependsOn(Compile);
 }
