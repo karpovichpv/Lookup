@@ -49,7 +49,11 @@ class Build : NukeBuild
     .Executes(() => Service.TsepXmlWriter.Write(Solution, _version)
     );
 
+    Target CreateTSEP => _ => _
+    .Executes(() => service.CreateTSEP.Create(Solution, _version)
+    );
     Target BuildSolution => _ => _
+    .DependsOn(CreateTSEP)
     .DependsOn(MoveDllToTsepFolder)
     .DependsOn(RewriteTsepXML)
     .DependsOn(Compile);

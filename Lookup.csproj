@@ -141,7 +141,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="TSEP\Lookup.png" />
     <None Include="TSEP\Lookup.xml" />
   </ItemGroup>
   <ItemGroup>

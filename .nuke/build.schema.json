@@ -75,6 +75,7 @@
               "BuildSolution",
               "Clean",
               "Compile",
+              "CreateTSEP",
               "MoveDllToTsepFolder",
               "Restore",
               "RewriteTsepXML"
@@ -94,6 +95,7 @@
               "BuildSolution",
               "Clean",
               "Compile",
+              "CreateTSEP",
               "MoveDllToTsepFolder",
               "Restore",
               "RewriteTsepXML"

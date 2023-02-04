@@ -1,4 +1,5 @@
 ﻿using Nuke.Common.ProjectModel;
+using service;
 using System.IO;
 using System.Text.RegularExpressions;
 
@@ -14,23 +15,15 @@ namespace Service
 
         private static void WriteXmlFileWithNewVersion(string resultedXML, Solution solution)
         {
-            string xmlPath = GetPathToXmlFile(solution);
+            string xmlPath = PathToXml.Get(solution);
             File.Delete(xmlPath);
-            StreamWriter writer = new(xmlPath);
-            writer.Write(resultedXML);
-        }
-
-        private static string GetPathToXmlFile(Solution solution)
-        {
-            string xmlName = "Lookup.xml";
-            string solutionPath = solution.Directory;
-            string xmlPath = Path.Combine(solutionPath, $"TSEP\\{xmlName}");
-            return xmlPath;
+            using (StreamWriter writer = new(xmlPath))
+                writer.Write(resultedXML);
         }
 
         private static string GetResultedXMLfile(string newVersion, Solution solution)
         {
-            string xmlPath = GetPathToXmlFile(solution);
+            string xmlPath = PathToXml.Get(solution);
             string file;
             using (StreamReader reader = new(xmlPath))
                 file = reader.ReadToEnd();
