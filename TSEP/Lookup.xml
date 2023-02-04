@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <TEP Version="2.0">
-  <Product Id="Lookup" Type="Extension" UpgradeCode="b4d4f814-cdd2-4b05-b78f-ad7076131e5e" Version="0.7" Language="1033" Name="Lookup" Manufacturer="Pavel Karpovich" Description="Lookup" IconPath="%InstallerFolder%\Lookup.png">
+  <Product Id="Lookup" Type="Extension" UpgradeCode="b4d4f814-cdd2-4b05-b78f-ad7076131e5e" Version="0.44" Language="1033" Name="Lookup" Manufacturer="Pavel Karpovich" Description="Lookup" IconPath="%InstallerFolder%\Lookup.png">
     <TeklaVersions>
       <TeklaVersion Name="2099.1" />
       <MinTeklaVersion Name="2020.0" />

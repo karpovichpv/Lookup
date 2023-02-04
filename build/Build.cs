@@ -13,6 +13,7 @@ class Build : NukeBuild
 
     [Solution]
     private readonly Solution Solution;
+    private readonly string _version = "0.44";
 
     public static int Main() => Execute<Build>(x => x.BuildSolution);
 
@@ -45,7 +46,7 @@ class Build : NukeBuild
     );
 
     Target RewriteTsepXML => _ => _
-    .Executes(() => Service.TsepXmlWriter.Write(Solution)
+    .Executes(() => Service.TsepXmlWriter.Write(Solution, _version)
     );
 
     Target BuildSolution => _ => _
