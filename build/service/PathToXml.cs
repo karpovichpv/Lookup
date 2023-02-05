@@ -1,16 +1,21 @@
 ﻿using Nuke.Common.ProjectModel;
 using System.IO;
 
-namespace service
+namespace Service
 {
-    class PathToXml
+    class PathService
     {
-        public static string Get(Solution solution)
+        public static string GetXml(Solution solution)
         {
             string xmlName = "Lookup.xml";
             string solutionPath = solution.Directory;
-            string xmlPath = Path.Combine(solutionPath, $"TSEP\\{xmlName}");
-            return xmlPath;
+            return Path.Combine(solutionPath, $"TSEP\\{xmlName}");
+        }
+
+        public static string GetTSEPFolder(Solution solution)
+        {
+            string solutionPath = solution.Directory;
+            return Path.Combine(solutionPath, $"TSEP\\buildResult\\");
         }
     }
 }

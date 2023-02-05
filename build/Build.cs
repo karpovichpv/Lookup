@@ -13,7 +13,7 @@ class Build : NukeBuild
 
     [Solution]
     private readonly Solution Solution;
-    private readonly string _version = "0.44";
+    private readonly string _version = "1.0";
 
     public static int Main() => Execute<Build>(x => x.BuildSolution);
 
@@ -32,29 +32,35 @@ class Build : NukeBuild
         });
 
     Target Compile => _ => _
-        .DependsOn(Restore)
         .Executes(() =>
         {
             MSBuild(s => s
             .SetTargetPath(Solution)
             .SetConfiguration(Configuration.Release)
-            .SetTargets("Rebuild"));
+            );
         });
 
     Target MoveDllToTsepFolder => _ => _
+    .Description("Moving compiling dll files to the target folder for building a tsep")
+    .After(Compile)
     .Executes(() => Service.MoveFileToTargetFolder.Move(Solution)
     );
 
     Target RewriteTsepXML => _ => _
+    .Description("Rewriting xml file for building tsep")
+    .After(MoveDllToTsepFolder)
     .Executes(() => Service.TsepXmlWriter.Write(Solution, _version)
     );
 
     Target CreateTSEP => _ => _
-    .Executes(() => service.CreateTSEP.Create(Solution, _version)
+    .Description("Builgin tsep")
+    .After(RewriteTsepXML)
+    .Executes(() => Service.CreateTSEP.Create(Solution, _version)
     );
+
     Target BuildSolution => _ => _
-    .DependsOn(CreateTSEP)
+    .DependsOn(Compile)
     .DependsOn(MoveDllToTsepFolder)
     .DependsOn(RewriteTsepXML)
-    .DependsOn(Compile);
+    .DependsOn(CreateTSEP);
 }

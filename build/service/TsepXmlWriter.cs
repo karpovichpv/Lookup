@@ -1,5 +1,4 @@
 ﻿using Nuke.Common.ProjectModel;
-using service;
 using System.IO;
 using System.Text.RegularExpressions;
 
@@ -15,7 +14,7 @@ namespace Service
 
         private static void WriteXmlFileWithNewVersion(string resultedXML, Solution solution)
         {
-            string xmlPath = PathToXml.Get(solution);
+            string xmlPath = PathService.GetXml(solution);
             File.Delete(xmlPath);
             using (StreamWriter writer = new(xmlPath))
                 writer.Write(resultedXML);
@@ -23,7 +22,7 @@ namespace Service
 
         private static string GetResultedXMLfile(string newVersion, Solution solution)
         {
-            string xmlPath = PathToXml.Get(solution);
+            string xmlPath = PathService.GetXml(solution);
             string file;
             using (StreamReader reader = new(xmlPath))
                 file = reader.ReadToEnd();
