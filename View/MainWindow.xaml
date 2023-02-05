@@ -1,0 +1,194 @@
+﻿<Window
+    x:Class="Lookup.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="clr-namespace:Lookup.ViewModel"
+    xmlns:ia="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:Lookup"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{Binding Version}"
+    Width="707"
+    Height="675"
+    ResizeMode="NoResize"
+    mc:Ignorable="d">
+
+    <ia:Interaction.Triggers>
+        <ia:EventTrigger EventName="Loaded">
+            <ia:InvokeCommandAction Command="{Binding WindowLoad}" />
+        </ia:EventTrigger>
+    </ia:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0">
+            <TabItem Header="Main">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="5,0,0,0"
+                        Content="Objects" />
+                    <ListView
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Width="145"
+                        MinHeight="350"
+                        MaxHeight="550"
+                        Margin="0,0,0,0"
+                        ItemsSource="{Binding Objects}"
+                        SelectedItem="{Binding SelectedObject}">
+                        <ia:Interaction.Triggers>
+                            <ia:EventTrigger EventName="MouseDoubleClick">
+                                <ia:InvokeCommandAction Command="{Binding SnoopSelectedObject}" />
+                            </ia:EventTrigger>
+                        </ia:Interaction.Triggers>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Label Padding="2" Content="{Binding Name}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="300" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Column="0"
+                            Margin="5,0,0,0"
+                            Content="Label" />
+                        <Label Grid.Column="1" Content="Value" />
+                    </Grid>
+                    <ListView
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="534"
+                        MinHeight="550"
+                        MaxHeight="550"
+                        Margin="5,0,0,0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        IsSynchronizedWithCurrentItem="True"
+                        ItemContainerStyle="{StaticResource ListViewItemData}"
+                        ItemsSource="{Binding Data}"
+                        ScrollViewer.VerticalScrollBarVisibility="Visible"
+                        SelectedItem="{Binding SelectedData}">
+                        <ia:Interaction.Triggers>
+                            <ia:EventTrigger EventName="MouseDoubleClick">
+                                <ia:InvokeCommandAction Command="{Binding RunNewWindow}" />
+                            </ia:EventTrigger>
+                        </ia:Interaction.Triggers>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    BorderBrush="Black"
+                                    BorderThickness="0"
+                                    Style="{StaticResource BorderHeader}">
+                                    <Grid Margin="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="200" />
+                                            <ColumnDefinition Width="310" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Border Grid.Column="0" Style="{StaticResource BorderData}">
+                                            <Label Content="{Binding Label, Mode=OneWay}" Style="{StaticResource LabelData}" />
+                                        </Border>
+                                        <Border Grid.Column="1" Style="{StaticResource BorderData}">
+                                            <TextBox Style="{StaticResource TextBoxData}" Text="{Binding Value, Mode=OneWay}" />
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="UDA attributes">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="310" />
+                        <ColumnDefinition Width="175" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Content="Name" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Content="Value" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Content="Type" />
+                    <ListView
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        MinHeight="550"
+                        MaxHeight="550"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        ItemContainerStyle="{StaticResource ListViewItemData}"
+                        ItemsSource="{Binding UDAObjects}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    BorderBrush="Black"
+                                    BorderThickness="0"
+                                    Style="{StaticResource BorderHeader}">
+                                    <Grid Margin="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="200" />
+                                            <ColumnDefinition Width="310" />
+                                            <ColumnDefinition Width="169" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Border Grid.Column="0" Style="{StaticResource BorderData}">
+                                            <TextBox Style="{StaticResource TextBoxData}" Text="{Binding Name}" />
+                                        </Border>
+                                        <Border Grid.Column="1" Style="{StaticResource BorderData}">
+                                            <TextBox Style="{StaticResource TextBoxData}" Text="{Binding Value}" />
+                                        </Border>
+                                        <Border Grid.Column="2" Style="{StaticResource BorderData}">
+                                            <TextBox Style="{StaticResource TextBoxData}" Text="{Binding Type}" />
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Command="{Binding SnoopSelectedObject}" Content="Snoop" />
+            <Button
+                Width="120"
+                Command="{Binding GetSelectedObjectsFromModel}"
+                Content="Get selected objects" />
+        </StackPanel>
+    </Grid>
+</Window>

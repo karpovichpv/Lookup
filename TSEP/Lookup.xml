@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TEP Version="2.0">
+  <Product Id="Lookup" Type="Extension" UpgradeCode="b4d4f814-cdd2-4b05-b78f-ad7076131e5e" Version="0.44" Language="1033" Name="Lookup" Manufacturer="Pavel Karpovich" Description="Lookup" IconPath="%InstallerFolder%\Lookup.png">
+    <TeklaVersions>
+      <TeklaVersion Name="2099.1" />
+      <MinTeklaVersion Name="2020.0" />
+      <MaxTeklaVersion Name="2099.0" />
+    </TeklaVersions>
+  </Product>
+  <SourcePathVariables>
+    <SourcePathVariable Id="TepOutputFolder" Value="%TEPDEFINITIONFILEFOLDER%\.\" Comment="This provides the location where the package builder is to save the package." />
+    <SourcePathVariable Id="InstallerFolder" Value="%TEPDEFINITIONFILEFOLDER%" />
+    <SourcePathVariable Id="SourceId0" Value="%InstallerFolder%\dll" />
+    <SourcePathVariable Id="SourceId1" Value="%InstallerFolder%\macros" />
+      </SourcePathVariables>
+  <TargetPathVariables>
+    <PathVariable Id="TargetId0" Value="%ENVDIR%\common\extensions" />
+    <PathVariable Id="TargetId1" Value="%ENVDIR%\common\macros\modeling" />
+    <PathVariable Id="TargetId2" Value="%ENVDIR%\common\macros\drawing" />
+  </TargetPathVariables>
+  <Component Id="TheExtensionComponent" Guid="95bd6dcb-82e6-4595-bf87-19ab940efd74">
+    <File Id="FileId0" Source="%SourceId0%\*.*" Target="%TargetId0%" Recursive="yes" />
+    <File Id="FileId1" Source="%SourceId1%\*.*" Target="%TargetId1%" Recursive="yes" />
+    <File Id="FileId2" Source="%SourceId1%\*.*" Target="%TargetId2%" Recursive="yes" />
+  </Component>
+  <Feature Id="TheExtensionFeature" Title="ExtensionFeature">
+    <ComponentRef ReferenceId="TheExtensionComponent" />
+  </Feature>
+</TEP>
