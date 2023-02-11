@@ -129,15 +129,15 @@
                         <ColumnDefinition Width="310" />
                         <ColumnDefinition Width="175" />
                     </Grid.ColumnDefinitions>
-                    <Label
+                    <Button
                         Grid.Row="0"
                         Grid.Column="0"
                         Content="Name" />
-                    <Label
+                    <Button
                         Grid.Row="0"
                         Grid.Column="1"
                         Content="Value" />
-                    <Label
+                    <Button
                         Grid.Row="0"
                         Grid.Column="2"
                         Content="Type" />

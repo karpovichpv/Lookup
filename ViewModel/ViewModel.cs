@@ -12,20 +12,16 @@
 // You should have received a copy of the GNU General Public License
 // along with Lookup. If not, see <https://www.gnu.org/licenses/>.
 
-using System;
-using System.Collections;
+using Lookup.Commands;
+using Lookup.Service;
+using Lookup.ViewModel.Service;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using tsm = Tekla.Structures.Model;
-using Lookup.Commands;
-using Lookup.Service;
 
 namespace Lookup.ViewModel
 {
@@ -100,7 +96,7 @@ namespace Lookup.ViewModel
         }
 
         private RelayCommand windowLoad;
-        public  RelayCommand WindowLoad
+        public RelayCommand WindowLoad
         {
             get
             {
@@ -180,18 +176,18 @@ namespace Lookup.ViewModel
         private ObservableCollection<UserPropertyData> _udaObjects;
         public ObservableCollection<UserPropertyData> UDAObjects
         {
-            get
-            {
-                return _udaObjects;
-            }
-
+            get => _udaObjects;
             set
             {
-                _udaObjects = value;
+                _udaObjects = value.SortByName();
                 RaisePropertyChange("UDAObjects");
             }
         }
         #endregion
+
+        public ViewModel()
+        {
+        }
 
         #region RelayCommand methods
         private void RunNewInstance(object obj)
@@ -212,15 +208,7 @@ namespace Lookup.ViewModel
 
             return false;
         }
-        private void GetSubTeklaObject(object obj)
-        {
-            object subObj = SelectedData.WalkDown(CurrentObject);
-        }
         #endregion
-
-        public ViewModel()
-        {
-        }
 
         private void RaisePropertyChange(string propertyName)
         {
