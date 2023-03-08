@@ -13,6 +13,7 @@
 // along with Lookup. If not, see <https://www.gnu.org/licenses/>.
 
 using Lookup.Commands;
+using Lookup.ReportProperty;
 using Lookup.Service;
 using Lookup.ViewModel.Service;
 using System.Collections.Generic;
@@ -105,8 +106,13 @@ namespace Lookup.ViewModel
                     {
                         if (CurrentObject == null || Objects == null)
                         {
+
                             Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
                             CurrentObject = Objects.FirstOrDefault().Object;
+
+                            var service = new ResultValuesService(CurrentObject as tsm.ModelObject);
+                            service.Get();
+
                             Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
                             UDAObjects = UserPropertyExtensions.GetAttributeList(CurrentObject).ToObservableCollection();
                         }
@@ -142,6 +148,20 @@ namespace Lookup.ViewModel
             {
                 _data = value;
                 RaisePropertyChange("Data");
+            }
+        }
+
+        private ObservableCollection<PropertyValue> _propertyData;
+        public ObservableCollection<PropertyValue> PropertyData
+        {
+            get
+            {
+                return _propertyData;
+            }
+            set
+            {
+                _propertyData = value;
+                RaisePropertyChange("PropertyData");
             }
         }
 

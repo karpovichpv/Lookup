@@ -40,8 +40,40 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BSE.Windows.Forms">
+      <HintPath>C:\TeklaStructures\2021.0\nt\bin\plugins\BSE.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="DlhSoft.DataControlLibrary">
+      <HintPath>C:\TeklaStructures\2021.0\nt\bin\plugins\DlhSoft.DataControlLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="DlhSoft.DataFramework">
+      <HintPath>C:\TeklaStructures\2021.0\nt\bin\plugins\DlhSoft.DataFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="DlhSoft.ProjectDataControlLibrary">
+      <HintPath>C:\TeklaStructures\2021.0\nt\bin\plugins\DlhSoft.ProjectDataControlLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="ElementAreas">
+      <HintPath>C:\TeklaStructures\2021.0\nt\bin\plugins\ElementAreas.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelPlugin">
+      <HintPath>C:\TeklaStructures\2021.0\nt\bin\plugins\ExcelPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\TeklaStructures\2021.0\nt\bin\plugins\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\TeklaStructures\2021.0\nt\bin\plugins\Microsoft.Scripting.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Xaml.Behaviors.Wpf.1.1.3\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="Model.Common">
+      <HintPath>C:\TeklaStructures\2021.0\nt\bin\plugins\Model.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:\TeklaStructures\2021.0\nt\bin\plugins\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -78,6 +110,14 @@
     <Compile Include="Collector\Collector.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Data\UserPropertyData.cs" />
+    <Compile Include="ReportProperty\FileService.cs" />
+    <Compile Include="ReportProperty\FileTypeReadService.cs" />
+    <Compile Include="ReportProperty\HashTableService.cs" />
+    <Compile Include="ReportProperty\PropertyValue.cs" />
+    <Compile Include="ReportProperty\QueryType.cs" />
+    <Compile Include="ReportProperty\ReadPropertiesFileService.cs" />
+    <Compile Include="ReportProperty\PossiblePropertyQuery.cs" />
+    <Compile Include="ReportProperty\ReportPropertyValuesService.cs" />
     <Compile Include="Service\DataExtensions.cs" />
     <Compile Include="Service\SelectObject.cs" />
     <Compile Include="Service\UserPropertyExtensions.cs" />
@@ -149,6 +189,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\BuildDate.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\ContentAttributesLists\1.lst" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
