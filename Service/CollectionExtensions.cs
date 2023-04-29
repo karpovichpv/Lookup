@@ -12,13 +12,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Lookup. If not, see <https://www.gnu.org/licenses/>.
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lookup.Service
 {
@@ -26,13 +22,11 @@ namespace Lookup.Service
     {
         public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> collection)
         {
-            ObservableCollection<T> c = new ObservableCollection<T>();
+            var c = new ObservableCollection<T>();
             try
             {
                 foreach (T e in collection)
-                {
                     c.Add(e);
-                }
             }
             catch { }
             return c;

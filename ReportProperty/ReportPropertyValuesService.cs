@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Tekla.Structures.Model;
 
 namespace Lookup.ReportProperty
@@ -35,11 +36,12 @@ namespace Lookup.ReportProperty
             }
         }
 
-        public void Get()
+        public List<PropertyValue> Get()
         {
             Hashtable values = new Hashtable(_doubleValues.Count + _intValues.Count + _stringValues.Count);
             _modelObj.GetAllReportProperties(_stringValues, _doubleValues, _intValues, ref values);
-            List<PropertyValue> result = values.ToPropertyList();
+            List<PropertyValue> listOfProperties = values.ToPropertyList();
+            return listOfProperties.OrderBy(t => t.Name).ToList();
         }
     }
 }

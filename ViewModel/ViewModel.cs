@@ -110,8 +110,8 @@ namespace Lookup.ViewModel
                             Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
                             CurrentObject = Objects.FirstOrDefault().Object;
 
-                            var service = new ResultValuesService(CurrentObject as tsm.ModelObject);
-                            service.Get();
+                            //var service = new ResultValuesService(CurrentObject as tsm.ModelObject);
+                            //PropertyData = service.Get().ToObservableCollection();
 
                             Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
                             UDAObjects = UserPropertyExtensions.GetAttributeList(CurrentObject).ToObservableCollection();

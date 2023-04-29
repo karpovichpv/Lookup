@@ -7,6 +7,7 @@
     xmlns:ia="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:Lookup"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:Lookup.View"
     Title="{Binding Version}"
     Width="707"
     Height="675"
@@ -57,20 +58,26 @@
                         </ia:Interaction.Triggers>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Label Padding="2" Content="{Binding Name}" />
+                                <Label
+                                    Padding="2"
+                                    Content="{Binding Name}" />
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <Grid Grid.Row="0" Grid.Column="1">
+                    <Grid
+                        Grid.Row="0"
+                        Grid.Column="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200" />
-                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
                         <Label
                             Grid.Column="0"
                             Margin="5,0,0,0"
                             Content="Label" />
-                        <Label Grid.Column="1" Content="Value" />
+                        <Label
+                            Grid.Column="1"
+                            Content="Value" />
                     </Grid>
                     <ListView
                         Grid.Row="1"
@@ -105,11 +112,19 @@
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
-                                        <Border Grid.Column="0" Style="{StaticResource BorderData}">
-                                            <Label Content="{Binding Label, Mode=OneWay}" Style="{StaticResource LabelData}" />
+                                        <Border
+                                            Grid.Column="0"
+                                            Style="{StaticResource BorderData}">
+                                            <Label
+                                                Content="{Binding Label, Mode=OneWay}"
+                                                Style="{StaticResource LabelData}" />
                                         </Border>
-                                        <Border Grid.Column="1" Style="{StaticResource BorderData}">
-                                            <TextBox Style="{StaticResource TextBoxData}" Text="{Binding Value, Mode=OneWay}" />
+                                        <Border
+                                            Grid.Column="1"
+                                            Style="{StaticResource BorderData}">
+                                            <TextBox
+                                                Style="{StaticResource TextBoxData}"
+                                                Text="{Binding Value, Mode=OneWay}" />
                                         </Border>
                                     </Grid>
                                 </Border>
@@ -118,32 +133,18 @@
                     </ListView>
                 </Grid>
             </TabItem>
-            <TabItem Header="UDA attributes">
-                <ListView ItemsSource="{Binding UDAObjects}"
-                        MinHeight="570"
-                        MaxHeight="575"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Top">
-                    <ListView.Resources>
-                        <Style TargetType="{x:Type GridViewColumnHeader}">
-                            <Setter Property="HorizontalContentAlignment" Value="Left" />
-                            <Setter Property="IsEnabled" Value="False"/>
-                        </Style>
-                    </ListView.Resources>
-                    <ListView.View>
-                    <GridView>
-                        <GridView.Columns>
-                            <GridViewColumn Header="Name" Width="200" DisplayMemberBinding="{Binding Name}"/>
-                            <GridViewColumn Header="Value" Width="300" DisplayMemberBinding="{Binding Value}" />
-                            <GridViewColumn  Header="Type" DisplayMemberBinding="{Binding Type}" Width="160"/>
-                        </GridView.Columns>
-                    </GridView>
-                    </ListView.View>
-                </ListView>
+            <TabItem
+                x:Name="tbiUserProperties"
+                Header="User-properties">
+                <uc:UserPropertiesControl />
             </TabItem>
         </TabControl>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Command="{Binding SnoopSelectedObject}" Content="Snoop" />
+        <StackPanel
+            Grid.Row="1"
+            Orientation="Horizontal">
+            <Button
+                Command="{Binding SnoopSelectedObject}"
+                Content="Snoop" />
             <Button
                 Width="120"
                 Command="{Binding GetSelectedObjectsFromModel}"
