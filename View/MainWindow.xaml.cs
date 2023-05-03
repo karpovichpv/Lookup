@@ -11,7 +11,7 @@ namespace Lookup
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = ViewModelLocator.ViewModel;
+            DataContext = ViewModelLocator.ViewModel;
         }
     }
 }

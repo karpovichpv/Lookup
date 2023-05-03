@@ -132,11 +132,13 @@
     <Compile Include="Data\MethodData.cs" />
     <Compile Include="Data\PropertyData.cs" />
     <Compile Include="Data\TSObject.cs" />
+    <Compile Include="ViewModel\IMediator.cs" />
+    <Compile Include="ViewModel\Mediator.cs" />
     <Compile Include="ViewModel\Service\ObjectService.cs" />
     <Compile Include="ViewModel\Service\SortUserPropertyData.cs" />
-    <Compile Include="ViewModel\TeklaObjectGetterService.cs" />
     <Compile Include="ViewModel\UserPropertiesViewModel.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\MainTabControl.xaml.cs">
       <DependentUpon>MainTabControl.xaml</DependentUpon>
