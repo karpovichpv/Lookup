@@ -7,6 +7,12 @@ namespace Lookup.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
 
         private Data _selectedData;
+
+        public UserPropertiesViewModel()
+        {
+            Mediator.GetInstance().SetUserPropertiesModel(this);
+        }
+
         public Data SelectedData
         {
             get

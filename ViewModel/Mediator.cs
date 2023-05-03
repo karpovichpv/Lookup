@@ -2,19 +2,28 @@
 {
     internal class Mediator : IMediator
     {
-        private ViewModel _viewModel;
-        private readonly UserPropertiesViewModel _userPropertiesModel;
+        private static Mediator _instance;
 
-        public Mediator(ViewModel viewModel, UserPropertiesViewModel userPropertiesModel)
+        private ViewModel _viewModel;
+        private UserPropertiesViewModel _userPropertiesModel;
+
+        private Mediator()
         {
-            _viewModel = viewModel;
-            _userPropertiesModel = userPropertiesModel;
         }
 
-        public void Notify(object recipient, string message)
+        public static Mediator GetInstance()
         {
-            if (recipient is UserPropertiesViewModel) { }
+            if (_instance == null)
+                _instance = new Mediator();
+            return _instance;
+        }
 
+        public void SetViewModel(ViewModel viewModel) => _viewModel = viewModel;
+        public void SetUserPropertiesModel(UserPropertiesViewModel viewModel) => _userPropertiesModel = viewModel;
+
+        public void Notify(Data selectedData)
+        {
+            _userPropertiesModel.SetSelectedData(selectedData);
         }
     }
 }

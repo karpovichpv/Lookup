@@ -133,6 +133,7 @@ namespace Lookup.ViewModel
             set
             {
                 _selectedData = value;
+                Mediator.GetInstance().Notify(value);
                 RaisePropertyChange("SelectedData");
             }
         }
@@ -206,9 +207,7 @@ namespace Lookup.ViewModel
         }
         #endregion
 
-        public ViewModel()
-        {
-        }
+        public ViewModel() => Mediator.GetInstance().SetViewModel(this);
 
         #region RelayCommand methods
         private void RunNewInstance(object obj)

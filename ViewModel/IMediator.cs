@@ -2,6 +2,6 @@
 {
     internal interface IMediator
     {
-        void Notify(object recipient, string message);
+        void Notify(Data data);
     }
 }
