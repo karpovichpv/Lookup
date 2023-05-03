@@ -132,14 +132,25 @@
     <Compile Include="Data\MethodData.cs" />
     <Compile Include="Data\PropertyData.cs" />
     <Compile Include="Data\TSObject.cs" />
+    <Compile Include="ViewModel\Service\ObjectService.cs" />
     <Compile Include="ViewModel\Service\SortUserPropertyData.cs" />
+    <Compile Include="ViewModel\TeklaObjectGetterService.cs" />
+    <Compile Include="ViewModel\UserPropertiesViewModel.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\MainTabControl.xaml.cs">
+      <DependentUpon>MainTabControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserPropertiesControl.xaml.cs">
       <DependentUpon>UserPropertiesControl.xaml</DependentUpon>
     </Compile>
     <None Include="TSEP\buildTsep.ps1" />
     <None Include="TSEP\macros\Lookup.cs" />
     <None Include="TSEP\macros\Lookup.bmp" />
+    <Page Include="View\MainTabControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

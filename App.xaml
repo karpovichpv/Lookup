@@ -8,6 +8,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <data:ViewModel x:Key="data" />
+            <local:ViewModelLocator x:Key="Lookup.ViewModel.ViewModelLocator" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Lookup;component/View/Resources.xaml" />
             </ResourceDictionary.MergedDictionaries>

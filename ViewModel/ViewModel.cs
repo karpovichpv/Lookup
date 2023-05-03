@@ -194,6 +194,7 @@ namespace Lookup.ViewModel
         }
 
         private ObservableCollection<UserPropertyData> _udaObjects;
+
         public ObservableCollection<UserPropertyData> UDAObjects
         {
             get => _udaObjects;
