@@ -45,7 +45,7 @@ namespace Lookup.ViewModel
                     result = reader.ReadLine().Replace("\r\n", string.Empty);
                 }
 
-                return "Lookup v." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(4) + " (build from " + result + ")";
+                return "Lookup v." + Assembly.GetExecutingAssembly().GetName().Version.ToString(4) + " (build from " + result + ")";
             }
         }
 
@@ -172,6 +172,7 @@ namespace Lookup.ViewModel
             set
             {
                 _selectedObject = value;
+                Mediator.GetInstance().Notify(value);
                 RaisePropertyChange("SelectedObject");
             }
         }
