@@ -27,111 +27,7 @@
         </Grid.RowDefinitions>
         <TabControl Grid.Row="0">
             <TabItem Header="Main">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Label
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Margin="5,0,0,0"
-                        Content="Objects" />
-                    <ListView
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Width="145"
-                        MinHeight="350"
-                        MaxHeight="550"
-                        Margin="0,0,0,0"
-                        ItemsSource="{Binding Objects}"
-                        SelectedItem="{Binding SelectedObject}">
-                        <ia:Interaction.Triggers>
-                            <ia:EventTrigger EventName="MouseDoubleClick">
-                                <ia:InvokeCommandAction Command="{Binding SnoopSelectedObject}" />
-                            </ia:EventTrigger>
-                        </ia:Interaction.Triggers>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Label
-                                    Padding="2"
-                                    Content="{Binding Name}" />
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                    <Grid
-                        Grid.Row="0"
-                        Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="2*" />
-                        </Grid.ColumnDefinitions>
-                        <Label
-                            Grid.Column="0"
-                            Margin="5,0,0,0"
-                            Content="Label" />
-                        <Label
-                            Grid.Column="1"
-                            Content="Value" />
-                    </Grid>
-                    <ListView
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Width="534"
-                        MinHeight="550"
-                        MaxHeight="550"
-                        Margin="5,0,0,0"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        IsSynchronizedWithCurrentItem="True"
-                        ItemContainerStyle="{StaticResource ListViewItemData}"
-                        ItemsSource="{Binding Data}"
-                        ScrollViewer.VerticalScrollBarVisibility="Visible"
-                        SelectedItem="{Binding SelectedData}">
-                        <ia:Interaction.Triggers>
-                            <ia:EventTrigger EventName="MouseDoubleClick">
-                                <ia:InvokeCommandAction Command="{Binding RunNewWindow}" />
-                            </ia:EventTrigger>
-                        </ia:Interaction.Triggers>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Border
-                                    BorderBrush="Black"
-                                    BorderThickness="0"
-                                    Style="{StaticResource BorderHeader}">
-                                    <Grid Margin="0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="200" />
-                                            <ColumnDefinition Width="310" />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Border
-                                            Grid.Column="0"
-                                            Style="{StaticResource BorderData}">
-                                            <Label
-                                                Content="{Binding Label, Mode=OneWay}"
-                                                Style="{StaticResource LabelData}" />
-                                        </Border>
-                                        <Border
-                                            Grid.Column="1"
-                                            Style="{StaticResource BorderData}">
-                                            <TextBox
-                                                Style="{StaticResource TextBoxData}"
-                                                Text="{Binding Value, Mode=OneWay}" />
-                                        </Border>
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
+                <uc:MainTabControl />
             </TabItem>
             <TabItem
                 x:Name="tbiUserProperties"
@@ -139,16 +35,6 @@
                 <uc:UserPropertiesControl />
             </TabItem>
         </TabControl>
-        <StackPanel
-            Grid.Row="1"
-            Orientation="Horizontal">
-            <Button
-                Command="{Binding SnoopSelectedObject}"
-                Content="Snoop" />
-            <Button
-                Width="120"
-                Command="{Binding GetSelectedObjectsFromModel}"
-                Content="Get selected objects" />
-        </StackPanel>
+        <uc:FooterButtons Grid.Row="1"/>
     </Grid>
 </Window>

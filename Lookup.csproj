@@ -143,6 +143,9 @@
     <Compile Include="View\MainTabControl.xaml.cs">
       <DependentUpon>MainTabControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\FooterButtons.xaml.cs">
+      <DependentUpon>FooterButtons.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserPropertiesControl.xaml.cs">
       <DependentUpon>UserPropertiesControl.xaml</DependentUpon>
     </Compile>
@@ -166,6 +169,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FooterButtons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
