@@ -21,9 +21,6 @@
         public void SetViewModel(ViewModel viewModel) => _viewModel = viewModel;
         public void SetUserPropertiesModel(UserPropertiesViewModel viewModel) => _userPropertiesModel = viewModel;
 
-        public void Notify(Data selectedData)
-        {
-            _userPropertiesModel.SetSelectedData(selectedData);
-        }
+        public void Notify(TSObject tsObject) => _userPropertiesModel.SetSelectedObject(tsObject);
     }
 }

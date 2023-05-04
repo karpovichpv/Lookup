@@ -2,6 +2,6 @@
 {
     internal interface IMediator
     {
-        void Notify(Data data);
+        void Notify(TSObject tsObject);
     }
 }

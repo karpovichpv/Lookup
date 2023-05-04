@@ -1,4 +1,7 @@
-﻿using System.ComponentModel;
+﻿using Lookup.Service;
+using Lookup.ViewModel.Service;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Lookup.ViewModel
 {
@@ -6,14 +9,14 @@ namespace Lookup.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private Data _selectedData;
 
         public UserPropertiesViewModel()
         {
             Mediator.GetInstance().SetUserPropertiesModel(this);
         }
 
-        public Data SelectedData
+        private TSObject _selectedData;
+        public TSObject SelectedObject
         {
             get
             {
@@ -22,7 +25,20 @@ namespace Lookup.ViewModel
             set
             {
                 _selectedData = value;
+                UDAObjects = UserPropertyExtensions.GetAttributeList(value.Object).ToObservableCollection();
                 RaisePropertyChange("SelectedData");
+            }
+        }
+
+        private ObservableCollection<UserPropertyData> _udaObjects;
+
+        public ObservableCollection<UserPropertyData> UDAObjects
+        {
+            get => _udaObjects;
+            set
+            {
+                _udaObjects = value.SortByName();
+                RaisePropertyChange("UDAObjects");
             }
         }
 
@@ -32,6 +48,6 @@ namespace Lookup.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void SetSelectedData(Data selectedData) => SelectedData = selectedData;
+        public void SetSelectedObject(TSObject selectedObject) => SelectedObject = selectedObject;
     }
 }

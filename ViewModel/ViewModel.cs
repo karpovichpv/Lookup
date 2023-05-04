@@ -15,7 +15,6 @@
 using Lookup.Commands;
 using Lookup.ReportProperty;
 using Lookup.Service;
-using Lookup.ViewModel.Service;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -58,9 +57,7 @@ namespace Lookup.ViewModel
             {
                 return snoopSelectedObject ?? (snoopSelectedObject = new RelayCommand(obj =>
                 {
-                    //CurrentObject = SelectedObject.Object;
                     Data = Collector.Collector.CollectData(SelectedObject.Object).ToObservableCollection();
-                    UDAObjects = UserPropertyExtensions.GetAttributeList(SelectedObject.Object).ToObservableCollection();
                 },
                 obj =>
                 {
@@ -88,9 +85,11 @@ namespace Lookup.ViewModel
                     (getSelectedObjectsFromModel = new RelayCommand(obj =>
                     {
                         Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
-                        CurrentObject = Objects.FirstOrDefault().Object;
+                        TSObject selectedObject = Objects.FirstOrDefault();
+                        CurrentObject = selectedObject.Object;
+                        Mediator.GetInstance().Notify(selectedObject);
+
                         Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
-                        UDAObjects = UserPropertyExtensions.GetAttributeList(CurrentObject).ToObservableCollection();
                     },
                     obj => new tsm.Model().GetConnectionStatus()));
             }
@@ -108,13 +107,11 @@ namespace Lookup.ViewModel
                         {
 
                             Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
-                            CurrentObject = Objects.FirstOrDefault().Object;
-
-                            //var service = new ResultValuesService(CurrentObject as tsm.ModelObject);
-                            //PropertyData = service.Get().ToObservableCollection();
+                            TSObject selectedObject = Objects.FirstOrDefault();
+                            CurrentObject = selectedObject.Object;
+                            Mediator.GetInstance().Notify(selectedObject);
 
                             Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
-                            UDAObjects = UserPropertyExtensions.GetAttributeList(CurrentObject).ToObservableCollection();
                         }
                     },
                     obj => new tsm.Model().GetConnectionStatus()));
@@ -133,7 +130,6 @@ namespace Lookup.ViewModel
             set
             {
                 _selectedData = value;
-                Mediator.GetInstance().Notify(value);
                 RaisePropertyChange("SelectedData");
             }
         }
@@ -194,17 +190,6 @@ namespace Lookup.ViewModel
             }
         }
 
-        private ObservableCollection<UserPropertyData> _udaObjects;
-
-        public ObservableCollection<UserPropertyData> UDAObjects
-        {
-            get => _udaObjects;
-            set
-            {
-                _udaObjects = value.SortByName();
-                RaisePropertyChange("UDAObjects");
-            }
-        }
         #endregion
 
         public ViewModel() => Mediator.GetInstance().SetViewModel(this);
@@ -217,7 +202,6 @@ namespace Lookup.ViewModel
             subViewModel.CurrentObject = objects.FirstOrDefault();
             subViewModel.Objects = objects.ToTSObjects().ToObservableCollection();
             subViewModel.Data = Collector.Collector.CollectData(subViewModel.Objects.FirstOrDefault().Object).ToObservableCollection();
-            subViewModel.UDAObjects = UserPropertyExtensions.GetAttributeList(objects.FirstOrDefault()).ToObservableCollection();
             MainWindow window = new MainWindow();
             window.DataContext = subViewModel;
             window.Show();
