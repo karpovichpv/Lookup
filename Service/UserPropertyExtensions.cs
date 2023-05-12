@@ -13,14 +13,10 @@
 // along with Lookup. If not, see <https://www.gnu.org/licenses/>.
 
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using tsd = Tekla.Structures.Drawing;
 using Tekla.Structures.Model;
+using tsd = Tekla.Structures.Drawing;
 
 namespace Lookup
 {
@@ -78,9 +74,9 @@ namespace Lookup
             Hashtable stringPropertiesHashTable = new Hashtable();
             projectInfo.GetStringUserProperties(ref stringPropertiesHashTable);
             Hashtable doublePropertiesHashTable = new Hashtable();
-            projectInfo.GetStringUserProperties(ref doublePropertiesHashTable);
+            projectInfo.GetDoubleUserProperties(ref doublePropertiesHashTable);
             Hashtable intPropertiesHashTable = new Hashtable();
-            projectInfo.GetStringUserProperties(ref intPropertiesHashTable);
+            projectInfo.GetIntegerUserProperties(ref intPropertiesHashTable);
 
             List<UserPropertyData> udaDataList = stringPropertiesHashTable.HashtableToUserPopertiesList();
             udaDataList.AddRange(doublePropertiesHashTable.HashtableToUserPopertiesList());

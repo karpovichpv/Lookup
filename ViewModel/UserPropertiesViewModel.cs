@@ -1,15 +1,11 @@
 ﻿using Lookup.Service;
 using Lookup.ViewModel.Service;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 
 namespace Lookup.ViewModel
 {
-    internal class UserPropertiesViewModel : INotifyPropertyChanged
+    public class UserPropertiesViewModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-
         public UserPropertiesViewModel()
         {
             Mediator.GetInstance().SetUserPropertiesModel(this);
@@ -40,12 +36,6 @@ namespace Lookup.ViewModel
                 _udaObjects = value.SortByName();
                 RaisePropertyChange("UDAObjects");
             }
-        }
-
-        private void RaisePropertyChange(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public void SetSelectedObject(TSObject selectedObject) => SelectedObject = selectedObject;

@@ -17,7 +17,6 @@ using Lookup.ReportProperty;
 using Lookup.Service;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -25,11 +24,9 @@ using tsm = Tekla.Structures.Model;
 
 namespace Lookup.ViewModel
 {
-    public class ViewModel : INotifyPropertyChanged
+    public class ViewModel : ViewModelBase
     {
         public object CurrentObject;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public string Version
         {
@@ -214,11 +211,5 @@ namespace Lookup.ViewModel
             return false;
         }
         #endregion
-
-        private void RaisePropertyChange(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }
