@@ -17,9 +17,7 @@ using Lookup.ReportProperty;
 using Lookup.Service;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using tsm = Tekla.Structures.Model;
 
 namespace Lookup.ViewModel
@@ -28,23 +26,7 @@ namespace Lookup.ViewModel
     {
         public object CurrentObject;
 
-        public string Version
-        {
-            get
-            {
-                Assembly assembly = Assembly.GetExecutingAssembly();
-                string resName = "Lookup.Resources.BuildDate.txt";
-
-                string result;
-                using (Stream stream = assembly.GetManifestResourceStream(resName))
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    result = reader.ReadLine().Replace("\r\n", string.Empty);
-                }
-
-                return "Lookup v." + Assembly.GetExecutingAssembly().GetName().Version.ToString(4) + " (build from " + result + ")";
-            }
-        }
+        public string Version => Service.AssemblyVersionGetter.GetVersion();
 
         #region RelayCommand
         public RelayCommand snoopSelectedObject;

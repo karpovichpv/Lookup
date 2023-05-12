@@ -134,6 +134,7 @@
     <Compile Include="Data\TSObject.cs" />
     <Compile Include="ViewModel\IMediator.cs" />
     <Compile Include="ViewModel\Mediator.cs" />
+    <Compile Include="ViewModel\Service\AssemblyVersionGetter.cs" />
     <Compile Include="ViewModel\Service\ObjectService.cs" />
     <Compile Include="ViewModel\Service\SortUserPropertyData.cs" />
     <Compile Include="ViewModel\UserPropertiesViewModel.cs" />
