@@ -15,7 +15,6 @@
 using Lookup.Commands;
 using Lookup.ReportProperty;
 using Lookup.Service;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using tsm = Tekla.Structures.Model;
@@ -29,12 +28,12 @@ namespace Lookup.ViewModel
         public string Version => Service.AssemblyVersionGetter.GetVersion();
 
         #region RelayCommand
-        public RelayCommand snoopSelectedObject;
+        public RelayCommand _snoopSelectedObject;
         public RelayCommand SnoopSelectedObject
         {
             get
             {
-                return snoopSelectedObject ?? (snoopSelectedObject = new RelayCommand(obj =>
+                return _snoopSelectedObject ?? (_snoopSelectedObject = new RelayCommand(obj =>
                 {
                     Data = Collector.Collector.CollectData(SelectedObject.Object).ToObservableCollection();
                 },
@@ -45,23 +44,27 @@ namespace Lookup.ViewModel
             }
         }
 
-        private RelayCommand runNewWindow;
+        private RelayCommand _runNewWindow;
         public RelayCommand RunNewWindow
         {
             get
             {
-                return runNewWindow ??
-                    (runNewWindow = new RelayCommand(obj => RunNewInstance(obj), obj => CanRunNewInstance(obj)));
+                return _runNewWindow ??
+                    (_runNewWindow = new RelayCommand(
+                        obj => new NewInstanceRunner(SelectedData, CurrentObject).RunNewInstance(obj),
+                        obj => NewInstanceRunner.CanRunNewInstance(obj, SelectedData)
+                        )
+                    );
             }
         }
 
-        private RelayCommand getSelectedObjectsFromModel;
+        private RelayCommand _getSelectedObjectsFromModel;
         public RelayCommand GetSelectedObjectsFromModel
         {
             get
             {
-                return getSelectedObjectsFromModel ??
-                    (getSelectedObjectsFromModel = new RelayCommand(obj =>
+                return _getSelectedObjectsFromModel ??
+                    (_getSelectedObjectsFromModel = new RelayCommand(obj =>
                     {
                         Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
                         TSObject selectedObject = Objects.FirstOrDefault();
@@ -74,17 +77,16 @@ namespace Lookup.ViewModel
             }
         }
 
-        private RelayCommand windowLoad;
+        private RelayCommand _windowLoad;
         public RelayCommand WindowLoad
         {
             get
             {
-                return windowLoad ??
-                    (windowLoad = new RelayCommand(obj =>
+                return _windowLoad ??
+                    (_windowLoad = new RelayCommand(obj =>
                     {
                         if (CurrentObject == null || Objects == null)
                         {
-
                             Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
                             TSObject selectedObject = Objects.FirstOrDefault();
                             CurrentObject = selectedObject.Object;
@@ -169,29 +171,8 @@ namespace Lookup.ViewModel
                 RaisePropertyChange("Objects");
             }
         }
-
         #endregion
 
         public ViewModel() => Mediator.GetInstance().SetViewModel(this);
-
-        #region RelayCommand methods
-        private void RunNewInstance(object obj)
-        {
-            ViewModel subViewModel = new ViewModel();
-            List<object> objects = SelectedData.WalkDown(CurrentObject);
-            subViewModel.CurrentObject = objects.FirstOrDefault();
-            subViewModel.Objects = objects.ToTSObjects().ToObservableCollection();
-            subViewModel.Data = Collector.Collector.CollectData(subViewModel.Objects.FirstOrDefault().Object).ToObservableCollection();
-            MainWindow window = new MainWindow();
-            window.DataContext = subViewModel;
-            window.Show();
-        }
-        private bool CanRunNewInstance(object obj)
-        {
-            if (SelectedData.CanGet) return true;
-
-            return false;
-        }
-        #endregion
     }
 }
