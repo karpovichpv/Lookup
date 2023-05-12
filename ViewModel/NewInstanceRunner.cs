@@ -33,9 +33,10 @@ namespace Lookup.ViewModel
             List<object> objects = _selectedData.WalkDown(_currentObject);
             ViewModel subViewModel = new ViewModel();
             subViewModel.CurrentObject = objects.FirstOrDefault();
-            subViewModel.Objects = objects.ToTSObjects().ToObservableCollection();
-            TSObject selectedObject = subViewModel.Objects.FirstOrDefault();
-            subViewModel.Data = Collector.CollectData(selectedObject.Object).ToObservableCollection();
+            subViewModel.Objects = objects.ToTSObjects()
+                                          .ToObservableCollection();
+            subViewModel.Data = Collector.CollectData(objects.FirstOrDefault())
+                                         .ToObservableCollection();
             return subViewModel;
         }
 
@@ -48,7 +49,6 @@ namespace Lookup.ViewModel
         public static bool CanRunNewInstance(object obj, Data selectedData)
         {
             if (selectedData.CanGet) return true;
-
             return false;
         }
     }

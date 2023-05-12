@@ -36,7 +36,7 @@ namespace Lookup.ViewModel
             {
                 return _snoopSelectedObject ?? (_snoopSelectedObject = new RelayCommand(obj =>
                 {
-                    Data = Collectors.Collector.CollectData(SelectedObject.Object).ToObservableCollection();
+                    Data = Collector.CollectData(SelectedObject.Object).ToObservableCollection();
                 },
                 obj =>
                 {
@@ -89,7 +89,7 @@ namespace Lookup.ViewModel
         {
             bool hasConnection = new tsm.Model().GetConnectionStatus();
             bool isObjectsNull = CurrentObject == null || Objects == null;
-            if (isObjectsNull && hasConnection)
+            if (/*isObjectsNull &&*/ hasConnection)
                 return true;
             return false;
         }
