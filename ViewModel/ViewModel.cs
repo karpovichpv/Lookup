@@ -12,6 +12,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Lookup. If not, see <https://www.gnu.org/licenses/>.
 
+using Lookup.Collectors;
 using Lookup.Commands;
 using Lookup.ReportProperty;
 using Lookup.Service;
@@ -35,7 +36,7 @@ namespace Lookup.ViewModel
             {
                 return _snoopSelectedObject ?? (_snoopSelectedObject = new RelayCommand(obj =>
                 {
-                    Data = Collector.Collector.CollectData(SelectedObject.Object).ToObservableCollection();
+                    Data = Collectors.Collector.CollectData(SelectedObject.Object).ToObservableCollection();
                 },
                 obj =>
                 {
@@ -64,16 +65,10 @@ namespace Lookup.ViewModel
             get
             {
                 return _getSelectedObjectsFromModel ??
-                    (_getSelectedObjectsFromModel = new RelayCommand(obj =>
-                    {
-                        Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
-                        TSObject selectedObject = Objects.FirstOrDefault();
-                        CurrentObject = selectedObject.Object;
-                        Mediator.GetInstance().Notify(selectedObject);
-
-                        Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
-                    },
-                    obj => new tsm.Model().GetConnectionStatus()));
+                    (_getSelectedObjectsFromModel = new RelayCommand(
+                        obj => GetSelectedObjects(),
+                        obj => CanGetSelectedObjects())
+                    );
             }
         }
 
@@ -83,20 +78,32 @@ namespace Lookup.ViewModel
             get
             {
                 return _windowLoad ??
-                    (_windowLoad = new RelayCommand(obj =>
-                    {
-                        if (CurrentObject == null || Objects == null)
-                        {
-                            Objects = SelectObject.GetSelectedObjects().ToObservableCollection();
-                            TSObject selectedObject = Objects.FirstOrDefault();
-                            CurrentObject = selectedObject.Object;
-                            Mediator.GetInstance().Notify(selectedObject);
-
-                            Data = Collector.Collector.CollectData(CurrentObject).ToObservableCollection();
-                        }
-                    },
-                    obj => new tsm.Model().GetConnectionStatus()));
+                    (_windowLoad = new RelayCommand(
+                        obj => GetSelectedObjects(),
+                        obj => CanGetSelectedObjects())
+                    );
             }
+        }
+
+        private bool CanGetSelectedObjects()
+        {
+            bool hasConnection = new tsm.Model().GetConnectionStatus();
+            bool isObjectsNull = CurrentObject == null || Objects == null;
+            if (isObjectsNull && hasConnection)
+                return true;
+            return false;
+        }
+
+        private void GetSelectedObjects()
+        {
+            Objects = SelectObject.GetSelectedObjects()
+                                  .ToObservableCollection();
+            TSObject selectedObject = Objects.FirstOrDefault();
+            CurrentObject = selectedObject.Object;
+            Mediator.GetInstance().Notify(selectedObject);
+
+            Data = Collector.CollectData(CurrentObject)
+                            .ToObservableCollection();
         }
         #endregion
 

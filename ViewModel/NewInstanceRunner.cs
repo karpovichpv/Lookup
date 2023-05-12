@@ -1,4 +1,5 @@
-﻿using Lookup.Service;
+﻿using Lookup.Collectors;
+using Lookup.Service;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,16 +18,31 @@ namespace Lookup.ViewModel
 
         public void RunNewInstance(object obj)
         {
-            ViewModel subViewModel = new ViewModel();
-            List<object> objects = _selectedData.WalkDown(_currentObject);
-            subViewModel.CurrentObject = objects.FirstOrDefault();
-            subViewModel.Objects = objects.ToTSObjects().ToObservableCollection();
-            TSObject selectedObject = subViewModel.Objects.FirstOrDefault();
-            subViewModel.Data = Collector.Collector.CollectData(selectedObject.Object).ToObservableCollection();
+            TSObject selectedObject = GetSelectedObject();
+            ViewModel subViewModel = GetViewModel();
+
             MainWindow window = new MainWindow();
             window.DataContext = subViewModel;
             window.Show();
+
             Mediator.GetInstance().Notify(selectedObject);
+        }
+
+        private ViewModel GetViewModel()
+        {
+            List<object> objects = _selectedData.WalkDown(_currentObject);
+            ViewModel subViewModel = new ViewModel();
+            subViewModel.CurrentObject = objects.FirstOrDefault();
+            subViewModel.Objects = objects.ToTSObjects().ToObservableCollection();
+            TSObject selectedObject = subViewModel.Objects.FirstOrDefault();
+            subViewModel.Data = Collector.CollectData(selectedObject.Object).ToObservableCollection();
+            return subViewModel;
+        }
+
+        private TSObject GetSelectedObject()
+        {
+            List<object> objects = _selectedData.WalkDown(_currentObject);
+            return objects.ToTSObjects().FirstOrDefault();
         }
 
         public static bool CanRunNewInstance(object obj, Data selectedData)
