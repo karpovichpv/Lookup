@@ -34,7 +34,7 @@
             ItemsSource="{Binding Objects}"
             SelectedItem="{Binding SelectedObject}">
             <ia:Interaction.Triggers>
-                <ia:EventTrigger EventName="MouseDoubleClick">
+                <ia:EventTrigger EventName="MouseLeftButtonUp">
                     <ia:InvokeCommandAction Command="{Binding SnoopSelectedObject}" />
                 </ia:EventTrigger>
             </ia:Interaction.Triggers>

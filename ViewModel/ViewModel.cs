@@ -67,7 +67,7 @@ namespace Lookup.ViewModel
                 return _getSelectedObjectsFromModel ??
                     (_getSelectedObjectsFromModel = new RelayCommand(
                         obj => GetSelectedObjects(),
-                        obj => CanGetSelectedObjects())
+                        obj => new tsm.Model().GetConnectionStatus())
                     );
             }
         }
@@ -89,7 +89,7 @@ namespace Lookup.ViewModel
         {
             bool hasConnection = new tsm.Model().GetConnectionStatus();
             bool isObjectsNull = CurrentObject == null || Objects == null;
-            if (/*isObjectsNull &&*/ hasConnection)
+            if (isObjectsNull && hasConnection)
                 return true;
             return false;
         }
