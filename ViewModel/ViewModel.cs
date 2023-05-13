@@ -24,7 +24,7 @@ namespace Lookup.ViewModel
 {
     public class ViewModel : ViewModelBase
     {
-        public object CurrentObject;
+        public object CurrentObject { get; set; }
 
         public string Version => Service.AssemblyVersionGetter.GetVersion();
 
@@ -34,14 +34,10 @@ namespace Lookup.ViewModel
         {
             get
             {
-                return _snoopSelectedObject ?? (_snoopSelectedObject = new RelayCommand(obj =>
-                {
-                    Data = Collector.CollectData(SelectedObject.Object).ToObservableCollection();
-                },
-                obj =>
-                {
-                    return Objects != null;
-                }));
+                return _snoopSelectedObject
+                    ?? (_snoopSelectedObject = new RelayCommand(
+                    obj => Data = Collector.CollectData(SelectedObject.Object).ToObservableCollection(),
+                    obj => Objects != null));
             }
         }
 
@@ -50,8 +46,8 @@ namespace Lookup.ViewModel
         {
             get
             {
-                return _runNewWindow ??
-                    (_runNewWindow = new RelayCommand(
+                return _runNewWindow
+                    ?? (_runNewWindow = new RelayCommand(
                         obj => new NewInstanceRunner(SelectedData, CurrentObject).RunNewInstance(obj),
                         obj => NewInstanceRunner.CanRunNewInstance(obj, SelectedData)
                         )
