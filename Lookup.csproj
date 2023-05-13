@@ -119,6 +119,7 @@
     <Compile Include="ReportProperty\PossiblePropertyQuery.cs" />
     <Compile Include="ReportProperty\ReportPropertyValuesService.cs" />
     <Compile Include="Service\DataExtensions.cs" />
+    <Compile Include="Service\ModelObjectByDrawingObjectSelector.cs" />
     <Compile Include="Service\SelectObject.cs" />
     <Compile Include="Service\UserPropertyExtensions.cs" />
     <Compile Include="Streams\MethodStream.cs" />

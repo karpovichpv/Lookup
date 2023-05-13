@@ -13,6 +13,7 @@
 // along with Lookup. If not, see <https://www.gnu.org/licenses/>.
 
 
+using Lookup.Service;
 using System.Collections;
 using System.Collections.Generic;
 using Tekla.Structures.Model;
@@ -34,12 +35,21 @@ namespace Lookup
                     return GetProjectInfoProperties(teklaObject);
                 else if (teklaObject is tsd.Drawing)
                     return GetUserPropertiesFromDrawing(teklaObject);
+                else if (teklaObject is tsd.ModelObject)
+                    return GetUserPropertiesFromDrawingPart(teklaObject);
             }
             catch
             {
             }
 
             return null;
+        }
+
+        private static List<UserPropertyData> GetUserPropertiesFromDrawingPart(object teklaObject)
+        {
+            tsd.ModelObject drawingPart = (tsd.ModelObject)teklaObject;
+            ModelObject modelObject = ModelObjectByDrawingObjectSelector.GetModelObject(drawingPart);
+            return GetUserPropertiesFromModelObject(modelObject);
         }
 
         private static List<UserPropertyData> GetUserPropertiesFromModelObject(object teklaObject)
@@ -62,7 +72,7 @@ namespace Lookup
             drawing.GetStringUserProperties(out stringValuesDictionary);
 
             List<UserPropertyData> udaDataList = new List<UserPropertyData>();
-            udaDataList.AddRange(DictionaryToUserPropertiesList(doubleValuesDictionary));
+            udaDataList.AddRange(doubleValuesDictionary.DictionaryToUserPropertiesList());
             udaDataList.AddRange(stringValuesDictionary.DictionaryToUserPropertiesList());
             return udaDataList;
         }
