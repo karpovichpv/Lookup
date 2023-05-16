@@ -3,7 +3,7 @@ using Lookup.Service;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Lookup.ViewModel
+namespace Lookup.ViewModel.Service
 {
     internal class NewInstanceRunner
     {

@@ -16,6 +16,7 @@ using Lookup.Collectors;
 using Lookup.Commands;
 using Lookup.ReportProperty;
 using Lookup.Service;
+using Lookup.ViewModel.Service;
 using System.Collections.ObjectModel;
 using System.Linq;
 using tsm = Tekla.Structures.Model;

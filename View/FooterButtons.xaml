@@ -7,13 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Grid>
-        <StackPanel
-            Grid.Row="1"
-            Orientation="Horizontal">
+        <Grid MinWidth="300">
             <Button
                 Width="120"
+                HorizontalAlignment="Left"
                 Command="{Binding GetSelectedObjectsFromModel}"
                 Content="Get selected objects" />
-        </StackPanel>
+            <Button
+                Width="50"
+                HorizontalAlignment="Right"
+                Content="About" />
+        </Grid>
     </Grid>
 </UserControl>
