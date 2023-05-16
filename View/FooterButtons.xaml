@@ -16,6 +16,7 @@
             <Button
                 Width="50"
                 HorizontalAlignment="Right"
+                Command="{Binding ShowAbout}"
                 Content="About" />
         </Grid>
     </Grid>

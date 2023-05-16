@@ -19,6 +19,7 @@ using Lookup.Service;
 using Lookup.ViewModel.Service;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using tsm = Tekla.Structures.Model;
 
 namespace Lookup.ViewModel
@@ -66,6 +67,19 @@ namespace Lookup.ViewModel
                         obj => GetSelectedObjects(),
                         obj => new tsm.Model().GetConnectionStatus())
                     );
+            }
+        }
+
+        private RelayCommand _showAbout;
+        public RelayCommand ShowAbout
+        {
+            get
+            {
+                return _showAbout ??
+                    (_getSelectedObjectsFromModel = new RelayCommand(
+                        obj => MessageBox.Show("some text"),
+                        obj => true)
+                    ); ;
             }
         }
 
