@@ -16,10 +16,10 @@ using Lookup.Collectors;
 using Lookup.Commands;
 using Lookup.ReportProperty;
 using Lookup.Service;
+using Lookup.ViewAbout;
 using Lookup.ViewModel.Service;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
 using tsm = Tekla.Structures.Model;
 
 namespace Lookup.ViewModel
@@ -70,16 +70,15 @@ namespace Lookup.ViewModel
             }
         }
 
-        private RelayCommand _showAbout;
         public RelayCommand ShowAbout
         {
             get
             {
-                return _showAbout ??
+                return
                     (_getSelectedObjectsFromModel = new RelayCommand(
-                        obj => MessageBox.Show("some text"),
+                        obj => new About().Show(),
                         obj => true)
-                    ); ;
+                    );
             }
         }
 

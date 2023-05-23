@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="560"
+   height="370"
+   viewBox="0 0 148.16666 97.89643"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="form.svg"
+   xml:space="preserve"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="0.84096521"
+     inkscape:cx="344.84185"
+     inkscape:cy="375.75871"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" /><defs
+     id="defs2"><rect
+       x="296.81216"
+       y="73.152"
+       width="434.70789"
+       height="100.89932"
+       id="rect336" /><rect
+       x="296.81216"
+       y="73.152"
+       width="355.94412"
+       height="292.60376"
+       id="rect336-1" /><rect
+       x="296.81216"
+       y="73.152"
+       width="311.94705"
+       height="209.36607"
+       id="rect336-1-3" /><rect
+       x="296.81216"
+       y="73.152"
+       width="311.94705"
+       height="209.36607"
+       id="rect336-1-6" /></defs><g
+     inkscape:label="Слой 1"
+     inkscape:groupmode="layer"
+     id="layer1"><g
+       id="g2994"
+       transform="matrix(1.9965613,0,0,1.9965613,-719.41882,-1381.5084)"><g
+         id="g480"
+         transform="translate(0.55713034,6.574138)"><rect
+           id="rect2985"
+           style="color:#000000;fill:#ffffff;stroke:#cf5e01;stroke-width:2.454;stroke-linecap:round;stroke-linejoin:round"
+           transform="rotate(45)"
+           ry="2.3006001"
+           height="15.166"
+           width="15.166"
+           y="229.25999"
+           x="756.75" /><g
+           id="text2987"
+           style="fill:#cf5e01"
+           transform="matrix(0.15337,0,0,0.15337,306.47,608.68)"><path
+             id="path2992"
+             d="m 451.4,647.89 c 6.666,-4.5329 7.4659,-15.287 5.155,-21.331 -4.2662,-11.643 -18.487,-16.887 -39.729,-11.11 -8.9768,2.5775 -10.043,14.754 -5.9549,18.842 0.0889,0.0889 0.35552,0.17776 0.79991,0.0889 2.933,-1.4221 11.288,-5.4217 13.865,-5.8661 9.7768,-1.5998 13.954,5.6883 11.11,10.488 -5.4217,9.1546 -14.843,5.0662 -13.599,22.042 6.3105,4.2662 18.22,1.3332 18.487,-2.222 0.53328,-7.377 4.444,-7.1104 9.8656,-10.932 m -28.53,23.109 c 1.1554,5.4216 1.1406,7.5906 4.4979,8.8291 3.555,1.3114 8.5943,1.444 12.389,-0.82993 3.0035,-1.7998 3.2258,-7.2206 0.0889,-11.021 -1.4851,-1.7993 -18.576,-5.4216 -16.976,3.0219"
+             style="fill:#cf5e01"
+             sodipodi:nodetypes="cccscccccccsssc"
+             inkscape:connector-curvature="0" /></g></g></g><text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-71.79695,-14.238015)"
+       id="text334"
+       style="font-style:normal;font-weight:normal;font-size:48px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect336);display:inline;fill:#000000;fill-opacity:1;stroke:none"><tspan
+         x="296.8125"
+         y="116.82606"
+         id="tspan1296">About <tspan
+   style="font-weight:bold"
+   id="tspan1294">Lookup</tspan></tspan></text><text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-25.710663,2.5620433)"
+       id="text334-9"
+       style="font-style:normal;font-weight:normal;font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect336-1);display:inline;fill:#000000;fill-opacity:1;stroke:none"><tspan
+         x="296.8125"
+         y="92.562855"
+         id="tspan1298">Version 1.44
+</tspan><tspan
+         x="296.8125"
+         y="119.22948"
+         id="tspan1300">
+</tspan><tspan
+         x="296.8125"
+         y="145.89611"
+         id="tspan1302">This application helps to inspect </tspan><tspan
+         x="296.8125"
+         y="172.56273"
+         id="tspan1304">TeklaOpen API objects.
+</tspan><tspan
+         x="296.8125"
+         y="199.22936"
+         id="tspan1306">
+</tspan><tspan
+         x="296.8125"
+         y="225.89598"
+         id="tspan1310">Latest enhancements read <tspan
+   style="fill:#0000ff"
+   id="tspan1308">on </tspan></tspan><tspan
+         x="296.8125"
+         y="252.56261"
+         id="tspan1314"><tspan
+   style="fill:#0000ff"
+   id="tspan1312">github</tspan>
+</tspan><tspan
+         x="296.8125"
+         y="279.22924"
+         id="tspan1316">
+</tspan><tspan
+         x="296.8125"
+         y="305.89586"
+         id="tspan1318">Written by Pavel Karpovich
+</tspan><tspan
+         x="296.8125"
+         y="332.56249"
+         id="tspan1320">email: karpovich.pavel@gmail.com
+</tspan><tspan
+         x="296.8125"
+         y="359.22911"
+         id="tspan1322">
+</tspan></text><text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-23.102074,3.5173246)"
+       id="text334-9-2"
+       style="font-style:normal;font-weight:normal;font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect336-1-3);display:inline;fill:#000000;fill-opacity:1;stroke:none" /></g></svg>
