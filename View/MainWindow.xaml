@@ -12,6 +12,7 @@
     Width="707"
     Height="675"
     ResizeMode="NoResize"
+    Topmost="True"
     mc:Ignorable="d">
 
     <ia:Interaction.Triggers>
@@ -35,6 +36,6 @@
                 <uc:UserPropertiesControl />
             </TabItem>
         </TabControl>
-        <uc:FooterButtons Grid.Row="1"/>
+        <uc:FooterButtons Grid.Row="1" />
     </Grid>
 </Window>

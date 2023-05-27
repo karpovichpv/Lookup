@@ -37,7 +37,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon>ico.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BSE.Windows.Forms">
@@ -144,6 +144,7 @@
     <Compile Include="ViewModel\Service\SortUserPropertyData.cs" />
     <Compile Include="ViewModel\UserPropertiesViewModel.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelAbout.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\MainTabControl.xaml.cs">
@@ -222,12 +223,10 @@
     <None Include="TSEP\Lookup.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\BuildDate.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="ico.ico" />
     <Content Include="Resources\ContentAttributesLists\1.lst" />
     <Resource Include="ViewAbout\about ico.png" />
   </ItemGroup>
