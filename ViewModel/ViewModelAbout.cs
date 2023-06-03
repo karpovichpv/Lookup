@@ -1,4 +1,5 @@
 ﻿using Lookup.Commands;
+using Lookup.ViewModel.Service;
 using System;
 using System.Diagnostics;
 
@@ -6,21 +7,41 @@ namespace Lookup.ViewModel
 {
     public class ViewModelAbout : ViewModelBase
     {
-        public RelayCommand _runLink;
-        public RelayCommand RunLink
+        public string Version => AssemblyVersionGetter.GetAssemblyVersionNumber();
+
+        public RelayCommand _runGitHubCommon;
+        public RelayCommand RunGitHubCommon
         {
             get
             {
-                return _runLink
+                return _runGitHubCommon
                     ?? (new RelayCommand(
-                    obj => RunLinkRequest(),
+                    obj => RunGitHubCommonLink(),
                     obj => true));
             }
         }
 
-        private void RunLinkRequest()
+        public RelayCommand _runGitHubLookup;
+        public RelayCommand RunGitHubLookup
         {
-            Uri uri = new Uri("https://pkbim.blogspot.com/");
+            get
+            {
+                return _runGitHubLookup
+                    ?? (new RelayCommand(
+                    obj => RunGitHubLookupLink(),
+                    obj => true));
+            }
+        }
+
+        private void RunGitHubLookupLink()
+        {
+            Uri uri = new Uri("https://github.com/karpovichpv/Lookup");
+            Process.Start(new ProcessStartInfo(uri.AbsoluteUri));
+        }
+
+        private void RunGitHubCommonLink()
+        {
+            Uri uri = new Uri("https://github.com/karpovichpv");
             Process.Start(new ProcessStartInfo(uri.AbsoluteUri));
         }
     }

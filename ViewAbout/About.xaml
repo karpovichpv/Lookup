@@ -9,11 +9,11 @@
     Width="400"
     Height="290"
     ResizeMode="NoResize"
-    mc:Ignorable="d"
-    >
+    Topmost="True"
+    mc:Ignorable="d">
 
     <Window.DataContext>
-        <local:ViewModelAbout></local:ViewModelAbout>
+        <local:ViewModelAbout />
     </Window.DataContext>
 
     <Grid>
@@ -46,17 +46,27 @@
             TextWrapping="Wrap">
 
             <TextBlock.Inlines>
-                <Run Text="Version 1.44" />
+                <Run Text="Version " />
+                <Run Text="{Binding Version, Mode=OneTime}" />
                 <LineBreak />
                 <LineBreak />
                 <Run Text="This application helps to inspect TeklaOpen API objects." />
                 <LineBreak />
                 <LineBreak />
-                <Run Text="Latest enhancements read on github" />
+                <Run Text="Latest enhancements read" />
+                <Hyperlink
+                    Command="{Binding RunGitHubLookup}"
+                    NavigateUri="">
+                    on GitHub
+                </Hyperlink>
                 <LineBreak />
                 <LineBreak />
                 <Run Text="Written by" />
-                <Hyperlink NavigateUri="" Command="{Binding RunLink}">Pavel Karpovich</Hyperlink>
+                <Hyperlink
+                    Command="{Binding RunGitHubCommon}"
+                    NavigateUri="">
+                    Pavel Karpovich
+                </Hyperlink>
                 <LineBreak />
                 <Run Text="email: karpovich.pavel@gmail.com" />
                 <LineBreak />

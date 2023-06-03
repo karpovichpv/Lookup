@@ -17,8 +17,10 @@ namespace Lookup.ViewModel.Service
                 result = reader.ReadLine().Replace("\r\n", string.Empty);
             }
 
-            return "Lookup v." + Assembly.GetExecutingAssembly().GetName().Version.ToString(4)
+            return "Lookup v." + GetAssemblyVersionNumber()
                 + " (build from " + result + ")";
         }
+
+        public static string GetAssemblyVersionNumber() => Assembly.GetExecutingAssembly().GetName().Version.ToString(4);
     }
 }
