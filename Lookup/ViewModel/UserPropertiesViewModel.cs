@@ -18,7 +18,7 @@ namespace Lookup.ViewModel
             set
             {
                 _selectedData = value;
-                UDAObjects = UserPropertyExtensions.GetAttributeList(value.Object).ToObservableCollection();
+                UDAObjects = UserPropertyGetter.GetAttributeList(value.Object).ToObservableCollection();
                 RaisePropertyChange("SelectedData");
             }
         }

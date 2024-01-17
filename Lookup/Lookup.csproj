@@ -77,7 +77,12 @@
     </ApplicationDefinition>
     <Compile Include="Collector\Collector.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Data\UserPropertyData.cs" />
+    <Compile Include="UserProperty\Service\UserPropertyDrawingGetter.cs" />
+    <Compile Include="UserProperty\Service\UserPropertyListExtensions.cs" />
+    <Compile Include="UserProperty\Service\UserPropertyModelObjectGetter.cs" />
+    <Compile Include="UserProperty\Service\UserPropertyProjectGetter.cs" />
+    <Compile Include="UserProperty\UserPropertyType.cs" />
+    <Compile Include="UserProperty\UserPropertyData.cs" />
     <Compile Include="ReportProperty\FileService.cs" />
     <Compile Include="ReportProperty\FileTypeReadService.cs" />
     <Compile Include="ReportProperty\HashTableService.cs" />
@@ -89,7 +94,7 @@
     <Compile Include="Service\DataExtensions.cs" />
     <Compile Include="Service\ModelObjectByDrawingObjectSelector.cs" />
     <Compile Include="Service\SelectObject.cs" />
-    <Compile Include="Service\UserPropertyExtensions.cs" />
+    <Compile Include="UserProperty\UserPropertyGetter.cs" />
     <Compile Include="Streams\MethodStream.cs" />
     <Compile Include="Data\Data.cs" />
     <Compile Include="Data\DataService.cs" />
@@ -101,6 +106,7 @@
     <Compile Include="Data\MethodData.cs" />
     <Compile Include="Data\PropertyData.cs" />
     <Compile Include="Data\TSObject.cs" />
+    <Compile Include="UserProperty\Service\UserPropertyTypeService.cs" />
     <Compile Include="ViewAbout\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
