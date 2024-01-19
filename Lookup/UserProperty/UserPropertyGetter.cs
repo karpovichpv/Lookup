@@ -36,8 +36,7 @@ namespace Lookup
                     return tsdModelObj.Get();
             }
             catch
-            {
-            }
+            { }
 
             return null;
         }

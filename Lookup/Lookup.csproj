@@ -197,6 +197,9 @@
     <None Include="TSEP\Lookup.xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\DynamicStringProperties.lkp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Resource Include="ico.ico" />
     <EmbeddedResource Include="Resources\BuildDate.txt" />
     <Content Include="Resources\ContentAttributesLists\1.lst" />
