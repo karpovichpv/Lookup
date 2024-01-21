@@ -190,6 +190,9 @@ namespace Lookup.ViewModel
         }
         #endregion
 
-        public ViewModel() => Mediator.GetInstance().SetViewModel(this);
+        public ViewModel()
+        {
+            Mediator.GetInstance().SetViewModel(this);
+        }
     }
 }

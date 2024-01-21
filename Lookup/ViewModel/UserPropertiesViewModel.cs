@@ -6,7 +6,10 @@ namespace Lookup.ViewModel
 {
     public class UserPropertiesViewModel : ViewModelBase
     {
-        public UserPropertiesViewModel() => Mediator.GetInstance().SetUserPropertiesModel(this);
+        public UserPropertiesViewModel()
+        {
+            Mediator.GetInstance().SetUserPropertiesModel(this);
+        }
 
         private TSObject _selectedData;
         public TSObject SelectedObject
@@ -35,6 +38,7 @@ namespace Lookup.ViewModel
             }
         }
 
-        public void SetSelectedObject(TSObject selectedObject) => SelectedObject = selectedObject;
+        public void SetSelectedObject(TSObject selectedObject)
+            => SelectedObject = selectedObject;
     }
 }

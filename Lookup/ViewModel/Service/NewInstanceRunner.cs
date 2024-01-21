@@ -21,8 +21,10 @@ namespace Lookup.ViewModel.Service
             TSObject selectedObject = GetSelectedObject();
             ViewModel subViewModel = GetViewModel();
 
-            MainWindow window = new MainWindow();
-            window.DataContext = subViewModel;
+            MainWindow window = new MainWindow
+            {
+                DataContext = subViewModel
+            };
             window.Show();
 
             Mediator.GetInstance().Notify(selectedObject);

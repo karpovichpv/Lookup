@@ -6,6 +6,7 @@
 
         private ViewModel _viewModel;
         private UserPropertiesViewModel _userPropertiesModel;
+        private DynamicStringPropertiesViewModel _dynamicStringPropertiesModel;
 
         private Mediator()
         {
@@ -18,9 +19,16 @@
             return _instance;
         }
 
-        public void SetViewModel(ViewModel viewModel) => _viewModel = viewModel;
-        public void SetUserPropertiesModel(UserPropertiesViewModel viewModel) => _userPropertiesModel = viewModel;
+        public void SetViewModel(ViewModel viewModel)
+            => _viewModel = viewModel;
 
-        public void Notify(TSObject tsObject) => _userPropertiesModel.SetSelectedObject(tsObject);
+        public void SetUserPropertiesModel(UserPropertiesViewModel viewModel)
+            => _userPropertiesModel = viewModel;
+
+        public void SetDynamicStringPropertiesModel(DynamicStringPropertiesViewModel viewModel)
+            => _dynamicStringPropertiesModel = viewModel;
+
+        public void Notify(TSObject tsObject)
+            => _userPropertiesModel.SetSelectedObject(tsObject);
     }
 }
