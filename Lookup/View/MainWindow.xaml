@@ -11,7 +11,7 @@
     Title="{Binding Version}"
     Width="707"
     Height="675"
-    ResizeMode="NoResize"
+    ResizeMode="CanResize"
     Topmost="True"
     mc:Ignorable="d">
 
@@ -34,6 +34,9 @@
                 x:Name="tbiUserProperties"
                 Header="User-properties">
                 <uc:UserPropertiesControl />
+            </TabItem>
+            <TabItem Header="Dynamic String Properties">
+                <uc:DynamicStringProperties></uc:DynamicStringProperties>
             </TabItem>
         </TabControl>
         <uc:FooterButtons Grid.Row="1" />

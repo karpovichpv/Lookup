@@ -121,6 +121,9 @@
     <Compile Include="ViewModel\ViewModelAbout.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\DynamicStringProperties.xaml.cs">
+      <DependentUpon>DynamicStringProperties.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainTabControl.xaml.cs">
       <DependentUpon>MainTabControl.xaml</DependentUpon>
     </Compile>
@@ -134,6 +137,10 @@
     <None Include="TSEP\macros\Lookup.cs" />
     <None Include="TSEP\macros\Lookup.bmp" />
     <Page Include="ViewAbout\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DynamicStringProperties.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
