@@ -54,7 +54,7 @@ namespace Lookup
 
             if (value is IEnumerator)
             {
-                _returnObjects = CollectionExtensions.GetObjFromEnumerator(value as IEnumerator);
+                _returnObjects = ObservableCollectionService.GetObjFromEnumerator(value as IEnumerator);
                 _value = null;
             }
 

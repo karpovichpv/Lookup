@@ -38,7 +38,7 @@ namespace Lookup
             CanGet = CheckCanGet();
 
             if (value is IEnumerable || value is ArrayList)
-                _values = CollectionExtensions.GetObjFromEnumerable<object>(value as IEnumerable);
+                _values = ObservableCollectionService.GetObjFromEnumerable<object>(value as IEnumerable);
 
             if (value != null)
                 _stringValue = value.ToString();

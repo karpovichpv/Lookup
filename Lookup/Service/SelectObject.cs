@@ -44,7 +44,7 @@ namespace Lookup
                 tsd.DrawingObjectEnumerator drawingEnumerator = objectSelector.GetSelected();
 
                 if (drawingEnumerator.GetSize() > 0)
-                    selectedObjects = CollectionExtensions.GetObjFromEnumerator(drawingEnumerator).ToTSObjects();
+                    selectedObjects = ObservableCollectionService.GetObjFromEnumerator(drawingEnumerator).ToTSObjects();
                 else
                 {
                     TSObject drawingTSObj = new TSObject() { Name = drawing.GetType().Name, Object = drawing };
@@ -57,7 +57,7 @@ namespace Lookup
                 tsm.ModelObjectEnumerator modelEnumerator = selector.GetSelectedObjects();
 
                 if (modelEnumerator.GetSize() > 0)
-                    selectedObjects = CollectionExtensions.GetObjFromEnumerator(modelEnumerator).ToTSObjects();
+                    selectedObjects = ObservableCollectionService.GetObjFromEnumerator(modelEnumerator).ToTSObjects();
                 else
                 {
                     Model model = new Model(); 

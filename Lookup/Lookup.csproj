@@ -77,7 +77,9 @@
     </ApplicationDefinition>
     <Compile Include="Collector\Collector.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="DynamicStringProperties\DynamicProperty.cs" />
     <Compile Include="Service\DynamicStringPropertiesFileExtensions.cs" />
+    <Compile Include="Service\BindingListService.cs" />
     <Compile Include="UserProperty\Service\UserPropertyDrawingGetter.cs" />
     <Compile Include="UserProperty\Service\UserPropertyListExtensions.cs" />
     <Compile Include="UserProperty\Service\UserPropertyModelObjectGetter.cs" />
@@ -101,7 +103,7 @@
     <Compile Include="Data\DataService.cs" />
     <Compile Include="Data\HeaderData.cs" />
     <Compile Include="Data\StringData.cs" />
-    <Compile Include="Service\CollectionExtensions.cs" />
+    <Compile Include="Service\ObservableCollectionService.cs" />
     <Compile Include="Streams\FieldStream.cs" />
     <Compile Include="Streams\PropertyStream.cs" />
     <Compile Include="Data\MethodData.cs" />
@@ -114,6 +116,7 @@
     <Compile Include="ViewModel\DynamicStringPropertiesViewModel.cs" />
     <Compile Include="ViewModel\IMediator.cs" />
     <Compile Include="ViewModel\Mediator.cs" />
+    <Compile Include="ViewModel\Service\ItemsChangeObservableCollection.cs" />
     <Compile Include="ViewModel\Service\NewInstanceRunner.cs" />
     <Compile Include="ViewModel\Service\AssemblyVersionGetter.cs" />
     <Compile Include="ViewModel\Service\ObjectService.cs" />
@@ -208,7 +211,7 @@
   <ItemGroup>
     <None Include="Resources\DynamicStringProperties.lkp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  <TargetPath>DynamicStringProperties.lkp</TargetPath>
+      <TargetPath>DynamicStringProperties.lkp</TargetPath>
     </None>
     <Resource Include="ico.ico" />
     <EmbeddedResource Include="Resources\BuildDate.txt" />

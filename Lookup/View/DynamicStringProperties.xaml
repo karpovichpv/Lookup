@@ -7,7 +7,10 @@
              mc:Ignorable="d" 
              DataContext="{Binding Source={StaticResource locator}, Path=DynamicStringPropertiesViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <ListView Name="lb" Width="Auto" Padding="0" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Properties}">
+    <ListView Name="lb" Width="Auto" Padding="0" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Properties, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        <ListView.InputBindings>
+            <KeyBinding Command="{Binding UpdateDynamicStringPropertyFile}" Key="Enter"></KeyBinding>
+        </ListView.InputBindings>
         <ListView.ItemTemplate>
             <DataTemplate>
         <Grid x:Name="grid" >
@@ -16,8 +19,9 @@
                 <ColumnDefinition Width="3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             
-            <TextBlock  MinWidth="200" Grid.Column="0" Text="{Binding}"></TextBlock>
-            <TextBox  Grid.Column="1" Text="ddd"></TextBox>
+            <TextBlock  MinWidth="200" Grid.Column="0" Text="{Binding Name}"></TextBlock>
+            <TextBox  Grid.Column="1" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            </TextBox>
         </Grid>
             </DataTemplate>
         </ListView.ItemTemplate>

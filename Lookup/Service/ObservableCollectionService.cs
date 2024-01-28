@@ -18,7 +18,7 @@ using System.Collections.ObjectModel;
 
 namespace Lookup.Service
 {
-    internal static class CollectionExtensions
+    internal static class ObservableCollectionService
     {
         public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> collection)
         {
@@ -31,12 +31,14 @@ namespace Lookup.Service
             catch { }
             return c;
         }
+
         public static ObservableCollection<T> AddRange<T>(this ObservableCollection<T> inputCol, ObservableCollection<T> addCol)
         {
             foreach (T obj in addCol)
                 inputCol.Add(obj);
             return inputCol;
         }
+
         public static List<TSObject> ToTSObjects(this List<object> objects)
         {
             List<TSObject> result = new List<TSObject>();
@@ -45,6 +47,7 @@ namespace Lookup.Service
 
             return result;
         }
+
         public static List<object> GetObjFromEnumerator<T>(T enumerator) where T : IEnumerator
         {
             List<object> result = new List<object>();
