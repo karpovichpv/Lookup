@@ -10,7 +10,7 @@ namespace Lookup.ViewModel.Service
     ///     the objects changes in the list which implements the INotifyPropertyChanged. 
     /// </summary>
     /// <typeparam name="T">
-    public class ItemsChangeObservableCollection<T> :
+    public class ItemsObservableCollection<T> :
            ObservableCollection<T> where T : INotifyPropertyChanged
     {
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)

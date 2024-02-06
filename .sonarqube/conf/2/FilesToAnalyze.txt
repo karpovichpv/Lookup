@@ -1,0 +1,9 @@
+﻿C:\other\lookup\Lookup.Tests\Lookup.Tests\UnitTest1.cs
+C:\other\lookup\Lookup.Tests\Lookup.Tests\Properties\AssemblyInfo.cs
+C:\other\lookup\packages\NUnit3TestAdapter.4.5.0\build\net462\NUnit3.TestAdapter.dll
+C:\other\lookup\packages\NUnit3TestAdapter.4.5.0\build\net462\NUnit3.TestAdapter.pdb
+C:\other\lookup\packages\NUnit3TestAdapter.4.5.0\build\net462\nunit.engine.dll
+C:\other\lookup\packages\NUnit3TestAdapter.4.5.0\build\net462\nunit.engine.api.dll
+C:\other\lookup\packages\NUnit3TestAdapter.4.5.0\build\net462\nunit.engine.core.dll
+C:\other\lookup\packages\NUnit3TestAdapter.4.5.0\build\net462\testcentric.engine.metadata.dll
+C:\other\lookup\Lookup.Tests\Lookup.Tests\packages.config

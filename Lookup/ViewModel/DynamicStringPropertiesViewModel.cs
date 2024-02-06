@@ -1,8 +1,6 @@
 ﻿using Lookup.Commands;
 using Lookup.DynamicStringProperties;
-using Lookup.Service;
 using Lookup.ViewModel.Service;
-using System;
 using System.Collections.Specialized;
 
 namespace Lookup.ViewModel
@@ -13,13 +11,13 @@ namespace Lookup.ViewModel
         {
 
             Mediator.GetInstance().SetDynamicStringPropertiesModel(this);
-            Properties = DynamicStringPropertiesFileExtensions.Read();
+            Properties = DynamicPropertiesFileReader.Read();
             _properties.CollectionChanged += ContentCollectionChanged;
         }
 
         private void ContentCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            Console.WriteLine("SomeAction");
+            Properties = Properties.Update();
         }
 
         private TSObject _selectedObject;
@@ -37,8 +35,8 @@ namespace Lookup.ViewModel
             }
         }
 
-        private ItemsChangeObservableCollection<DynamicProperty> _properties;
-        public ItemsChangeObservableCollection<DynamicProperty> Properties
+        private ItemsObservableCollection<DynamicProperty> _properties;
+        public ItemsObservableCollection<DynamicProperty> Properties
         {
             get
             {
@@ -46,7 +44,7 @@ namespace Lookup.ViewModel
             }
             set
             {
-                _properties = value;
+                _properties = value.Update();
                 RaisePropertyChange(nameof(Properties));
             }
         }
@@ -60,7 +58,7 @@ namespace Lookup.ViewModel
             {
                 return new RelayCommand(obj =>
                 {
-                    Console.WriteLine("Update file");
+                    // Properties = Properties.Update();
                 },
                 obj => true);
             }

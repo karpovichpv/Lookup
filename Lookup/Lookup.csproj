@@ -77,8 +77,10 @@
     </ApplicationDefinition>
     <Compile Include="Collector\Collector.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="DynamicStringProperties\DynamicPropertiesFileLocator.cs" />
+    <Compile Include="DynamicStringProperties\DynamicPropertiesCollectionUpdater.cs" />
     <Compile Include="DynamicStringProperties\DynamicProperty.cs" />
-    <Compile Include="Service\DynamicStringPropertiesFileExtensions.cs" />
+    <Compile Include="DynamicStringProperties\DynamicPropertiesFileReader.cs" />
     <Compile Include="Service\BindingListService.cs" />
     <Compile Include="UserProperty\Service\UserPropertyDrawingGetter.cs" />
     <Compile Include="UserProperty\Service\UserPropertyListExtensions.cs" />
@@ -116,7 +118,7 @@
     <Compile Include="ViewModel\DynamicStringPropertiesViewModel.cs" />
     <Compile Include="ViewModel\IMediator.cs" />
     <Compile Include="ViewModel\Mediator.cs" />
-    <Compile Include="ViewModel\Service\ItemsChangeObservableCollection.cs" />
+    <Compile Include="ViewModel\Service\ItemsObservableCollection.cs" />
     <Compile Include="ViewModel\Service\NewInstanceRunner.cs" />
     <Compile Include="ViewModel\Service\AssemblyVersionGetter.cs" />
     <Compile Include="ViewModel\Service\ObjectService.cs" />
