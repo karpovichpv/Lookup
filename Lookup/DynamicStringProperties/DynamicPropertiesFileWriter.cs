@@ -9,8 +9,6 @@ namespace Lookup.DynamicStringProperties
         public static void Write(this IEnumerable<DynamicProperty> properties)
         {
             string filePath = DynamicPropertiesFile.GetPath();
-            if (File.Exists(filePath))
-                DynamicPropertiesFile.Clean();
 
             if (!File.Exists(filePath))
                 DynamicPropertiesFile.Create();
@@ -21,8 +19,10 @@ namespace Lookup.DynamicStringProperties
         private static void WriteFile(IEnumerable<DynamicProperty> properties, string filePath)
         {
             string[] names = properties.Select(p => p.Name).ToArray();
-            string resultString = string.Join("\r\n", properties);
-            File.WriteAllText(filePath, resultString);
+            string resultString = string.Join("\r\n", names);
+
+            using (var streamWriter = File.CreateText(filePath))
+                streamWriter.Write(resultString);
         }
     }
 }
