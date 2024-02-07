@@ -77,8 +77,9 @@
     </ApplicationDefinition>
     <Compile Include="Collector\Collector.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="DynamicStringProperties\DynamicPropertiesFileLocator.cs" />
-    <Compile Include="DynamicStringProperties\DynamicPropertiesCollectionUpdater.cs" />
+    <Compile Include="DynamicStringProperties\DynamicPropertiesFile.cs" />
+    <Compile Include="DynamicStringProperties\DynamicPropertiesFileWriter.cs" />
+    <Compile Include="DynamicStringProperties\DynamicPropertiesNormalizer.cs" />
     <Compile Include="DynamicStringProperties\DynamicProperty.cs" />
     <Compile Include="DynamicStringProperties\DynamicPropertiesFileReader.cs" />
     <Compile Include="Service\BindingListService.cs" />

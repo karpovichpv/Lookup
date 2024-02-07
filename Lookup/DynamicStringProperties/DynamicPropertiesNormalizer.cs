@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace Lookup.DynamicStringProperties
 {
-    internal static class DynamicPropertiesCollectionUpdater
+    internal static class DynamicPropertiesNormalizer
     {
-        public static ItemsObservableCollection<DynamicProperty> Update(
+        public static ItemsObservableCollection<DynamicProperty> Normalize(
             this ItemsObservableCollection<DynamicProperty> inputCollection)
         {
             List<DynamicProperty> collection = inputCollection.ToList();

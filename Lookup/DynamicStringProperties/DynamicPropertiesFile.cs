@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace Lookup.DynamicStringProperties
 {
-    public static class DynamicPropertiesFileLocator
+    public static class DynamicPropertiesFile
     {
         public static string GetPath()
         {
@@ -14,6 +14,19 @@ namespace Lookup.DynamicStringProperties
             string directory = Path.GetDirectoryName(path);
             string filePath = Path.Combine(directory, "DynamicStringProperties.lkp");
             return filePath;
+        }
+
+        public static void Clean()
+        {
+            string filePath = GetPath();
+            File.Delete(filePath);
+            Create();
+        }
+
+        public static void Create()
+        {
+            string filePath = GetPath();
+            File.Create(filePath);
         }
     }
 }

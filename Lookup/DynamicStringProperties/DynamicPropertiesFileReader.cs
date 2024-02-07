@@ -2,7 +2,6 @@
 using Lookup.ViewModel.Service;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace Lookup.DynamicStringProperties
 {
@@ -10,7 +9,7 @@ namespace Lookup.DynamicStringProperties
     {
         public static ItemsObservableCollection<DynamicProperty> Read()
         {
-            string filePath = DynamicPropertiesFileLocator.GetPath();
+            string filePath = DynamicPropertiesFile.GetPath();
             var result = new List<DynamicProperty>();
             if (!File.Exists(filePath))
                 return GetAttributesIfFileDoesNotExist(result);
@@ -32,10 +31,7 @@ namespace Lookup.DynamicStringProperties
             foreach (string line in fileContent)
                 result.Add(new DynamicProperty() { Name = line });
 
-            result.Add(new DynamicProperty());
-            return result
-                .ToList()
-                .ToItemsObservableCollection();
+            return result.ToItemsObservableCollection().Normalize();
         }
     }
 }
