@@ -29,6 +29,9 @@
             => _dynamicStringPropertiesModel = viewModel;
 
         public void Notify(TSObject tsObject)
-            => _userPropertiesModel.SetSelectedObject(tsObject);
+        {
+            _userPropertiesModel.SetSelectedObject(tsObject);
+            _dynamicStringPropertiesModel.SetSelectedObject(tsObject);
+        }
     }
 }

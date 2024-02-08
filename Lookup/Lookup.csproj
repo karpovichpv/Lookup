@@ -77,11 +77,12 @@
     </ApplicationDefinition>
     <Compile Include="Collector\Collector.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="TSProperties\DynamicStringProperties\DynamicPropertiesFile.cs" />
-    <Compile Include="TSProperties\DynamicStringProperties\DynamicPropertiesFileWriter.cs" />
-    <Compile Include="TSProperties\DynamicStringProperties\DynamicPropertiesNormalizer.cs" />
+    <Compile Include="TSProperties\DynamicStringProperties\DynamicPropertyGetter - Copy.cs" />
+    <Compile Include="TSProperties\DynamicStringProperties\Service\DynamicPropertiesFile.cs" />
+    <Compile Include="TSProperties\DynamicStringProperties\Service\DynamicPropertiesFileWriter.cs" />
+    <Compile Include="TSProperties\DynamicStringProperties\Service\DynamicPropertiesNormalizer.cs" />
     <Compile Include="TSProperties\DynamicStringProperties\DynamicProperty.cs" />
-    <Compile Include="TSProperties\DynamicStringProperties\DynamicPropertiesFileReader.cs" />
+    <Compile Include="TSProperties\DynamicStringProperties\Service\DynamicPropertiesFileReader.cs" />
     <Compile Include="Service\BindingListService.cs" />
     <Compile Include="TSProperties\IProperty.cs" />
     <Compile Include="TSProperties\UserProperties\Service\UserPropertyDrawingGetter.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Service\DataExtensions.cs" />
     <Compile Include="Service\ModelObjectByDrawingObjectSelector.cs" />
     <Compile Include="Service\SelectObject.cs" />
+    <Compile Include="TSProperties\DynamicStringProperties\DynamicPropertyGetter.cs" />
     <Compile Include="TSProperties\UserProperties\UserPropertyGetter.cs" />
     <Compile Include="Streams\MethodStream.cs" />
     <Compile Include="Data\Data.cs" />

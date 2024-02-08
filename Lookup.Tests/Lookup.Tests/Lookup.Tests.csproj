@@ -50,11 +50,11 @@
     <Reference Include="System.Core" />
     <Reference Include="Tekla.Structures, Version=2023.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\TeklaStructures\2021.0\nt\bin\plugins\Tekla.Structures.dll</HintPath>
+      <HintPath>..\..\..\..\TeklaStructures\2023.0\bin\plugins\Tekla\Drawings\Dimensioning\MultiPurposeDimensioningPlugin\Tekla.Structures.dll</HintPath>
     </Reference>
     <Reference Include="Tekla.Structures.Model, Version=2023.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\TeklaStructures\2021.0\nt\bin\plugins\Tekla.Structures.Model.dll</HintPath>
+      <HintPath>..\..\..\..\TeklaStructures\2023.0\bin\plugins\Tekla\Drawings\Dimensioning\MultiPurposeDimensioningPlugin\Tekla.Structures.Model.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

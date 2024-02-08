@@ -20,7 +20,8 @@ namespace Lookup.Service
 {
     internal static class ItemsChangeObservableCollectionSevice
     {
-        public static ItemsObservableCollection<T> ToItemsObservableCollection<T>(this IEnumerable<T> collection)
+        public static ItemsObservableCollection<T> ToItemsObservableCollection<T>(
+            this IEnumerable<T> collection)
             where T : INotifyPropertyChanged
 
         {

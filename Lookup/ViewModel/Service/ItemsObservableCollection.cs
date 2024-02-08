@@ -13,6 +13,8 @@ namespace Lookup.ViewModel.Service
     public class ItemsObservableCollection<T> :
            ObservableCollection<T> where T : INotifyPropertyChanged
     {
+        internal int Cast;
+
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Add)

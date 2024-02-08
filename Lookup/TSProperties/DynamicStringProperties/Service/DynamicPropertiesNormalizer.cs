@@ -7,10 +7,10 @@ namespace Lookup.TSProperties.DynamicProperties
 {
     internal static class DynamicPropertiesNormalizer
     {
-        public static ItemsObservableCollection<DynamicProperty> Normalize(
-            this ItemsObservableCollection<DynamicProperty> inputCollection)
+        public static ItemsObservableCollection<IProperty> Normalize(
+            this ItemsObservableCollection<IProperty> inputCollection)
         {
-            List<DynamicProperty> collection = inputCollection.ToList();
+            List<IProperty> collection = inputCollection.ToList();
             int length = collection
                             .Where(p => string.IsNullOrEmpty(p.Name))
                             .ToArray()

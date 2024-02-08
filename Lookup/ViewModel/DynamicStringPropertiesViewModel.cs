@@ -1,4 +1,5 @@
 ﻿using Lookup.Commands;
+using Lookup.TSProperties;
 using Lookup.TSProperties.DynamicProperties;
 using Lookup.ViewModel.Service;
 using System;
@@ -11,15 +12,13 @@ namespace Lookup.ViewModel
         public DynamicStringPropertiesViewModel()
         {
             Mediator.GetInstance().SetDynamicStringPropertiesModel(this);
-            Properties = DynamicPropertiesFileReader.Read();
-            _properties.CollectionChanged += ContentCollectionChanged;
         }
 
         private void ContentCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             _properties.CollectionChanged -= ContentCollectionChanged;
 
-            NormalizeProperties();
+            UpdateCollection();
 
             _properties.CollectionChanged += ContentCollectionChanged;
         }
@@ -36,12 +35,14 @@ namespace Lookup.ViewModel
             set
             {
                 _selectedObject = value;
+                Properties = DynamicPropertiesFileReader.Read(SelectedObject.Object);
+                _properties.CollectionChanged += ContentCollectionChanged;
                 RaisePropertyChange(nameof(SelectedObject));
             }
         }
 
-        private ItemsObservableCollection<DynamicProperty> _properties;
-        public ItemsObservableCollection<DynamicProperty> Properties
+        private ItemsObservableCollection<IProperty> _properties;
+        public ItemsObservableCollection<IProperty> Properties
         {
             get
             {
@@ -63,15 +64,36 @@ namespace Lookup.ViewModel
             {
                 return new RelayCommand(obj =>
                 {
-                    NormalizeProperties();
+                    UpdateCollection();
                 },
                 obj => true);
             }
         }
 
+        private void UpdateCollection()
+        {
+            UpdateValues();
+            NormalizeProperties();
+        }
+
+        private void UpdateValues()
+        {
+            foreach (var prop in Properties)
+            {
+                string propertyInObject = SelectedObject.Object
+                    .GetDynamicProperty(prop.Name);
+                string propertyInList = prop.Value;
+
+                if (propertyInObject != propertyInList)
+                    SelectedObject.Object.SetDynamicProperty(prop.Name, prop.Value);
+
+                prop.Value = SelectedObject.Object.GetDynamicProperty(prop.Name);
+            }
+        }
+
         private void NormalizeProperties()
         {
-            ItemsObservableCollection<DynamicProperty> normalizedCollection
+            ItemsObservableCollection<IProperty> normalizedCollection
                 = Properties.Normalize();
             normalizedCollection.Write();
             Properties = normalizedCollection;

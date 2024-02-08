@@ -1,6 +1,8 @@
-﻿namespace Lookup.TSProperties
+﻿using System.ComponentModel;
+
+namespace Lookup.TSProperties
 {
-    internal interface IProperty
+    public interface IProperty : INotifyPropertyChanged
     {
         string Name { get; set; }
         string Value { get; set; }
