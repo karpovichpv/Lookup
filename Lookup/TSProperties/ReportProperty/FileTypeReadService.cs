@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Lookup.ReportProperty
+namespace Lookup.TSProperties.ReportProperty
 {
     internal class FileTypeService
     {

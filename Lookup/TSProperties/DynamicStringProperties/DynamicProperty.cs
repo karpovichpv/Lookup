@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace Lookup.DynamicStringProperties
+namespace Lookup.TSProperties.DynamicProperties
 {
-    public class DynamicProperty : INotifyPropertyChanged
+    public class DynamicProperty : INotifyPropertyChanged, IProperty
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -33,6 +33,8 @@ namespace Lookup.DynamicStringProperties
                 RaisePropertyChange(nameof(Value));
             }
         }
+
+        public PropertyType Type => PropertyType.String;
 
         private protected void RaisePropertyChange(string propertyName)
         {

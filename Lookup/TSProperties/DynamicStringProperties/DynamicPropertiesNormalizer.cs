@@ -3,7 +3,7 @@ using Lookup.ViewModel.Service;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Lookup.DynamicStringProperties
+namespace Lookup.TSProperties.DynamicProperties
 {
     internal static class DynamicPropertiesNormalizer
     {

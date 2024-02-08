@@ -1,4 +1,5 @@
 ﻿using Lookup.Service;
+using Lookup.TSProperties.UserProperties;
 using Lookup.ViewModel.Service;
 using System.Collections.ObjectModel;
 
@@ -26,9 +27,9 @@ namespace Lookup.ViewModel
             }
         }
 
-        private ObservableCollection<UserPropertyData> _udaObjects;
+        private ObservableCollection<UserProperty> _udaObjects;
 
-        public ObservableCollection<UserPropertyData> UDAObjects
+        public ObservableCollection<UserProperty> UDAObjects
         {
             get => _udaObjects;
             set

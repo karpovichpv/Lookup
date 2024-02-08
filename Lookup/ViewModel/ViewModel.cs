@@ -14,8 +14,8 @@
 
 using Lookup.Collectors;
 using Lookup.Commands;
-using Lookup.ReportProperty;
 using Lookup.Service;
+using Lookup.TSProperties.ReportProperty;
 using Lookup.ViewAbout;
 using Lookup.ViewModel.Service;
 using System.Collections.ObjectModel;

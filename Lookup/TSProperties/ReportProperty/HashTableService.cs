@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace Lookup.ReportProperty
+namespace Lookup.TSProperties.ReportProperty
 {
     internal static class HashTableService
     {

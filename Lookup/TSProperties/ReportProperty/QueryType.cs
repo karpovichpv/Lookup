@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lookup.ReportProperty
+namespace Lookup.TSProperties.ReportProperty
 {
     internal class QueryType
     {

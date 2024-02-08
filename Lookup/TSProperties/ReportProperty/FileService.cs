@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace Lookup.ReportProperty
+namespace Lookup.TSProperties.ReportProperty
 {
     internal class FileService
     {

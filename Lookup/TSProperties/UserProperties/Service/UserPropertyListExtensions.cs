@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace Lookup
+namespace Lookup.TSProperties.UserProperties
 {
     internal static class UserPropertyListExtensions
     {
-        public static List<UserPropertyData> ToUserPropertiesList<T, K>(this Dictionary<T, K> dictionary, UserPropertyType type)
+        public static List<UserProperty> ToUserPropertiesList<T, K>(this Dictionary<T, K> dictionary, PropertyType type)
         {
-            List<UserPropertyData> udaList = new List<UserPropertyData>();
+            List<UserProperty> udaList = new List<UserProperty>();
             foreach (KeyValuePair<T, K> entry in dictionary)
             {
-                udaList.Add(new UserPropertyData()
+                udaList.Add(new UserProperty()
                 {
                     Name = entry.Key.ToString(),
                     Value = entry.Value.ToString(),
@@ -20,13 +20,13 @@ namespace Lookup
             return udaList;
         }
 
-        public static List<UserPropertyData> ToUserPropertiesList(
+        public static List<UserProperty> ToUserPropertiesList(
             this IDictionary hashtable)
         {
-            var udaList = new List<UserPropertyData>();
+            var udaList = new List<UserProperty>();
             foreach (DictionaryEntry entry in hashtable)
             {
-                udaList.Add(new UserPropertyData()
+                udaList.Add(new UserProperty()
                 {
                     Name = entry.Key.ToString(),
                     Value = entry.Value.ToString(),

@@ -1,4 +1,5 @@
 ﻿using Lookup.Service;
+using Lookup.TSProperties.UserProperties;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -6,19 +7,19 @@ namespace Lookup.ViewModel.Service
 {
     internal static class SortUserPropertyData
     {
-        public static ObservableCollection<UserPropertyData> SortByName(this ObservableCollection<UserPropertyData> data)
+        public static ObservableCollection<UserProperty> SortByName(this ObservableCollection<UserProperty> data)
             => data
                 .OrderBy(property => property.Name)
                 .ToList()
                 .ToObservableCollection();
 
-        public static ObservableCollection<UserPropertyData> SortByValue(this ObservableCollection<UserPropertyData> data)
+        public static ObservableCollection<UserProperty> SortByValue(this ObservableCollection<UserProperty> data)
             => data
                 .OrderBy(property => property.Value)
                 .ToList()
                 .ToObservableCollection();
 
-        public static ObservableCollection<UserPropertyData> SortByType(this ObservableCollection<UserPropertyData> data)
+        public static ObservableCollection<UserProperty> SortByType(this ObservableCollection<UserProperty> data)
             => data
                 .OrderBy(property => property.Type)
                 .ToList()

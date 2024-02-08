@@ -13,16 +13,15 @@
 // along with Lookup. If not, see <https://www.gnu.org/licenses/>.
 
 
-using Lookup.UserProperty;
 using System.Collections.Generic;
 using Tekla.Structures.Model;
 using tsd = Tekla.Structures.Drawing;
 
-namespace Lookup
+namespace Lookup.TSProperties.UserProperties
 {
     internal static class UserPropertyGetter
     {
-        public static List<UserPropertyData> GetAttributeList(object obj)
+        public static List<UserProperty> GetAttributeList(object obj)
         {
             try
             {

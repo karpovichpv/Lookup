@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Tekla.Structures.Model;
 
-namespace Lookup.ReportProperty
+namespace Lookup.TSProperties.ReportProperty
 {
     internal class ResultValuesService
     {

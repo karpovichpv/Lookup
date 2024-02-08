@@ -1,4 +1,4 @@
-﻿namespace Lookup.ReportProperty
+﻿namespace Lookup.TSProperties.ReportProperty
 {
     public class PropertyValue
     {

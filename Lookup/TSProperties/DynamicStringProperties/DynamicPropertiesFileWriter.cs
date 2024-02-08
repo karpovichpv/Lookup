@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace Lookup.DynamicStringProperties
+namespace Lookup.TSProperties.DynamicProperties
 {
     internal static class DynamicPropertiesFileWriter
     {

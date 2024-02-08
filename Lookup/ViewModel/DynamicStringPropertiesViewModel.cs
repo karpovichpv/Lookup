@@ -1,5 +1,5 @@
 ﻿using Lookup.Commands;
-using Lookup.DynamicStringProperties;
+using Lookup.TSProperties.DynamicProperties;
 using Lookup.ViewModel.Service;
 using System;
 using System.Collections.Specialized;

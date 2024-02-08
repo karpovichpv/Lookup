@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using Tekla.Structures.Model;
 
-namespace Lookup
+namespace Lookup.TSProperties.UserProperties
 {
     internal static class UserPropertyProjectGetter
     {
-        public static List<UserPropertyData> Get(this ProjectInfo projectInfo)
+        public static List<UserProperty> Get(this ProjectInfo projectInfo)
         {
             Hashtable stringPropertiesHashTable = new Hashtable();
             projectInfo.GetStringUserProperties(ref stringPropertiesHashTable);
@@ -15,7 +15,7 @@ namespace Lookup
             Hashtable intPropertiesHashTable = new Hashtable();
             projectInfo.GetIntegerUserProperties(ref intPropertiesHashTable);
 
-            List<UserPropertyData> udaDataList = stringPropertiesHashTable.ToUserPropertiesList();
+            List<UserProperty> udaDataList = stringPropertiesHashTable.ToUserPropertiesList();
             udaDataList.AddRange(doublePropertiesHashTable.ToUserPropertiesList());
             udaDataList.AddRange(intPropertiesHashTable.ToUserPropertiesList());
             return udaDataList;
