@@ -12,7 +12,7 @@ namespace Lookup.TSProperties.DynamicProperties
         {
             List<IProperty> collection = inputCollection.ToList();
             int length = collection
-                            .Where(p => string.IsNullOrEmpty(p.Name))
+                            .Where(p => string.IsNullOrEmpty(p.CurrentName))
                             .ToArray()
                             .Length;
 
@@ -20,7 +20,7 @@ namespace Lookup.TSProperties.DynamicProperties
 
             if (hasMoreThanTwoEmptyItems)
             {
-                var dd = collection.Where(p => string.IsNullOrEmpty(p.Name))
+                var dd = collection.Where(p => string.IsNullOrEmpty(p.CurrentName))
                     .ToList().FirstOrDefault();
                 int index = collection.IndexOf(dd);
                 collection.RemoveAt(index);

@@ -37,8 +37,8 @@ namespace Lookup.TSProperties.DynamicProperties
             foreach (string line in fileContent)
                 result.Add(new DynamicProperty()
                 {
-                    Name = line,
-                    Value = obj.GetDynamicProperty(line)
+                    CurrentName = line,
+                    Value = obj.GetDynamicPropertyResult(line).Value
                 });
 
             return result

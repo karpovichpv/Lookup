@@ -72,23 +72,8 @@ namespace Lookup.ViewModel
 
         private void UpdateCollection()
         {
-            UpdateValues();
+            new DynamicPropertiesUpdater(Properties, SelectedObject).Update();
             NormalizeProperties();
-        }
-
-        private void UpdateValues()
-        {
-            foreach (var prop in Properties)
-            {
-                string propertyInObject = SelectedObject.Object
-                    .GetDynamicProperty(prop.Name);
-                string propertyInList = prop.Value;
-
-                if (propertyInObject != propertyInList)
-                    SelectedObject.Object.SetDynamicProperty(prop.Name, prop.Value);
-
-                prop.Value = SelectedObject.Object.GetDynamicProperty(prop.Name);
-            }
         }
 
         private void NormalizeProperties()

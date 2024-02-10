@@ -9,7 +9,7 @@ namespace Lookup.ViewModel.Service
     {
         public static ObservableCollection<UserProperty> SortByName(this ObservableCollection<UserProperty> data)
             => data
-                .OrderBy(property => property.Name)
+                .OrderBy(property => property.CurrentName)
                 .ToList()
                 .ToObservableCollection();
 

@@ -18,7 +18,7 @@ namespace Lookup.TSProperties.DynamicProperties
 
         private static void WriteFile(IEnumerable<IProperty> properties, string filePath)
         {
-            string[] names = properties.Select(p => p.Name).ToArray();
+            string[] names = properties.Select(p => p.CurrentName).ToArray();
             string resultString = string.Join("\r\n", names);
 
             using (var streamWriter = File.CreateText(filePath))

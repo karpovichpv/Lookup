@@ -7,7 +7,7 @@ namespace Lookup.TSProperties.DynamicProperties
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string _name = string.Empty;
-        public string Name
+        public string CurrentName
         {
             get
             {
@@ -16,7 +16,7 @@ namespace Lookup.TSProperties.DynamicProperties
             set
             {
                 _name = value;
-                RaisePropertyChange(nameof(Name));
+                RaisePropertyChange(nameof(CurrentName));
             }
         }
 
@@ -35,6 +35,8 @@ namespace Lookup.TSProperties.DynamicProperties
         }
 
         public PropertyType Type => PropertyType.String;
+
+        public string PreviousName { get; set; }
 
         private protected void RaisePropertyChange(string propertyName)
         {

@@ -4,7 +4,8 @@ namespace Lookup.TSProperties
 {
     public interface IProperty : INotifyPropertyChanged
     {
-        string Name { get; set; }
+        string CurrentName { get; set; }
+        string PreviousName { get; set; }
         string Value { get; set; }
         PropertyType Type { get; }
     }
