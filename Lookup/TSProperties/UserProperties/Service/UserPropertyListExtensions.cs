@@ -13,7 +13,7 @@ namespace Lookup.TSProperties.UserProperties
                 udaList.Add(new UserProperty()
                 {
                     CurrentName = entry.Key.ToString(),
-                    Value = entry.Value.ToString(),
+                    CurrentValue = entry.Value.ToString(),
                     Type = type
                 });
             }
@@ -29,7 +29,7 @@ namespace Lookup.TSProperties.UserProperties
                 udaList.Add(new UserProperty()
                 {
                     CurrentName = entry.Key.ToString(),
-                    Value = entry.Value.ToString(),
+                    CurrentValue = entry.Value.ToString(),
                     Type = entry.GetUserPropertyType()
                 });
             }

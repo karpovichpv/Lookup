@@ -1,4 +1,5 @@
 ﻿using Lookup.Commands;
+using Lookup.Service;
 using Lookup.TSProperties;
 using Lookup.TSProperties.DynamicProperties;
 using Lookup.ViewModel.Service;
@@ -72,7 +73,7 @@ namespace Lookup.ViewModel
 
         private void UpdateCollection()
         {
-            new DynamicPropertiesUpdater(Properties, SelectedObject).Update();
+            Properties = DynamicPropertyUpdatedCollectionGetter.Get(Properties, SelectedObject.Object).ToItemsObservableCollection();
             NormalizeProperties();
         }
 

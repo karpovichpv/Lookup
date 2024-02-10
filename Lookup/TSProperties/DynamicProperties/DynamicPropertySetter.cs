@@ -19,19 +19,19 @@ namespace Lookup.TSProperties.DynamicProperties
 {
     internal static class DynamicPropertySetter
     {
-        public static string SetDynamicProperty(this object obj, string name, string value)
+        public static bool SetDynamicProperty(this object obj, string name, string value)
         {
             try
             {
                 if (obj is ModelObject modelObj)
-                    modelObj.SetDynamicStringProperty(name, value);
+                    return modelObj.SetDynamicStringProperty(name, value);
                 if (obj is ProjectInfo projectObj)
-                    projectObj.SetDynamicStringProperty(name, value);
+                    return projectObj.SetDynamicStringProperty(name, value);
             }
             catch
             { }
 
-            return null;
+            return false;
         }
     }
 }

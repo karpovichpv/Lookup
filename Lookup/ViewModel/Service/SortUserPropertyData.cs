@@ -15,7 +15,7 @@ namespace Lookup.ViewModel.Service
 
         public static ObservableCollection<UserProperty> SortByValue(this ObservableCollection<UserProperty> data)
             => data
-                .OrderBy(property => property.Value)
+                .OrderBy(property => property.CurrentValue)
                 .ToList()
                 .ToObservableCollection();
 

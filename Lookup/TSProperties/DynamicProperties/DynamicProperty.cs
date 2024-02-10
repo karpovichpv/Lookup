@@ -21,7 +21,7 @@ namespace Lookup.TSProperties.DynamicProperties
         }
 
         private string _value;
-        public string Value
+        public string CurrentValue
         {
             get
             {
@@ -30,13 +30,13 @@ namespace Lookup.TSProperties.DynamicProperties
             set
             {
                 _value = value;
-                RaisePropertyChange(nameof(Value));
+                RaisePropertyChange(nameof(CurrentValue));
             }
         }
 
         public PropertyType Type => PropertyType.String;
-
         public string PreviousName { get; set; }
+        public string PreviousValue { get; set; }
 
         private protected void RaisePropertyChange(string propertyName)
         {

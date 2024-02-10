@@ -85,7 +85,10 @@
     <Compile Include="TSProperties\DynamicProperties\DynamicProperty.cs" />
     <Compile Include="TSProperties\DynamicProperties\Service\DynamicPropertiesFileReader.cs" />
     <Compile Include="Service\BindingListService.cs" />
+    <Compile Include="TSProperties\DynamicProperties\Service\DynamicPropertyUpdatedCollectionGetter.cs" />
     <Compile Include="TSProperties\DynamicProperties\Service\DynamicPropertiesUpdater.cs" />
+    <Compile Include="TSProperties\DynamicProperties\Service\DynamicPropertyUpdater.cs" />
+    <Compile Include="TSProperties\DynamicProperties\Service\DynamicPropertyUpdateType.cs" />
     <Compile Include="TSProperties\IProperty.cs" />
     <Compile Include="TSProperties\UserProperties\Service\UserPropertyDrawingGetter.cs" />
     <Compile Include="TSProperties\UserProperties\Service\UserPropertyListExtensions.cs" />

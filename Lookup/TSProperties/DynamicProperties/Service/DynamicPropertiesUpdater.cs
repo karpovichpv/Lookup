@@ -18,21 +18,7 @@ namespace Lookup.TSProperties.DynamicProperties
         public void Update()
         {
             foreach (var prop in _collection)
-            {
-                DynamicPropertyResult propertyInObjectResult
-                    = _obj.GetDynamicPropertyResult(prop.CurrentName);
-
-                if (propertyInObjectResult.Exist)
-                    UpdateIfPropertyExists(prop, propertyInObjectResult.Value);
-
-                prop.Value = _obj.GetDynamicPropertyResult(prop.CurrentName).Value;
-            }
-        }
-
-        private void UpdateIfPropertyExists(IProperty prop, string propertyInObject)
-        {
-            if (propertyInObject != prop.Value)
-                _obj.SetDynamicProperty(prop.CurrentName, prop.Value);
+                DynamicPropertyUpdater.Update(prop, _obj);
         }
     }
 }

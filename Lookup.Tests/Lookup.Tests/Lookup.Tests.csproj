@@ -58,8 +58,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Service\BuildType.cs" />
     <Compile Include="TSProperties\DynamicProperties\DynamicPropertyGetterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\BeamBuilder.cs" />
+    <Compile Include="TSProperties\DynamicProperties\Service\DynamicPropertyUpdatedCollectionGetterTests.cs" />
+    <Compile Include="TSProperties\DynamicProperties\Service\DynamicPropertyUpdaterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

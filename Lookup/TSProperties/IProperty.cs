@@ -6,7 +6,8 @@ namespace Lookup.TSProperties
     {
         string CurrentName { get; set; }
         string PreviousName { get; set; }
-        string Value { get; set; }
+        string CurrentValue { get; set; }
+        string PreviousValue { get; set; }
         PropertyType Type { get; }
     }
 }

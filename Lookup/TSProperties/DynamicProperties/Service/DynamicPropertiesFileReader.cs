@@ -38,7 +38,7 @@ namespace Lookup.TSProperties.DynamicProperties
                 result.Add(new DynamicProperty()
                 {
                     CurrentName = line,
-                    Value = obj.GetDynamicPropertyResult(line).Value
+                    CurrentValue = obj.GetDynamicPropertyResult(line).Value
                 });
 
             return result
