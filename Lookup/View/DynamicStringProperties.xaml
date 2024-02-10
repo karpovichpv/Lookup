@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Lookup.View"
+             xmlns:local="clr-namespace:Lookup.ViewModel"
              mc:Ignorable="d" 
              DataContext="{Binding Source={StaticResource locator}, Path=DynamicStringPropertiesViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -26,9 +26,11 @@
             <TextBox  
                 MinWidth="200"
                 Grid.Column="0"
-                Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=500}"></TextBox>
-            <TextBox  Grid.Column="1" Text="{Binding Value, Mode=TwoWay}">
-            </TextBox>
+                Text="{Binding CurrentName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=500}"
+                local:InputBindingsManager.UpdatePropertySourceWhenEnterPressed="TextBox.Text"></TextBox>
+            <TextBox  Grid.Column="1" 
+                Text="{Binding CurrentValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=500}"
+                local:InputBindingsManager.UpdatePropertySourceWhenEnterPressed="TextBox.Text"></TextBox>
         </Grid>
             </DataTemplate>
         </ListView.ItemTemplate>

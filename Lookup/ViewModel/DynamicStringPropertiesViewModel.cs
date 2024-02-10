@@ -36,7 +36,11 @@ namespace Lookup.ViewModel
             set
             {
                 _selectedObject = value;
-                Properties = DynamicPropertiesFileReader.Read(SelectedObject.Object);
+                Properties = DynamicPropertiesFromFileReader
+                    .Read(SelectedObject.Object)
+                    .Normalize()
+                    .ToItemsObservableCollection();
+
                 _properties.CollectionChanged += ContentCollectionChanged;
                 RaisePropertyChange(nameof(SelectedObject));
             }
@@ -73,16 +77,10 @@ namespace Lookup.ViewModel
 
         private void UpdateCollection()
         {
-            Properties = DynamicPropertyUpdatedCollectionGetter.Get(Properties, SelectedObject.Object).ToItemsObservableCollection();
-            NormalizeProperties();
-        }
-
-        private void NormalizeProperties()
-        {
-            ItemsObservableCollection<IProperty> normalizedCollection
-                = Properties.Normalize();
-            normalizedCollection.Write();
-            Properties = normalizedCollection;
+            Properties = DynamicPropertyUpdatedCollectionGetter
+                .Get(Properties, SelectedObject.Object)
+                .Normalize()
+                .ToItemsObservableCollection();
         }
     }
 }

@@ -1,14 +1,12 @@
-﻿using Lookup.Service;
-using Lookup.ViewModel.Service;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Lookup.TSProperties.DynamicProperties
 {
     internal static class DynamicPropertiesNormalizer
     {
-        public static ItemsObservableCollection<IProperty> Normalize(
-            this ItemsObservableCollection<IProperty> inputCollection)
+        public static IEnumerable<IProperty> Normalize(
+            this IEnumerable<IProperty> inputCollection)
         {
             List<IProperty> collection = inputCollection.ToList();
             int length = collection
@@ -20,9 +18,10 @@ namespace Lookup.TSProperties.DynamicProperties
 
             if (hasMoreThanTwoEmptyItems)
             {
-                var dd = collection.Where(p => string.IsNullOrEmpty(p.CurrentName))
-                    .ToList().FirstOrDefault();
-                int index = collection.IndexOf(dd);
+                IProperty targetIndex = collection
+                    .Where(p => string.IsNullOrEmpty(p.CurrentName))
+                    .FirstOrDefault();
+                int index = collection.IndexOf(targetIndex);
                 collection.RemoveAt(index);
             }
 
@@ -30,7 +29,7 @@ namespace Lookup.TSProperties.DynamicProperties
             if (hasNoEmptyItems)
                 collection.Add(new DynamicProperty());
 
-            return collection.ToItemsObservableCollection();
+            return collection;
         }
     }
 }

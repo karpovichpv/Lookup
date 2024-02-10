@@ -27,11 +27,11 @@
                 <GridView.Columns>
                     <GridViewColumn
                         Width="200"
-                        DisplayMemberBinding="{Binding Name}"
+                        DisplayMemberBinding="{Binding CurrentName}"
                         Header="Name" />
                     <GridViewColumn
                         Width="300"
-                        DisplayMemberBinding="{Binding Value}"
+                        DisplayMemberBinding="{Binding CurrentValue}"
                         Header="Value" />
                     <GridViewColumn
                         Width="160"

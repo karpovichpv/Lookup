@@ -19,35 +19,32 @@ namespace Lookup.TSProperties.DynamicProperties
 {
     public static class DynamicPropertyGetter
     {
-        public static DynamicPropertyResult GetDynamicPropertyResult(this object obj, string propertyName)
+        public static string GetDynamicPropertyResult(this object obj, string propertyName)
         {
             if (obj is ModelObject modelObj)
                 return modelObj.GetForModelObject(propertyName);
             if (obj is ProjectInfo projectObj)
                 return projectObj.GetForProjectObject(propertyName);
 
-            return new DynamicPropertyResult(string.Empty, false);
+            return string.Empty;
         }
 
-        private static DynamicPropertyResult GetForModelObject(
+        private static string GetForModelObject(
             this ModelObject obj,
             string propertyName)
         {
             string result = string.Empty;
-            bool gettingResult
-                = obj.GetDynamicStringProperty(propertyName, ref result);
-            return new DynamicPropertyResult(result, gettingResult);
+            _ = obj.GetDynamicStringProperty(propertyName, ref result);
+            return result;
         }
 
-        private static DynamicPropertyResult GetForProjectObject(
+        private static string GetForProjectObject(
             this ProjectInfo obj,
             string propertyName)
         {
             string result = string.Empty;
-
-            bool gettingResult
-                = obj.GetDynamicStringProperty(propertyName, ref result);
-            return new DynamicPropertyResult(result, gettingResult);
+            _ = obj.GetDynamicStringProperty(propertyName, ref result);
+            return result;
         }
 
     }

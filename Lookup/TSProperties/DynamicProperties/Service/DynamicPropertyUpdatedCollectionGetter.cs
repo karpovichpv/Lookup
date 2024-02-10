@@ -21,8 +21,7 @@ namespace Lookup.TSProperties.DynamicProperties
                 DynamicPropertyUpdater.Update(prop, @object);
 
             string valueInObject = DynamicPropertyGetter
-                                .GetDynamicPropertyResult(@object, prop.CurrentName)
-                                .Value;
+                                .GetDynamicPropertyResult(@object, prop.CurrentName);
 
             return new DynamicProperty
             {
