@@ -9,10 +9,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uc="clr-namespace:Lookup.View"
     Title="{Binding Version}"
-    Width="707"
-    Height="675"
+    MinWidth="707"
+    MinHeight="675"
     ResizeMode="CanResize"
     Topmost="True"
+    SizeToContent="WidthAndHeight"
     mc:Ignorable="d">
 
     <ia:Interaction.Triggers>
@@ -24,9 +25,9 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition />
         </Grid.RowDefinitions>
-        <TabControl Grid.Row="0">
+        <TabControl Grid.Row="0" MinHeight="600">
             <TabItem Header="Main">
                 <uc:MainTabControl />
             </TabItem>
@@ -39,6 +40,6 @@
                 <uc:DynamicStringProperties></uc:DynamicStringProperties>
             </TabItem>
         </TabControl>
-        <uc:FooterButtons Grid.Row="1" />
+        <uc:FooterButtons Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" />
     </Grid>
 </Window>
