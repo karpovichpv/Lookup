@@ -6,18 +6,16 @@
     xmlns:ia="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:Lookup.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
-    mc:Ignorable="d">
-    <Grid>
+    mc:Ignorable="d"
+    >
+    <Grid VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition MinWidth="500" Width="3*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Label
             Grid.Row="0"
@@ -27,9 +25,10 @@
         <ListView
             Grid.Row="1"
             Grid.Column="0"
-            Width="145"
-            MinHeight="350"
-            MaxHeight="550"
+            MinWidth="150"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
             Margin="0,0,0,0"
             ItemsSource="{Binding Objects}"
             SelectedItem="{Binding SelectedObject}">
@@ -51,7 +50,7 @@
             Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Label
                 Grid.Column="0"
@@ -64,16 +63,14 @@
         <ListView
             Grid.Row="1"
             Grid.Column="1"
-            Width="534"
-            MinHeight="550"
-            MaxHeight="550"
+            Width="Auto"
             Margin="5,0,0,0"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
             IsSynchronizedWithCurrentItem="True"
             ItemContainerStyle="{StaticResource ListViewItemData}"
             ItemsSource="{Binding Data}"
-            ScrollViewer.VerticalScrollBarVisibility="Visible"
             SelectedItem="{Binding SelectedData}">
             <ia:Interaction.Triggers>
                 <ia:EventTrigger EventName="MouseDoubleClick">
@@ -82,34 +79,23 @@
             </ia:Interaction.Triggers>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border
-                        BorderBrush="Black"
-                        BorderThickness="0"
-                        Style="{StaticResource BorderHeader}">
-                        <Grid Margin="0">
+                        <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="200" />
-                                <ColumnDefinition Width="310" />
+                                <ColumnDefinition MinWidth="220" Width="1*" />
+                                <ColumnDefinition Width="3*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <Border
-                                Grid.Column="0"
-                                Style="{StaticResource BorderData}">
-                                <Label
+                                <Label 
+                                 Grid.Column="0"
                                     Content="{Binding Label, Mode=OneWay}"
                                     Style="{StaticResource LabelData}" />
-                            </Border>
-                            <Border
-                                Grid.Column="1"
-                                Style="{StaticResource BorderData}">
-                                <TextBox
+                                <TextBox  
+                                 Grid.Column="1"
                                     Style="{StaticResource TextBoxData}"
                                     Text="{Binding Value, Mode=OneWay}" />
-                            </Border>
                         </Grid>
-                    </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

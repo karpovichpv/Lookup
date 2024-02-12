@@ -9,8 +9,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uc="clr-namespace:Lookup.View"
     Title="{Binding Version}"
-    MinWidth="707"
-    MinHeight="675"
     ResizeMode="CanResize"
     Topmost="True"
     SizeToContent="WidthAndHeight"
@@ -24,10 +22,11 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TabControl Grid.Row="0" MinHeight="600">
+        <TabControl Grid.Row="0"
+                    VerticalAlignment="Stretch">
             <TabItem Header="Main">
                 <uc:MainTabControl />
             </TabItem>

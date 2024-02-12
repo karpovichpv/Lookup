@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:Lookup.ViewModel"
              mc:Ignorable="d" 
              DataContext="{Binding Source={StaticResource locator}, Path=DynamicStringPropertiesViewModel}"
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             >
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition MinWidth="207" Width="1*"/>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
@@ -15,7 +15,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
             
             <Label  
@@ -30,6 +30,7 @@
     <ListView Name="lb"
     Grid.ColumnSpan="2"
     Grid.Row="1"
+    VerticalAlignment="Stretch"
               Width="Auto"
               Padding="0"
               HorizontalContentAlignment="Stretch"
@@ -42,8 +43,8 @@
         <Grid x:Name="grid" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
             
             <TextBox  
                 MinWidth="200"
