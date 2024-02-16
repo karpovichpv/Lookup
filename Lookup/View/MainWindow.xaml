@@ -11,9 +11,11 @@
     Title="{Binding Version}"
     ResizeMode="CanResize"
     Topmost="True"
-    SizeToContent="WidthAndHeight"
     mc:Ignorable="d"
-    MinHeight="500">
+    MinHeight="500"
+    MaxHeight="700"
+    MinWidth="200"
+    MaxWidth="800">
 
     <ia:Interaction.Triggers>
         <ia:EventTrigger EventName="Loaded">

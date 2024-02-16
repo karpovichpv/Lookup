@@ -14,9 +14,9 @@
     <SourcePathVariable Id="SourceId1" Value="%InstallerFolder%\macros" />
       </SourcePathVariables>
   <TargetPathVariables>
-    <PathVariable Id="TargetId0" Value="%ENVDIR%\common\extensions" />
+    <PathVariable Id="TargetId0" Value="%ENVDIR%\common\extensions\Lookup" />
     <PathVariable Id="TargetId1" Value="%ENVDIR%\common\macros\modeling" />
-    <PathVariable Id="TargetId2" Value="%ENVDIR%\common\macros\drawing" />
+    <PathVariable Id="TargetId2" Value="%ENVDIR%\common\macros\drawings" />
   </TargetPathVariables>
   <Component Id="TheExtensionComponent" Guid="95bd6dcb-82e6-4595-bf87-19ab940efd74">
     <File Id="FileId0" Source="%SourceId0%\*.*" Target="%TargetId0%" Recursive="yes" />

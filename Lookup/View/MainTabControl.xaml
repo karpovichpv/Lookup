@@ -9,8 +9,8 @@
     mc:Ignorable="d">
     <Grid VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition MinWidth="500" Width="3*" />
+            <ColumnDefinition MinWidth="100" Width="1*" />
+            <ColumnDefinition MinWidth="400" Width="3*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

@@ -9,7 +9,7 @@ namespace Service
         {
             string dllName = "Lookup.exe";
             string solutionPath = solution.Directory;
-            string originPath = Path.Combine(solutionPath, $"bin\\Release\\{dllName}");
+            string originPath = Path.Combine(solutionPath, $"Lookup\\bin\\Release\\{dllName}");
             string targetPath = Path.Combine(solutionPath, $"TSEP\\dll\\{dllName}");
 
             bool isFileExists = File.Exists(targetPath);
