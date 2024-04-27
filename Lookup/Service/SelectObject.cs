@@ -1,29 +1,12 @@
 ﻿// This file is part of Lookup.
 // Lookup is free software: you can redistribute it and/or modify it under
-// the terms of the GNU General Public License as published by the
-// Free Software Foundation, either version 3 of the License,
-// or (at your option) any later version.
-//
-// Lookup is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty
-// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-// See the GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Lookup. If not, see <https://www.gnu.org/licenses/>.
-
-using System;
+using Lookup.Service;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Tekla.Structures.Model;
+using tsd = Tekla.Structures.Drawing;
+using tsdui = Tekla.Structures.Drawing.UI;
 using tsm = Tekla.Structures.Model;
 using tsmui = Tekla.Structures.Model.UI;
-using tsdui = Tekla.Structures.Drawing.UI;
-using tsd = Tekla.Structures.Drawing;
-using Lookup.Service;
-using System.Net.NetworkInformation;
-using Tekla.Structures.Model;
 
 namespace Lookup
 {
@@ -60,7 +43,7 @@ namespace Lookup
                     selectedObjects = ObservableCollectionService.GetObjFromEnumerator(modelEnumerator).ToTSObjects();
                 else
                 {
-                    Model model = new Model(); 
+                    Model model = new Model();
                     TSObject modelTSObj = new TSObject() { Name = model.GetType().Name, Object = model };
                     selectedObjects = new List<TSObject> { modelTSObj };
                 }
