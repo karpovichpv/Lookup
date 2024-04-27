@@ -232,8 +232,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(ProjectDir)bin\Debug\Lookup.exe" "C:\TeklaStructures\2021.0\Environments\common\extensions\" /Y
-copy "$(ProjectDir)bin\Debug\Microsoft.Xaml.Behaviors.dll" "C:\TeklaStructures\2021.0\Environments\common\extensions\" /Y
+    <PostBuildEvent>copy "$(ProjectDir)bin\Debug\Lookup.exe" "C:\TeklaStructures\2021.0\Environments\common\extensions\Lookup\" /Y
+copy "$(ProjectDir)bin\Debug\Microsoft.Xaml.Behaviors.dll" "C:\TeklaStructures\2021.0\Environments\common\extensions\Lookup\" /Y
 copy "$(ProjectDir)\Macros\Lookup.cs" "C:\TeklaStructures\2021.0\Environments\common\macros\drawings\" /Y
 copy "$(ProjectDir)\Macros\Lookup.cs" "C:\TeklaStructures\2021.0\Environments\common\macros\modeling\" /Y
 copy "$(ProjectDir)\Macros\Lookup.bmp" "C:\TeklaStructures\2021.0\Environments\common\macros\drawings\" /Y
