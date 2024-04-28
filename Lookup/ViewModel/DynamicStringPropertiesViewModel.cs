@@ -80,6 +80,7 @@ namespace Lookup.ViewModel
             Properties = DynamicPropertyUpdatedCollectionGetter
                 .Get(Properties, SelectedObject.Object)
                 .Normalize()
+                .Write()
                 .ToItemsObservableCollection();
         }
     }

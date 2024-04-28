@@ -11,7 +11,6 @@ namespace Lookup.Service
         public static ItemsObservableCollection<T> ToItemsObservableCollection<T>(
             this IEnumerable<T> collection)
             where T : INotifyPropertyChanged
-
         {
             var c = new ItemsObservableCollection<T>();
             try
