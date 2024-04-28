@@ -10,7 +10,7 @@ namespace Tekla.Technology.Akit.UserScript
         public static void Run(Tekla.Technology.Akit.IScript akit)
         {
             var runLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var appLocation = Path.GetFullPath(runLocation + "\\..\\..\\..\\common\\extensions\\Lookup.exe");
+            var appLocation = Path.GetFullPath(runLocation + "\\..\\..\\..\\common\\extensions\\Lookup\\Lookup.exe");
 
             if (File.Exists(appLocation))
             {
