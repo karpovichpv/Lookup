@@ -85,6 +85,7 @@
     <Compile Include="TSProperties\DynamicProperties\DynamicProperty.cs" />
     <Compile Include="TSProperties\DynamicProperties\Service\DynamicPropertiesFromFileReader.cs" />
     <Compile Include="Service\BindingListService.cs" />
+    <Compile Include="TSProperties\DynamicProperties\Service\DynamicPropertiesObjectChecker.cs" />
     <Compile Include="TSProperties\DynamicProperties\Service\DynamicPropertyUpdatedCollectionGetter.cs" />
     <Compile Include="TSProperties\DynamicProperties\Service\DynamicPropertiesUpdater.cs" />
     <Compile Include="TSProperties\DynamicProperties\Service\DynamicPropertyUpdater.cs" />
@@ -150,9 +151,6 @@
     <Compile Include="View\UserPropertiesControl.xaml.cs">
       <DependentUpon>UserPropertiesControl.xaml</DependentUpon>
     </Compile>
-    <None Include="TSEP\buildTsep.ps1" />
-    <None Include="TSEP\macros\Lookup.cs" />
-    <None Include="TSEP\macros\Lookup.bmp" />
     <Page Include="ViewAbout\About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -216,9 +214,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="TSEP\Lookup.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DynamicStringProperties.lkp">

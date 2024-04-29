@@ -2,6 +2,7 @@
 using Lookup.Service;
 using Lookup.TSProperties;
 using Lookup.TSProperties.DynamicProperties;
+using Lookup.TSProperties.DynamicProperties.Service;
 using Lookup.ViewModel.Service;
 using System;
 using System.Collections.Specialized;
@@ -42,6 +43,8 @@ namespace Lookup.ViewModel
                     .ToItemsObservableCollection();
 
                 _properties.CollectionChanged += ContentCollectionChanged;
+
+                RaisePropertyChange(nameof(CheckIfCanGet));
                 RaisePropertyChange(nameof(SelectedObject));
             }
         }
@@ -62,6 +65,19 @@ namespace Lookup.ViewModel
 
         public void SetSelectedObject(TSObject selectedObject)
             => SelectedObject = selectedObject;
+
+        private bool _checkIfCanGet;
+        public bool CheckIfCanGet
+        {
+            get
+            {
+                return DynamicPropertiesObjectChecker.CheckIfPossibleGet(SelectedObject);
+            }
+            set
+            {
+                RaisePropertyChange(nameof(CheckIfCanGet));
+            }
+        }
 
         public RelayCommand UpdateDynamicStringPropertyFile
         {

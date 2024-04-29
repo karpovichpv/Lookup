@@ -3,6 +3,7 @@
 using Lookup.Collectors;
 using Lookup.Commands;
 using Lookup.Service;
+using Lookup.TSProperties.DynamicProperties.Service;
 using Lookup.TSProperties.ReportProperty;
 using Lookup.ViewAbout;
 using Lookup.ViewModel.Service;
@@ -66,6 +67,18 @@ namespace Lookup.ViewModel
                     (_getSelectedObjectsFromModel = new RelayCommand(
                         obj => new About().Show(),
                         obj => true)
+                    );
+            }
+        }
+
+        public RelayCommand IfPossibleShowDynamicStringProperties
+        {
+            get
+            {
+                return
+                    (_getSelectedObjectsFromModel = new RelayCommand(
+                        obj => { },
+                        obj => DynamicPropertiesObjectChecker.CheckIfPossibleGet(SelectedObject))
                     );
             }
         }
