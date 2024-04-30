@@ -6,7 +6,7 @@ namespace Lookup.TSProperties.DynamicProperties
 {
     internal static class DynamicPropertiesFileWriter
     {
-        public static void Write(this IEnumerable<IProperty> properties)
+        public static IEnumerable<IProperty> Write(this IEnumerable<IProperty> properties)
         {
             string filePath = DynamicPropertiesFile.GetPath();
 
@@ -14,6 +14,7 @@ namespace Lookup.TSProperties.DynamicProperties
                 DynamicPropertiesFile.Create();
 
             WriteFile(properties, filePath);
+            return properties;
         }
 
         private static void WriteFile(IEnumerable<IProperty> properties, string filePath)
@@ -21,8 +22,8 @@ namespace Lookup.TSProperties.DynamicProperties
             string[] names = properties.Select(p => p.CurrentName).ToArray();
             string resultString = string.Join("\r\n", names);
 
-            using (var streamWriter = File.CreateText(filePath))
-                streamWriter.Write(resultString);
+            using var streamWriter = File.CreateText(filePath);
+            streamWriter.Write(resultString);
         }
     }
 }

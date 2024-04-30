@@ -38,8 +38,8 @@
                 Header="User-properties">
                 <uc:UserPropertiesControl />
             </TabItem>
-            <TabItem Header="Dynamic String Properties">
-                <uc:DynamicStringProperties></uc:DynamicStringProperties>
+            <TabItem Header="Dynamic String Properties" >
+                <uc:DynamicStringProperties IsEnabled="{Binding IfPossibleShowDynamicStringProperties}"></uc:DynamicStringProperties>
             </TabItem>
         </TabControl>
         <uc:FooterButtons Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" />

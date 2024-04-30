@@ -9,7 +9,7 @@ namespace Lookup.TSProperties.DynamicProperties
         public static string GetPath()
         {
             string codeBase = Assembly.GetExecutingAssembly().CodeBase;
-            UriBuilder builder = new UriBuilder(codeBase);
+            UriBuilder builder = new(codeBase);
             string path = Uri.UnescapeDataString(builder.Path);
             string directory = Path.GetDirectoryName(path);
             string filePath = Path.Combine(directory, "DynamicStringProperties.lkp");

@@ -1,20 +1,9 @@
 ﻿// This file is part of Lookup.
 // Lookup is free software: you can redistribute it and/or modify it under
-// the terms of the GNU General Public License as published by the
-// Free Software Foundation, either version 3 of the License,
-// or (at your option) any later version.
-//
-// Lookup is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty
-// of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-// See the GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Lookup. If not, see <https://www.gnu.org/licenses/>.
-
 using Lookup.Collectors;
 using Lookup.Commands;
 using Lookup.Service;
+using Lookup.TSProperties.DynamicProperties.Service;
 using Lookup.TSProperties.ReportProperty;
 using Lookup.ViewAbout;
 using Lookup.ViewModel.Service;
@@ -78,6 +67,18 @@ namespace Lookup.ViewModel
                     (_getSelectedObjectsFromModel = new RelayCommand(
                         obj => new About().Show(),
                         obj => true)
+                    );
+            }
+        }
+
+        public RelayCommand IfPossibleShowDynamicStringProperties
+        {
+            get
+            {
+                return
+                    (_getSelectedObjectsFromModel = new RelayCommand(
+                        obj => { },
+                        obj => DynamicPropertiesObjectChecker.CheckIfPossibleGet(SelectedObject))
                     );
             }
         }
