@@ -44,8 +44,6 @@ You need to put latest tsep file in a folder **\TeklaStructures\2020.0\Extension
 
 If anybody wants to join the development - just write me on my email - **karpovich.pavel@gmail.com**
 
-
-
 ## License
 
-GPL v.3.0
+MIT License
