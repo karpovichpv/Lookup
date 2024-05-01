@@ -22,18 +22,18 @@ The code of the program works through the .Net Framework System.Reflection mecha
 
 ## Installation
 
-You need to put latest tsep file in a folder **\TeklaStructures\2020.0\Extensions\To be installed** and restart TeklaStructures. After this the application will install to a folder **\Environments\common\extensions** and you will able to use it.
+You need to put latest tsep file in a folder ``\TeklaStructures\202*.0\Extensions\To be installed`` and restart TeklaStructures. After this the application will be installed to the folder **\Environments\common\extensions**.
 
 ## Usage
 
 <img src="https://github.com/karpovichpv/Lookup/blob/master/Docs/Screenshots/Lookup_GIF_usage.gif" alt="Lookup. Main window" width="700"/>
 
-1. When your Tekla Structures is running find on "Applications & components" panel **Lookup** application and click twice on it
-2. If you selected some elements in a model (or drawing) information about them will appear in the Lookup tabs. Otherwise Lookup will try to get info from the current model (or drawing)
-3. Buttons
-    - button **Snoop** allows to get API information for the current selected object. The same action also possible to do with double click on the object you are intersting in.
-    - button **Get selected objects** gathers information about all selected objects and it to the "Objects" list. If nothing is select information will from the current model or drawing
-4. In the left list you possibly will see that some elements are **in bold** that means that you by double mouse click can "walk down" and watch properties for this element.
+1. When your Tekla Structures is running find on the "Applications & components" panel the **Lookup** application and click twice on it
+2. If you selected some elements in a model (or drawing) the information about them will appear on the Lookup tabs. Otherwise Lookup will try to get the info from the current model (or drawing)
+3. The **Get selected objects** button gathers information about all selected objects and it to the "Objects" list. If nothing is select information will from the current model or drawing
+4. In the left list you possibly will see that some elements are **in bold** that means that you by double mouse click can "walk down" and watch properties for this sub element - just try it and you understand how it's work
+5. On the User-properties tab it's possible to observe UDA for model, drawing objects or for the ProjectInfo
+6. On the Dynamic String Properties tab you can read and write dynamic string properties for ModelObjects or a ProjectInfo. It's important to understand that the TeklaStructures API cannot give the list of used DynamicStringProperties names for the selected element unlike as for an ordinary UDA. That's why you need type you own names which will be stored in the DynamicStringProperties.lkp file near the Lookup.exe file. It's prevent for typing names again. Changes in the TeklaStructures database will apear only after you will push the Enter on your keyboard
 
 ## Roadmap
 
