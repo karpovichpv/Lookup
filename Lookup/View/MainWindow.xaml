@@ -9,13 +9,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uc="clr-namespace:Lookup.View"
     Title="{Binding Version}"
+    MinWidth="200"
+    MinHeight="500"
+    MaxWidth="800"
+    MaxHeight="700"
     ResizeMode="CanResize"
     Topmost="True"
-    mc:Ignorable="d"
-    MinHeight="500"
-    MaxHeight="700"
-    MinWidth="200"
-    MaxWidth="800">
+    mc:Ignorable="d">
 
     <ia:Interaction.Triggers>
         <ia:EventTrigger EventName="Loaded">
@@ -26,22 +26,22 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TabControl Grid.Row="0"
-                    VerticalAlignment="Stretch">
+        <TabControl Grid.Row="0" VerticalAlignment="Stretch">
             <TabItem Header="Main">
                 <uc:MainTabControl />
             </TabItem>
-            <TabItem
-                x:Name="tbiUserProperties"
-                Header="User-properties">
+            <TabItem x:Name="tbiUserProperties" Header="User-properties">
                 <uc:UserPropertiesControl />
             </TabItem>
-            <TabItem Header="Dynamic String Properties" >
-                <uc:DynamicStringProperties IsEnabled="{Binding IfPossibleShowDynamicStringProperties}"></uc:DynamicStringProperties>
+            <TabItem Header="Dynamic String Properties">
+                <uc:DynamicStringProperties />
             </TabItem>
         </TabControl>
-        <uc:FooterButtons Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" />
+        <uc:FooterButtons
+            Grid.Row="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom" />
     </Grid>
 </Window>
