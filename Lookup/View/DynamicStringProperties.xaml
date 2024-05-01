@@ -1,68 +1,68 @@
-﻿<UserControl x:Class="Lookup.View.DynamicStringProperties"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Lookup.ViewModel"
-             mc:Ignorable="d" 
-             DataContext="{Binding Source={StaticResource locator}, Path=DynamicStringPropertiesViewModel}"
-
-             >
-    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition MinWidth="207" Width="1*"/>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+﻿<UserControl
+    x:Class="Lookup.View.DynamicStringProperties"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Lookup.ViewModel"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding Source={StaticResource locator}, Path=DynamicStringPropertiesViewModel}"
+    mc:Ignorable="d">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" MinWidth="207" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-            
-            <Label  
-                MinWidth="200"
-                Grid.Row="0"
-                Margin="7,0,0,0"
-                Grid.Column="0"
-                Content="Name"></Label>
-            <Label  Grid.Column="1" 
-                Grid.Row="0"
-                Content="Value"></Label>
-    <ListView Name="lb" IsEnabled="{Binding CheckIfCanGet}"
 
-    Grid.ColumnSpan="2"
-    Grid.Row="1"
-    VerticalAlignment="Stretch"
-              Width="Auto"
-              Padding="0"
-              HorizontalContentAlignment="Stretch"
-              ItemsSource="{Binding Properties, Mode=TwoWay}">
-        <ListView.InputBindings>
-            <KeyBinding Command="{Binding UpdateDynamicStringPropertyFile}" Key="Enter"></KeyBinding>
-        </ListView.InputBindings>
-        <ListView.ItemTemplate>
-            <DataTemplate>
-        <Grid x:Name="grid" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="3*"/>
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            MinWidth="200"
+            Margin="7,0,0,0"
+            Content="Name" />
+        <Label
+            Grid.Row="0"
+            Grid.Column="1"
+            Content="Value" />
+        <ListView
+            Name="lb"
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Width="Auto"
+            Padding="0"
+            VerticalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
+            IsEnabled="{Binding CheckIfCanGet}"
+            ItemsSource="{Binding Properties, Mode=TwoWay}">
+            <ListView.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding UpdateDynamicStringPropertyFile}" />
+            </ListView.InputBindings>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid x:Name="grid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="3*" />
                         </Grid.ColumnDefinitions>
-            
-            <TextBox  
-                MinWidth="200"
-                Grid.Column="0" IsEnabled="{Binding CheckIfCanGet}"
-                Text="{Binding CurrentName, Mode=TwoWay, UpdateSourceTrigger=Default}"
-                local:InputBindingsManager.UpdatePropertySourceWhenEnterPressed="TextBox.Text"
-                Style="{StaticResource DynamicStringPropertyTextBox}">
-                        </TextBox>
-            <TextBox  Grid.Column="1" 
-IsEnabled="{Binding CheckIfCanGet}"
-                      Text="{Binding CurrentValue, Mode=TwoWay, UpdateSourceTrigger=Default}"
-                      Style="{StaticResource DynamicStringPropertyTextBox}"
-                      local:InputBindingsManager.UpdatePropertySourceWhenEnterPressed="TextBox.Text"></TextBox>
-        </Grid>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-    </Grid>  
+
+                        <TextBox
+                            Grid.Column="0"
+                            MinWidth="200"
+                            local:InputBindingsManager.UpdatePropertySourceWhenEnterPressed="TextBox.Text"
+                            Style="{StaticResource DynamicStringPropertyTextBox}"
+                            Text="{Binding CurrentName, Mode=TwoWay, UpdateSourceTrigger=Default}" />
+                        <TextBox
+                            Grid.Column="1"
+                            local:InputBindingsManager.UpdatePropertySourceWhenEnterPressed="TextBox.Text"
+                            Style="{StaticResource DynamicStringPropertyTextBox}"
+                            Text="{Binding CurrentValue, Mode=TwoWay, UpdateSourceTrigger=Default}" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
 </UserControl>

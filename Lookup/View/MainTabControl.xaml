@@ -9,8 +9,8 @@
     mc:Ignorable="d">
     <Grid VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="100" Width="1*" />
-            <ColumnDefinition MinWidth="400" Width="3*" />
+            <ColumnDefinition Width="1*" MinWidth="100" />
+            <ColumnDefinition Width="3*" MinWidth="400" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -25,10 +25,10 @@
             Grid.Row="1"
             Grid.Column="0"
             MinWidth="150"
+            Margin="0,0,0,0"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             HorizontalContentAlignment="Stretch"
-            Margin="0,0,0,0"
             ItemsSource="{Binding Objects}"
             SelectedItem="{Binding SelectedObject}">
             <ia:Interaction.Triggers>
@@ -38,15 +38,11 @@
             </ia:Interaction.Triggers>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Label
-                        Padding="2"
-                        Content="{Binding Name}" />
+                    <Label Padding="2" Content="{Binding Name}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Grid
-            Grid.Row="0"
-            Grid.Column="1">
+        <Grid Grid.Row="0" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="*" />
@@ -55,9 +51,7 @@
                 Grid.Column="0"
                 Margin="5,0,0,0"
                 Content="Label" />
-            <Label
-                Grid.Column="1"
-                Content="Value" />
+            <Label Grid.Column="1" Content="Value" />
         </Grid>
         <ListView
             Grid.Row="1"
@@ -78,23 +72,23 @@
             </ia:Interaction.Triggers>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition MinWidth="220" Width="1*" />
-                                <ColumnDefinition Width="3*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                                <Label 
-                                 Grid.Column="0"
-                                    Content="{Binding Label, Mode=OneWay}"
-                                    Style="{StaticResource LabelData}" />
-                                <TextBox  
-                                 Grid.Column="1"
-                                    Style="{StaticResource TextBoxData}"
-                                    Text="{Binding Value, Mode=OneWay}" />
-                        </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" MinWidth="220" />
+                            <ColumnDefinition Width="3*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.Column="0"
+                            Content="{Binding Label, Mode=OneWay}"
+                            Style="{StaticResource LabelData}" />
+                        <TextBox
+                            Grid.Column="1"
+                            Style="{StaticResource TextBoxData}"
+                            Text="{Binding Value, Mode=OneWay}" />
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
