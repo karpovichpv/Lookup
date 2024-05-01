@@ -3,13 +3,13 @@
 <img src="https://github.com/karpovichpv/Lookup/assets/66169282/e63a1c4a-e216-4aa0-bd26-dc4247b62d21" alt="The Lookup for the TeklaStructures. The main window" width="700"/>
 
 This app is a kind of analog of the [RevitLookup](https://github.com/jeremytammik/RevitLookup) but only for the TeklaStructures. 
-It's possible to do next actions with it:
+It's possible to do next actions for a selected element with it:
 
 1. See all possible names of **fields**, **properties**, **methods** (both private and public)
 2. Browse all kinds of **values** of private and public fields and properties
 3. **Get** and **browse values** of private and public **methods**, which don't require setting any parameters
-4. View user properties for a selected element
-5. Read/Write dynamic string properties for the selected element
+4. View user properties
+5. Read/Write dynamic string properties
 
 The code of the program works through the .Net Framework System.Reflection mechanism and gives to a user all information that it's possible to take from the TeklaStructures API.
 
