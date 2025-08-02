@@ -23,7 +23,7 @@ namespace Lookup.ViewModel
             {
                 _selectedData = value;
                 UDAObjects = UserPropertyGetter.GetAttributeList(value.Object).ToObservableCollection();
-                RaisePropertyChange("SelectedData");
+                RaisePropertyChange(nameof(SelectedObject));
             }
         }
 
@@ -35,7 +35,7 @@ namespace Lookup.ViewModel
             set
             {
                 _udaObjects = value.SortByName();
-                RaisePropertyChange("UDAObjects");
+                RaisePropertyChange(nameof(UDAObjects));
             }
         }
 
