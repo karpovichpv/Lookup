@@ -22,20 +22,20 @@ namespace Lookup.ViewModel
             set
             {
                 _selectedData = value;
-                UDAObjects = UserPropertyGetter.GetAttributeList(value.Object).ToObservableCollection();
+                PropertyObjects = UserPropertyGetter.GetAttributeList(value.Object).ToObservableCollection();
                 RaisePropertyChange(nameof(SelectedObject));
             }
         }
 
         private ObservableCollection<UserProperty> _udaObjects;
 
-        public ObservableCollection<UserProperty> UDAObjects
+        public ObservableCollection<UserProperty> PropertyObjects
         {
             get => _udaObjects;
             set
             {
                 _udaObjects = value.SortByName();
-                RaisePropertyChange(nameof(UDAObjects));
+                RaisePropertyChange(nameof(PropertyObjects));
             }
         }
 

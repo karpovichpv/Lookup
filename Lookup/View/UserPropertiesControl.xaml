@@ -12,7 +12,7 @@
         MaxHeight="575"
         HorizontalAlignment="Stretch"
         VerticalAlignment="Top"
-        ItemsSource="{Binding UDAObjects}">
+        ItemsSource="{Binding PropertyObjects}">
         <ListView.Resources>
             <Style TargetType="{x:Type GridViewColumnHeader}">
                 <Setter Property="HorizontalContentAlignment" Value="Left" />

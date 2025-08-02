@@ -136,7 +136,7 @@
     <Compile Include="ViewModel\Service\SortUserPropertyData.cs" />
     <Compile Include="ViewModel\UserPropertiesViewModel.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelAbout.cs" />
+    <Compile Include="ViewModel\AboutViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\DynamicStringProperties.xaml.cs">
