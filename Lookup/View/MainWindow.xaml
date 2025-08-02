@@ -33,7 +33,7 @@
                 <uc:MainTabControl />
             </TabItem>
             <TabItem x:Name="tbiUserProperties" Header="User-properties">
-                <uc:UserPropertiesControl />
+                <uc:UserPropertiesControl DataContext="{Binding Source={StaticResource locator}, Path=UserPropertiesViewModel}" />
             </TabItem>
             <TabItem Header="Dynamic String Properties">
                 <uc:DynamicStringProperties />
