@@ -66,7 +66,6 @@ namespace Lookup.ViewModel
         public void SetSelectedObject(TSObject selectedObject)
             => SelectedObject = selectedObject;
 
-        private readonly bool _checkIfCanGet;
         public bool CheckIfCanGet
         {
             get
