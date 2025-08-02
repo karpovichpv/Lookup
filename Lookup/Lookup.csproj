@@ -148,8 +148,8 @@
     <Compile Include="View\FooterButtons.xaml.cs">
       <DependentUpon>FooterButtons.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserPropertiesControl.xaml.cs">
-      <DependentUpon>UserPropertiesControl.xaml</DependentUpon>
+    <Compile Include="View\PropertiesControl.xaml.cs">
+      <DependentUpon>PropertiesControl.xaml</DependentUpon>
     </Compile>
     <Page Include="ViewAbout\About.xaml">
       <SubType>Designer</SubType>
@@ -183,7 +183,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserPropertiesControl.xaml">
+    <Page Include="View\PropertiesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
