@@ -55,17 +55,17 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="Tekla.Structures, Version=2022.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+    <Reference Include="Tekla.Structures, Version=2023.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>References\2022\Tekla.Structures.dll</HintPath>
+      <HintPath>References\2021\Tekla.Structures.dll</HintPath>
     </Reference>
-    <Reference Include="Tekla.Structures.Drawing, Version=2022.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+    <Reference Include="Tekla.Structures.Drawing, Version=2023.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>References\2022\Tekla.Structures.Drawing.dll</HintPath>
+      <HintPath>References\2021\Tekla.Structures.Drawing.dll</HintPath>
     </Reference>
-    <Reference Include="Tekla.Structures.Model, Version=2022.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+    <Reference Include="Tekla.Structures.Model, Version=2023.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>References\2022\Tekla.Structures.Model.dll</HintPath>
+      <HintPath>References\2021\Tekla.Structures.Model.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
