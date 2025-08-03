@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Lookup.TSProperties.ReportProperty;
+using System.Collections.Generic;
 using Tekla.Structures.Model;
-using tsd = Tekla.Structures.Drawing;
 
 namespace Lookup.TSProperties.UserProperties
 {
@@ -11,13 +11,10 @@ namespace Lookup.TSProperties.UserProperties
             try
             {
                 if (obj is ModelObject modelObj)
-                    return modelObj.GetUserProperties();
-                if (obj is ProjectInfo projectObj)
-                    return projectObj.GetUserProperties();
-                if (obj is tsd.Drawing drawingObj)
-                    return drawingObj.GetUserProperties();
-                if (obj is tsd.ModelObject tsdModelObj)
-                    return tsdModelObj.GetUserProperties();
+                {
+                    ResultValuesServiceNew service = new ResultValuesServiceNew(modelObj);
+                    return service.Get();
+                }
             }
             catch
             { }

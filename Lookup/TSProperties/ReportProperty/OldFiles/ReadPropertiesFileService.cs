@@ -6,7 +6,7 @@ namespace Lookup.TSProperties.ReportProperty
 {
     internal class ReadPropertiesFileService
     {
-        public List<PossiblePropertyQuery> Read()
+        public IEnumerable<PossiblePropertyQuery> Read()
         {
             string[] queryRows = FileService.Read("1.lst");
 
@@ -18,20 +18,24 @@ namespace Lookup.TSProperties.ReportProperty
         private List<PossiblePropertyQuery> GetPropertyQueriesDb(string[] rows)
         {
             var fileData = new List<PossiblePropertyQuery>();
-            var propertyTypeReadService = new FileTypeService();
+            //var propertyTypeReadService = new FileTypeService();
             foreach (string row in rows)
             {
-                string[] data = row.Split(new string[] { " = " },
+                string handeledRow = row.Replace("\"", "");
+                string[] data = row.Split(new string[] { " " },
                     StringSplitOptions.RemoveEmptyEntries);
-                string endQueryName = GetLastPart(data[1]);
 
-                Type type = propertyTypeReadService.GetType(endQueryName);
+                Type type = null;
+                if (data.Length >= 2)
+                {
+                    type = GetTypeByStringDescription(data[1]);
 
-                if (type != null)
-                    fileData.Add(GetPropertyDataForDefinedType(data, type));
+                    if (type != null)
+                        fileData.Add(GetPropertyDataForDefinedType(data, type));
 
-                if (type == null)
-                    fileData.AddRange(GetPropertiesForNonDefinedType(data));
+                    if (type == null)
+                        fileData.AddRange(GetPropertiesForNonDefinedType(data));
+                }
             }
 
             return fileData;
@@ -44,7 +48,7 @@ namespace Lookup.TSProperties.ReportProperty
             {
                 Name = data[0],
                 Type = typeof(double),
-                QueryString = data[1],
+                QueryString = data[0],
             };
             fileData.Add(propertyData1);
 
@@ -52,7 +56,7 @@ namespace Lookup.TSProperties.ReportProperty
             {
                 Name = data[0],
                 Type = typeof(string),
-                QueryString = data[1],
+                QueryString = data[0],
             };
             fileData.Add(propertyData2);
 
@@ -60,7 +64,7 @@ namespace Lookup.TSProperties.ReportProperty
             {
                 Name = data[0],
                 Type = typeof(int),
-                QueryString = data[1],
+                QueryString = data[0],
             };
             fileData.Add(propertyData3);
 
@@ -71,7 +75,7 @@ namespace Lookup.TSProperties.ReportProperty
             => new PossiblePropertyQuery()
             {
                 Name = data[0],
-                QueryString = data[1],
+                QueryString = data[0],
                 Type = type,
             };
 
@@ -81,6 +85,21 @@ namespace Lookup.TSProperties.ReportProperty
             string lastPart = strings.LastOrDefault();
             string[] lastPartStrings = lastPart.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
             return strings.FirstOrDefault();
+        }
+
+        private Type GetTypeByStringDescription(string type)
+        {
+            switch (type)
+            {
+                case ("CHARACTER"):
+                    return typeof(string);
+                case ("INTEGER"):
+                    return typeof(int);
+                case ("FLOAT"):
+                    return typeof(double);
+                default:
+                    return null;
+            }
         }
     }
 }

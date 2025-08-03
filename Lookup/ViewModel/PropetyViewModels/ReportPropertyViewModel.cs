@@ -6,7 +6,7 @@ namespace Lookup.ViewModel.PropetyViewModels
     {
         public ReportPropertyViewModel()
         {
-            _getter = new UserPropertyGetter();
+            _getter = new ReportPropertyGetter();
             Mediator.GetInstance().SetReportPropertiesModel(this);
         }
     }

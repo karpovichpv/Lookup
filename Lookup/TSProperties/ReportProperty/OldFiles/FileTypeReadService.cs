@@ -24,7 +24,7 @@ namespace Lookup.TSProperties.ReportProperty
 
         private List<QueryType> GetQueryTypesDb()
         {
-            string[] typeRows = FileService.Read("type.lst");
+            string[] typeRows = FileService.Read("1.lst");
             List<QueryType> types = new List<QueryType>();
             foreach (string row in typeRows)
             {
