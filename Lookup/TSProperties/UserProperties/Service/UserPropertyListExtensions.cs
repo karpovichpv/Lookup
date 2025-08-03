@@ -5,12 +5,12 @@ namespace Lookup.TSProperties.UserProperties
 {
     internal static class UserPropertyListExtensions
     {
-        public static List<UserProperty> ToUserPropertiesList<T, K>(this Dictionary<T, K> dictionary, PropertyType type)
+        public static List<Property> ToUserPropertiesList<T, K>(this Dictionary<T, K> dictionary, PropertyType type)
         {
-            List<UserProperty> udaList = new List<UserProperty>();
+            List<Property> udaList = new List<Property>();
             foreach (KeyValuePair<T, K> entry in dictionary)
             {
-                udaList.Add(new UserProperty()
+                udaList.Add(new Property()
                 {
                     CurrentName = entry.Key.ToString(),
                     CurrentValue = entry.Value.ToString(),
@@ -20,13 +20,13 @@ namespace Lookup.TSProperties.UserProperties
             return udaList;
         }
 
-        public static List<UserProperty> ToUserPropertiesList(
+        public static List<Property> ToUserPropertiesList(
             this IDictionary hashtable)
         {
-            var udaList = new List<UserProperty>();
+            var udaList = new List<Property>();
             foreach (DictionaryEntry entry in hashtable)
             {
-                udaList.Add(new UserProperty()
+                udaList.Add(new Property()
                 {
                     CurrentName = entry.Key.ToString(),
                     CurrentValue = entry.Value.ToString(),

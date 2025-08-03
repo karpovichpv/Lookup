@@ -1,11 +1,13 @@
-﻿namespace Lookup.ViewModel
+﻿using Lookup.ViewModel.PropetyViewModels;
+
+namespace Lookup.ViewModel
 {
     internal class Mediator : IMediator
     {
         private static Mediator _instance;
 
         private ViewModel _viewModel;
-        private UserPropertiesViewModel _userPropertiesModel;
+        private PropertyViewModelBase _userPropertiesModel;
         private DynamicStringPropertiesViewModel _dynamicStringPropertiesModel;
 
         private Mediator()
@@ -22,7 +24,7 @@
         public void SetViewModel(ViewModel viewModel)
             => _viewModel = viewModel;
 
-        public void SetUserPropertiesModel(UserPropertiesViewModel viewModel)
+        public void SetUserPropertiesModel(PropertyViewModelBase viewModel)
             => _userPropertiesModel = viewModel;
 
         public void SetDynamicStringPropertiesModel(DynamicStringPropertiesViewModel viewModel)

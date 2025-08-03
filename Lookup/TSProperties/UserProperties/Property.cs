@@ -2,7 +2,7 @@
 
 namespace Lookup.TSProperties.UserProperties
 {
-    public class UserProperty : IProperty
+    public class Property : IProperty
     {
         public string CurrentName { get; set; }
         public string CurrentValue { get; set; }

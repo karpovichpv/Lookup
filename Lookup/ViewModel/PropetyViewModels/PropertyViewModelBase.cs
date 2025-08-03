@@ -1,16 +1,16 @@
 ﻿using Lookup.Service;
+using Lookup.TSProperties;
 using Lookup.TSProperties.UserProperties;
 using Lookup.ViewModel.Service;
 using System.Collections.ObjectModel;
 
-namespace Lookup.ViewModel
+namespace Lookup.ViewModel.PropetyViewModels
 {
-    public class UserPropertiesViewModel : ViewModelBase
+    public abstract class PropertyViewModelBase : ViewModelBase
     {
-        public UserPropertiesViewModel()
-        {
-            Mediator.GetInstance().SetUserPropertiesModel(this);
-        }
+
+        private protected IPropertyGetter _getter;
+
 
         private TSObject _selectedData;
         public TSObject SelectedObject
@@ -22,14 +22,14 @@ namespace Lookup.ViewModel
             set
             {
                 _selectedData = value;
-                PropertyObjects = UserPropertyGetter.GetAttributeList(value.Object).ToObservableCollection();
+                PropertyObjects = _getter.GetAttributeList(value.Object).ToObservableCollection();
                 RaisePropertyChange(nameof(SelectedObject));
             }
         }
 
-        private ObservableCollection<UserProperty> _udaObjects;
+        private ObservableCollection<Property> _udaObjects;
 
-        public ObservableCollection<UserProperty> PropertyObjects
+        public ObservableCollection<Property> PropertyObjects
         {
             get => _udaObjects;
             set

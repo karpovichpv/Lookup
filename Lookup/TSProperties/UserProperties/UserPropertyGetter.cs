@@ -1,14 +1,12 @@
-﻿// This file is part of Lookup.
-// Lookup is free software: you can redistribute it and/or modify it under
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Tekla.Structures.Model;
 using tsd = Tekla.Structures.Drawing;
 
 namespace Lookup.TSProperties.UserProperties
 {
-    internal static class UserPropertyGetter
+    internal class UserPropertyGetter : IPropertyGetter
     {
-        public static List<UserProperty> GetAttributeList(object obj)
+        public IEnumerable<Property> GetAttributeList(object obj)
         {
             try
             {
