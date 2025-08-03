@@ -5,7 +5,7 @@ namespace Lookup.TSProperties.UserProperties
 {
     internal static class UserPropertyDrawingGetter
     {
-        public static List<Property> Get(
+        public static List<Property> GetUserProperties(
             this tsd.Drawing drawing)
         {
             drawing.GetDoubleUserProperties(out Dictionary<string, double> doubleValuesDictionary);

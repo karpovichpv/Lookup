@@ -8,7 +8,7 @@ namespace Lookup.TSProperties.UserProperties
 {
     internal static class UserPropertyModelObjectGetter
     {
-        public static List<Property> Get(this ModelObject obj)
+        public static List<Property> GetUserProperties(this ModelObject obj)
         {
             Hashtable propertyHashtable = new Hashtable();
             obj.GetAllUserProperties(ref propertyHashtable);
@@ -16,10 +16,10 @@ namespace Lookup.TSProperties.UserProperties
             return propertyHashtable.ToUserPropertiesList();
         }
 
-        public static List<Property> Get(this tsd.ModelObject obj)
+        public static List<Property> GetUserProperties(this tsd.ModelObject obj)
         {
             ModelObject modelObject = ModelObjectByDrawingObjectSelector.GetModelObject(obj);
-            return modelObject.Get();
+            return modelObject.GetUserProperties();
         }
     }
 }

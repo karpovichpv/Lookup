@@ -11,13 +11,13 @@ namespace Lookup.TSProperties.UserProperties
             try
             {
                 if (obj is ModelObject modelObj)
-                    return modelObj.Get();
+                    return modelObj.GetUserProperties();
                 if (obj is ProjectInfo projectObj)
-                    return projectObj.Get();
+                    return projectObj.GetUserProperties();
                 if (obj is tsd.Drawing drawingObj)
-                    return drawingObj.Get();
+                    return drawingObj.GetUserProperties();
                 if (obj is tsd.ModelObject tsdModelObj)
-                    return tsdModelObj.Get();
+                    return tsdModelObj.GetUserProperties();
             }
             catch
             { }

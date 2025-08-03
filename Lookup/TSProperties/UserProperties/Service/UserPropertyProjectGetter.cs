@@ -6,7 +6,7 @@ namespace Lookup.TSProperties.UserProperties
 {
     internal static class UserPropertyProjectGetter
     {
-        public static List<Property> Get(this ProjectInfo projectInfo)
+        public static List<Property> GetUserProperties(this ProjectInfo projectInfo)
         {
             Hashtable stringPropertiesHashTable = new Hashtable();
             projectInfo.GetStringUserProperties(ref stringPropertiesHashTable);
