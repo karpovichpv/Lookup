@@ -131,6 +131,7 @@
     <Compile Include="ViewModel\IMediator.cs" />
     <Compile Include="ViewModel\Mediator.cs" />
     <Compile Include="ViewModel\PropetyViewModels\PropertyViewModelBase.cs" />
+    <Compile Include="ViewModel\PropetyViewModels\ReportPropertyViewModel.cs" />
     <Compile Include="ViewModel\Service\ItemsObservableCollection.cs" />
     <Compile Include="ViewModel\Service\NewInstanceRunner.cs" />
     <Compile Include="ViewModel\Service\AssemblyVersionGetter.cs" />

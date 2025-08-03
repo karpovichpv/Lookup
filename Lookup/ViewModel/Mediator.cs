@@ -8,16 +8,15 @@ namespace Lookup.ViewModel
 
         private ViewModel _viewModel;
         private PropertyViewModelBase _userPropertiesModel;
+        private PropertyViewModelBase _reportPropertiesModel;
         private DynamicStringPropertiesViewModel _dynamicStringPropertiesModel;
 
         private Mediator()
-        {
-        }
+        { }
 
         public static Mediator GetInstance()
         {
-            if (_instance == null)
-                _instance = new Mediator();
+            _instance ??= new Mediator();
             return _instance;
         }
 
@@ -27,12 +26,16 @@ namespace Lookup.ViewModel
         public void SetUserPropertiesModel(PropertyViewModelBase viewModel)
             => _userPropertiesModel = viewModel;
 
+        public void SetReportPropertiesModel(PropertyViewModelBase viewModel)
+            => _reportPropertiesModel = viewModel;
+
         public void SetDynamicStringPropertiesModel(DynamicStringPropertiesViewModel viewModel)
             => _dynamicStringPropertiesModel = viewModel;
 
         public void Notify(TSObject tsObject)
         {
             _userPropertiesModel.SetSelectedObject(tsObject);
+            _reportPropertiesModel.SetSelectedObject(tsObject);
             _dynamicStringPropertiesModel.SetSelectedObject(tsObject);
         }
     }
