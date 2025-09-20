@@ -8,8 +8,8 @@
     mc:Ignorable="d">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*" MinWidth="100" />
-            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" MaxWidth="300" />
+            <ColumnDefinition Width="2*" MaxWidth="200" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -21,7 +21,6 @@
         <Label
             Grid.Row="0"
             Grid.Column="0"
-            MinWidth="200"
             Content="Name" />
         <Label
             Grid.Row="0"
@@ -47,16 +46,15 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="3*" MaxWidth="300" />
 
-                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2*" MaxWidth="200"/>
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
                         <Border
                             Grid.Row="0"
                             Grid.Column="0"
-                            MinWidth="200"
                             Style="{StaticResource UDAReportPropertiesBorder}">
                             <TextBox Style="{StaticResource UDAReportPropertiesTextBox}" Text="{Binding CurrentName}" />
                         </Border>
@@ -64,7 +62,6 @@
                         <Border
                             Grid.Row="0"
                             Grid.Column="1"
-                            MinWidth="200"
                             Style="{StaticResource UDAReportPropertiesBorder}">
                             <TextBox
                                 BorderThickness="0"
