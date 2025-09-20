@@ -10,16 +10,6 @@ namespace Lookup.TSProperties.ReportProperty
         {
             ReadPropertiesFileService service = new();
             PossibleProperties = service.Read();
-
-            //PossibleProperties = new List<PossiblePropertyQuery>
-            //{
-            //    new PossiblePropertyQuery()
-            //    {
-            //        Name = "NAME",
-            //        QueryString= "NAME",
-            //        Type = typeof(string)
-            //    }
-            //};
         }
 
         public IEnumerable<PossiblePropertyQuery> PossibleProperties { get; set; }

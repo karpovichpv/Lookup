@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace Lookup.TSProperties.ReportProperty
@@ -8,21 +9,21 @@ namespace Lookup.TSProperties.ReportProperty
     {
         public IEnumerable<PossiblePropertyQuery> Read()
         {
-            string[] queryRows = FileService.Read("1.lst");
 
-            List<PossiblePropertyQuery> fileData = GetPropertyQueriesDb(queryRows);
+            IEnumerable<string> queryRows = FileService.Read();
+
+            IEnumerable<PossiblePropertyQuery> fileData = GetPropertyQueriesDb(queryRows);
 
             return fileData;
         }
 
-        private List<PossiblePropertyQuery> GetPropertyQueriesDb(string[] rows)
+        private IEnumerable<PossiblePropertyQuery> GetPropertyQueriesDb(IEnumerable<string> rows)
         {
             var fileData = new List<PossiblePropertyQuery>();
-            //var propertyTypeReadService = new FileTypeService();
             foreach (string row in rows)
             {
                 string handeledRow = row.Replace("\"", "");
-                string[] data = row.Split(new string[] { " " },
+                string[] data = row.Split(new string[] { " ", ";", "," },
                     StringSplitOptions.RemoveEmptyEntries);
 
                 Type type = null;
@@ -38,7 +39,10 @@ namespace Lookup.TSProperties.ReportProperty
                 }
             }
 
-            return fileData;
+            IEnumerable<PossiblePropertyQuery> result = fileData.GroupBy(d => new { d.Name, d.Type })
+                .Select(d => new PossiblePropertyQuery { Name = d.Key.Name, Type = d.Key.Type, QueryString = d.Key.Name }).ToList();
+
+            return result;
         }
 
         private List<PossiblePropertyQuery> GetPropertiesForNonDefinedType(string[] data)
@@ -89,13 +93,16 @@ namespace Lookup.TSProperties.ReportProperty
 
         private Type GetTypeByStringDescription(string type)
         {
-            switch (type)
+            switch (type.ToLower())
             {
-                case ("CHARACTER"):
+                case ("character"):
+                case ("string"):
                     return typeof(string);
-                case ("INTEGER"):
+                case ("integer"):
+                case ("int32"):
                     return typeof(int);
-                case ("FLOAT"):
+                case ("double"):
+                case ("float"):
                     return typeof(double);
                 default:
                     return null;

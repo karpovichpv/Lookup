@@ -101,7 +101,6 @@
     <Compile Include="TSProperties\PropertyType.cs" />
     <Compile Include="TSProperties\UserProperties\Property.cs" />
     <Compile Include="TSProperties\ReportProperty\OldFiles\FileService.cs" />
-    <Compile Include="TSProperties\ReportProperty\OldFiles\FileTypeReadService.cs" />
     <Compile Include="TSProperties\ReportProperty\OldFiles\HashTableService.cs" />
     <Compile Include="TSProperties\ReportProperty\OldFiles\PropertyValue.cs" />
     <Compile Include="TSProperties\ReportProperty\OldFiles\QueryType.cs" />
