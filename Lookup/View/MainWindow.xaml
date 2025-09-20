@@ -33,10 +33,10 @@
                 <uc:MainTabControl />
             </TabItem>
             <TabItem x:Name="tbiUserProperties" Header="User Properties">
-                <uc:NewPropertiesControl DataContext="{Binding Source={StaticResource locator}, Path=UserPropertiesViewModel}" />
+                <uc:PropertiesControl DataContext="{Binding Source={StaticResource locator}, Path=UserPropertiesViewModel}" />
             </TabItem>
             <TabItem x:Name="tbiReportProperties" Header="Report Properties">
-                <uc:NewPropertiesControl DataContext="{Binding Source={StaticResource locator}, Path=ReportPropertiesViewModel}" />
+                <uc:PropertiesControl DataContext="{Binding Source={StaticResource locator}, Path=ReportPropertiesViewModel}" />
             </TabItem>
             <TabItem Header="Dynamic String Properties">
                 <uc:DynamicStringProperties />
