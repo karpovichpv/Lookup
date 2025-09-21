@@ -1,6 +1,4 @@
-﻿// This file is part of Lookup.
-// Lookup is free software: you can redistribute it and/or modify it under
-using Lookup.Service;
+﻿using Lookup.Service;
 using System.Collections.Generic;
 using Tekla.Structures.Model;
 using tsd = Tekla.Structures.Drawing;
@@ -10,10 +8,8 @@ using tsmui = Tekla.Structures.Model.UI;
 
 namespace Lookup
 {
-    // Class select objects from the model
     internal static class SelectObject
     {
-        // Method get selected objects from the model
         public static List<TSObject> GetSelectedObjects()
         {
             tsd.DrawingHandler handler = new tsd.DrawingHandler();

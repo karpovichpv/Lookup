@@ -225,6 +225,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\report_properties.lst">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\DynamicStringProperties.lkp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>DynamicStringProperties.lkp</TargetPath>
