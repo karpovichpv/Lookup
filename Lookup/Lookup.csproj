@@ -234,7 +234,6 @@
     </None>
     <Resource Include="ico.ico" />
     <EmbeddedResource Include="Resources\BuildDate.txt" />
-    <Content Include="Resources\ContentAttributesLists\1.lst" />
     <Resource Include="ViewAbout\about ico.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
