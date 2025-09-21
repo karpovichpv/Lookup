@@ -13,7 +13,7 @@
     mc:Ignorable="d">
 
     <Window.DataContext>
-        <local:ViewModelAbout />
+        <local:AboutViewModel />
     </Window.DataContext>
 
     <Grid>

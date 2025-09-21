@@ -55,17 +55,17 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="Tekla.Structures, Version=2022.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+    <Reference Include="Tekla.Structures, Version=2023.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>References\2022\Tekla.Structures.dll</HintPath>
+      <HintPath>References\2021\Tekla.Structures.dll</HintPath>
     </Reference>
-    <Reference Include="Tekla.Structures.Drawing, Version=2022.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+    <Reference Include="Tekla.Structures.Drawing, Version=2023.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>References\2022\Tekla.Structures.Drawing.dll</HintPath>
+      <HintPath>References\2021\Tekla.Structures.Drawing.dll</HintPath>
     </Reference>
-    <Reference Include="Tekla.Structures.Model, Version=2022.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+    <Reference Include="Tekla.Structures.Model, Version=2023.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>References\2022\Tekla.Structures.Model.dll</HintPath>
+      <HintPath>References\2021\Tekla.Structures.Model.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -91,24 +91,27 @@
     <Compile Include="TSProperties\DynamicProperties\Service\DynamicPropertyUpdater.cs" />
     <Compile Include="TSProperties\DynamicProperties\Service\DynamicPropertyUpdateType.cs" />
     <Compile Include="TSProperties\IProperty.cs" />
+    <Compile Include="TSProperties\IPropertyGetter.cs" />
+    <Compile Include="TSProperties\ReportProperty\PossiblePropetiesNamesSingleton.cs" />
+    <Compile Include="TSProperties\ReportProperty\ResultValuesServiceNew.cs" />
     <Compile Include="TSProperties\UserProperties\Service\UserPropertyDrawingGetter.cs" />
     <Compile Include="TSProperties\UserProperties\Service\UserPropertyListExtensions.cs" />
     <Compile Include="TSProperties\UserProperties\Service\UserPropertyModelObjectGetter.cs" />
     <Compile Include="TSProperties\UserProperties\Service\UserPropertyProjectGetter.cs" />
     <Compile Include="TSProperties\PropertyType.cs" />
-    <Compile Include="TSProperties\UserProperties\UserProperty.cs" />
-    <Compile Include="TSProperties\ReportProperty\FileService.cs" />
-    <Compile Include="TSProperties\ReportProperty\FileTypeReadService.cs" />
-    <Compile Include="TSProperties\ReportProperty\HashTableService.cs" />
-    <Compile Include="TSProperties\ReportProperty\PropertyValue.cs" />
-    <Compile Include="TSProperties\ReportProperty\QueryType.cs" />
-    <Compile Include="TSProperties\ReportProperty\ReadPropertiesFileService.cs" />
-    <Compile Include="TSProperties\ReportProperty\PossiblePropertyQuery.cs" />
-    <Compile Include="TSProperties\ReportProperty\ReportPropertyValuesService.cs" />
+    <Compile Include="TSProperties\UserProperties\Property.cs" />
+    <Compile Include="TSProperties\ReportProperty\OldFiles\FileService.cs" />
+    <Compile Include="TSProperties\ReportProperty\OldFiles\HashTableService.cs" />
+    <Compile Include="TSProperties\ReportProperty\OldFiles\PropertyValue.cs" />
+    <Compile Include="TSProperties\ReportProperty\OldFiles\QueryType.cs" />
+    <Compile Include="TSProperties\ReportProperty\OldFiles\ReadPropertiesFileService.cs" />
+    <Compile Include="TSProperties\ReportProperty\OldFiles\PossiblePropertyQuery.cs" />
+    <Compile Include="TSProperties\ReportProperty\OldFiles\ReportPropertyValuesService.cs" />
     <Compile Include="Service\DataExtensions.cs" />
     <Compile Include="Service\ModelObjectByDrawingObjectSelector.cs" />
     <Compile Include="Service\SelectObject.cs" />
     <Compile Include="TSProperties\DynamicProperties\DynamicPropertyGetter.cs" />
+    <Compile Include="TSProperties\ReportProperty\ReportPropertyGetter.cs" />
     <Compile Include="TSProperties\UserProperties\UserPropertyGetter.cs" />
     <Compile Include="Streams\MethodStream.cs" />
     <Compile Include="Data\Data.cs" />
@@ -129,14 +132,16 @@
     <Compile Include="ViewModel\DynamicStringPropertiesViewModel.cs" />
     <Compile Include="ViewModel\IMediator.cs" />
     <Compile Include="ViewModel\Mediator.cs" />
+    <Compile Include="ViewModel\PropetyViewModels\PropertyViewModelBase.cs" />
+    <Compile Include="ViewModel\PropetyViewModels\ReportPropertyViewModel.cs" />
     <Compile Include="ViewModel\Service\ItemsObservableCollection.cs" />
     <Compile Include="ViewModel\Service\NewInstanceRunner.cs" />
     <Compile Include="ViewModel\Service\AssemblyVersionGetter.cs" />
     <Compile Include="ViewModel\Service\ObjectService.cs" />
     <Compile Include="ViewModel\Service\SortUserPropertyData.cs" />
-    <Compile Include="ViewModel\UserPropertiesViewModel.cs" />
+    <Compile Include="ViewModel\PropetyViewModels\UserPropertyViewModel.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelAbout.cs" />
+    <Compile Include="ViewModel\AboutViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\DynamicStringProperties.xaml.cs">
@@ -148,8 +153,8 @@
     <Compile Include="View\FooterButtons.xaml.cs">
       <DependentUpon>FooterButtons.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserPropertiesControl.xaml.cs">
-      <DependentUpon>UserPropertiesControl.xaml</DependentUpon>
+    <Compile Include="View\PropertiesControl.cs">
+      <DependentUpon>PropertiesControl.xaml</DependentUpon>
     </Compile>
     <Page Include="ViewAbout\About.xaml">
       <SubType>Designer</SubType>
@@ -175,15 +180,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\PropertiesControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ResourcesUDAReportProperties.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\Resources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\FooterButtons.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserPropertiesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -216,6 +225,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\report_properties.lst">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\DynamicStringProperties.lkp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>DynamicStringProperties.lkp</TargetPath>

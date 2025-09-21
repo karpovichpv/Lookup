@@ -11,6 +11,7 @@
             <data:ViewModelLocator x:Key="locator" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Lookup;component/View/Resources.xaml" />
+                <ResourceDictionary Source="/Lookup;component/View/ResourcesUDAReportProperties.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

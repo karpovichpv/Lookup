@@ -6,7 +6,7 @@ namespace Lookup.TSProperties.UserProperties
 {
     internal static class UserPropertyProjectGetter
     {
-        public static List<UserProperty> Get(this ProjectInfo projectInfo)
+        public static List<Property> GetUserProperties(this ProjectInfo projectInfo)
         {
             Hashtable stringPropertiesHashTable = new Hashtable();
             projectInfo.GetStringUserProperties(ref stringPropertiesHashTable);
@@ -15,7 +15,7 @@ namespace Lookup.TSProperties.UserProperties
             Hashtable intPropertiesHashTable = new Hashtable();
             projectInfo.GetIntegerUserProperties(ref intPropertiesHashTable);
 
-            List<UserProperty> udaDataList = stringPropertiesHashTable.ToUserPropertiesList();
+            List<Property> udaDataList = stringPropertiesHashTable.ToUserPropertiesList();
             udaDataList.AddRange(doublePropertiesHashTable.ToUserPropertiesList());
             udaDataList.AddRange(intPropertiesHashTable.ToUserPropertiesList());
             return udaDataList;

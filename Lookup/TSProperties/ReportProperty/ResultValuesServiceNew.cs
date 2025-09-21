@@ -1,30 +1,32 @@
-﻿using System.Collections;
+﻿using Lookup.TSProperties.UserProperties;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Tekla.Structures.Model;
 
 namespace Lookup.TSProperties.ReportProperty
 {
-    internal class ResultValuesService
+    internal class ResultValuesServiceNew
     {
         private readonly ModelObject _modelObj;
         private ArrayList _doubleValues;
         private ArrayList _intValues;
         private ArrayList _stringValues;
 
-        public ResultValuesService(ModelObject modelObj)
+        public ResultValuesServiceNew(ModelObject modelObj)
         {
             _modelObj = modelObj;
-            List<PossiblePropertyQuery> properties = new ReadPropertiesFileService().Read();
+            IEnumerable<PossiblePropertyQuery> properties
+                = PossiblePropetiesNamesSingleton.Get().PossibleProperties;
 
             SetArrayListsForGettingProperties(properties);
         }
 
-        private void SetArrayListsForGettingProperties(List<PossiblePropertyQuery> properties)
+        private void SetArrayListsForGettingProperties(IEnumerable<PossiblePropertyQuery> properties)
         {
-            _doubleValues = new ArrayList();
-            _intValues = new ArrayList();
-            _stringValues = new ArrayList();
+            _doubleValues = [];
+            _intValues = [];
+            _stringValues = [];
             foreach (PossiblePropertyQuery queryString in properties)
             {
                 if (queryString.Type == typeof(double))
@@ -36,12 +38,12 @@ namespace Lookup.TSProperties.ReportProperty
             }
         }
 
-        public List<PropertyValue> Get()
+        public IEnumerable<Property> Get()
         {
-            Hashtable values = new Hashtable(_doubleValues.Count + _intValues.Count + _stringValues.Count);
+            Hashtable values = new(_doubleValues.Count + _intValues.Count + _stringValues.Count);
             _modelObj.GetAllReportProperties(_stringValues, _doubleValues, _intValues, ref values);
-            List<PropertyValue> listOfProperties = values.ToPropertyList();
-            return listOfProperties.OrderBy(t => t.Name).ToList();
+            IEnumerable<Property> listOfProperties = values.ToPropertyList();
+            return listOfProperties.OrderBy(t => t.CurrentName).ToList();
         }
     }
 }

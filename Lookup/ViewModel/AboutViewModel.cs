@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace Lookup.ViewModel
 {
-    public class ViewModelAbout : ViewModelBase
+    public class AboutViewModel : ViewModelBase
     {
         public string Version => AssemblyVersionGetter.GetAssemblyVersionNumber();
 

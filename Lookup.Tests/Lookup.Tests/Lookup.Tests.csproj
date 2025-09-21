@@ -50,14 +50,19 @@
     <Reference Include="System.Core" />
     <Reference Include="Tekla.Structures, Version=2023.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\TeklaStructures\2023.0\bin\plugins\Tekla\Drawings\Dimensioning\MultiPurposeDimensioningPlugin\Tekla.Structures.dll</HintPath>
+      <HintPath>References\Tekla.Structures.dll</HintPath>
+    </Reference>
+    <Reference Include="Tekla.Structures.Drawing, Version=2023.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\Tekla.Structures.Drawing.dll</HintPath>
     </Reference>
     <Reference Include="Tekla.Structures.Model, Version=2023.0.0.0, Culture=neutral, PublicKeyToken=2f04dbe497b71114, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\TeklaStructures\2023.0\bin\plugins\Tekla\Drawings\Dimensioning\MultiPurposeDimensioningPlugin\Tekla.Structures.Model.dll</HintPath>
+      <HintPath>References\Tekla.Structures.Model.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Sandbox\Class1.cs" />
     <Compile Include="Service\BuildType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\BeamBuilder.cs" />
