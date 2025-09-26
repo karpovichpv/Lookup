@@ -13,7 +13,7 @@ class Build : NukeBuild
 
     [Solution]
     private readonly Solution Solution;
-    private readonly string _version = "3.0";
+    private readonly string _version = "3.1";
 
     public static int Main() => Execute<Build>(x => x.BuildSolution);
 
